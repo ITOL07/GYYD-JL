@@ -18,7 +18,7 @@ Page({
 		}
 	},
 
-	imcomedetail: function(){
+	incomedetail: function(){
 		var param = "?id="+this.data.user.id
 		wx.navigateTo({
 			url: "../incomedetail/imcomedetail"+param

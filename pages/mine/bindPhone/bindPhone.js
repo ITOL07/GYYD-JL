@@ -1,6 +1,6 @@
-const app = getApp() 
-var fileData = require("../../../utils/util.js");
-var util = require('../../../utils/md5.js') 
+const app = getApp()
+var fileData = require("../../../utils/data.js");
+var util = require('../../../utils/md5.js')
 Page({
 
   /**
@@ -13,8 +13,6 @@ Page({
     phone: '', //获取到的手机栏中的值
     VerificationCode: '',
     Code: '',
-    NewChanges: '',
-    NewChangesAgain: '',
     success: false,
     state: ''
   },
@@ -38,19 +36,7 @@ Page({
       Code: e.detail.value
     })
   },
-  handleNewChanges: function (e) {
-    console.log(e);
-    this.setData({
-      NewChanges: e.detail.value
-    })
-  },
-  handleNewChangesAgain: function (e) {
-    console.log(e);
-    this.setData({
-      NewChangesAgain: e.detail.value
-    })
-
-  },
+  
   doGetCode: function () {
     var that = this;
     that.setData({
@@ -63,7 +49,7 @@ Page({
     var warn = null; //warn为当手机号为空或格式不正确时提示用户的文字，默认为空
     var url_tmp = fileData.getListConfig().url_test;
     wx.request({
-      url: url_tmp +'/user/isReg', //后端判断是否已被注册， 已被注册返回1 ，未被注册返回0
+      url: url_tmp + '/user/isReg', //后端判断是否已被注册， 已被注册返回1 ，未被注册返回0
       method: "POST",
       data: {
         phoneNo: that.data.phone
@@ -89,7 +75,7 @@ Page({
         }
         else {
           wx.request({
-            url: url_tmp+'/user/getvcode', //填写发送验证码接口
+            url: url_tmp + '/user/getvcode', //填写发送验证码接口
             method: "POST",
             data: {
               phoneNo: that.data.phone
@@ -164,30 +150,16 @@ Page({
       })
       return
     }
-    else if (this.data.NewChanges == '') {
-      wx.showToast({
-        title: '请输入密码',
-        image: '/images/error.png',
-        duration: 2000
-      })
-      return
-    } else if (this.data.NewChangesAgain != this.data.NewChanges) {
-      wx.showToast({
-        title: '两次密码不一致',
-        image: '/images/error.png',
-        duration: 2000
-      })
-      return
-    } else {
+    else {
       var that = this
       var phone = that.data.phone;
       var url_tmp = fileData.getListConfig().url_test;
       wx.request({
-        url: url_tmp + '/user/signup',
+        url: url_tmp + '/user/bindPhone',
         method: "POST",
         data: {
           phoneNo: phone,
-          passwd: util.hexMD5(that.data.NewChanges)
+          open_id: app.globalData.openid
         },
         header: {
           "content-type": "application/x-www-form-urlencoded"

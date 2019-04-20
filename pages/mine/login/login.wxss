@@ -13,17 +13,14 @@
   display:flex;
   flex-direction:row;
   margin-top:70rpx;
-	align-items: center;
 }
 .top_item image{
-  width: 18rpx;
-  height: 26rpx;
-  margin: 0 5%;
-}
-.top_item .image2{
-	width: 26rpx;
-	height: 30rpx;
-  margin: 0 5%;
+  display:block;
+  width:30rpx;
+  height:30rpx;
+  margin-left:5%;
+  margin-right:5%;
+  padding-top:2%;
 }
 .top_item input{
   width:80%;
@@ -32,52 +29,55 @@
   font-size:30rpx;
   color:#999999;
 }
-.place{
-	font-size: 26rpx;
-	color: #999999;	
-}
 .middle{
   width:100%;
   height:25%;
   margin-top:30rpx;
 }
 .middle button{
-  width: 80%;
-  margin: 100rpx auto 20rpx;
-  height: 85rpx;
+  width:70%;
+  margin:60rpx auto;
+  height:100rpx;
   background:#F9CE0E;
-  font-size: 35rpx;
+  font-size:40rpx;
   border-radius:50rpx;
 }
 .reg{
-  width: 80%;
-	margin: 26rpx 10%;
+  width:100%;
+  height:80rpx;
+  display: flex;
+  justify-content:space-around;
 }
-.reg view{
-  font-size: 24rpx;
+.reg text{
+  font-size:30rpx;
   color:#FAC72C;
 }
 .reg .text1{
-  width: 42%;
-	margin-right: 22%;
-  text-align: right;
+  width:33%;
+  margin-left:10%;
 }
 .reg .text2{
-  width: 44%;
+  width:33%;
+  margin-left:10%;
+}
+.reg .text3{
+  width:33%;
+  /* margin-left:10%; */
 }
 .bottom{
   width:100%;
-  margin-top:45%;
+  height:50%;
+  margin-top:50%;
 }
 .bottom text{
   color:#999999;
-  font-size: 24rpx;
+  font-size:30rpx;
   text-align:center;
   display:block;
 }
 .bottom image{
   display:block;
-  margin: 30rpx auto;
+  margin:10rpx auto;
   width:100rpx;
   height:100rpx;
 }
