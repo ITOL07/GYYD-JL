@@ -1,0 +1,44 @@
+/* container */
+.container{
+	height: 1200rpx;
+	background-color: #FAFAFA;
+	padding-top: 20rpx;
+}
+
+.first{
+	width: 100%;
+	height: 180rpx;
+	background-color: #FFFFFF;
+}
+.inputview1{
+	width: 100%;
+	font-size: 30rpx;
+	color: #333333;
+	background-color: #FFFFFF;
+	padding: 10rpx 5%;
+}
+.label{
+	width: 45%;
+	display: block;
+}
+.input{
+	text-align: right;
+}
+.input3{
+	width: 100%;
+	height: 50rpx;
+	font-size: 30rpx;
+	color: #333333;
+	background-color: #FFFFFF;
+	padding-left: 5%;
+}
+.container button{
+	width: 75%;
+	height: 90rpx;
+	font-size: 40rpx;
+	color: #292A2E;
+	line-height: 90rpx;
+	border-radius: 45px;
+	background-color: #F9CE0E;
+	margin-top: 80rpx;
+}

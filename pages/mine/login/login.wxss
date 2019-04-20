@@ -1,0 +1,83 @@
+/* pages/login/login.wxss */
+.container{
+  background:#FFFFFF;
+}
+.top{
+  width:90%;
+  height:25%;
+  margin:0 auto;
+}
+.top_item{
+  width:100%;
+  height:40%;
+  display:flex;
+  flex-direction:row;
+  margin-top:70rpx;
+	align-items: center;
+}
+.top_item image{
+  width: 18rpx;
+  height: 26rpx;
+  margin: 0 5%;
+}
+.top_item .image2{
+	width: 26rpx;
+	height: 30rpx;
+  margin: 0 5%;
+}
+.top_item input{
+  width:80%;
+  height:50rpx;
+  border-bottom:1px aolid #EEEEEE;
+  font-size:30rpx;
+  color:#999999;
+}
+.place{
+	font-size: 26rpx;
+	color: #999999;	
+}
+.middle{
+  width:100%;
+  height:25%;
+  margin-top:30rpx;
+}
+.middle button{
+  width: 80%;
+  margin: 100rpx auto 20rpx;
+  height: 85rpx;
+  background:#F9CE0E;
+  font-size: 35rpx;
+  border-radius:50rpx;
+}
+.reg{
+  width: 80%;
+	margin: 26rpx 10%;
+}
+.reg view{
+  font-size: 24rpx;
+  color:#FAC72C;
+}
+.reg .text1{
+  width: 42%;
+	margin-right: 22%;
+  text-align: right;
+}
+.reg .text2{
+  width: 44%;
+}
+.bottom{
+  width:100%;
+  margin-top:45%;
+}
+.bottom text{
+  color:#999999;
+  font-size: 24rpx;
+  text-align:center;
+  display:block;
+}
+.bottom image{
+  display:block;
+  margin: 30rpx auto;
+  width:100rpx;
+  height:100rpx;
+}

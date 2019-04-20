@@ -1,0 +1,5 @@
+<view class="container displaycolumn">
+ <input placeholder="证书名称……" placeholder-class="place"></input>
+ <image src="../../images/mine/plus.png"></image>
+ <button>确认提交</button>
+</view>

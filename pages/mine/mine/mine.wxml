@@ -1,0 +1,99 @@
+<view class="container">
+<view class="shadow"></view>
+	<view class="top">
+	<!--个人简介-->
+		<view class=" displayrow viewphoto">
+		<!--头像姓名手机-->
+			<view>
+			<!--头像-->
+				<image src="{{user.photo}}" class="photo"></image>
+			</view>
+			<view class="viewname displaycolumn">
+			<!--姓名手机-->
+				<text class="textname">{{user.name}}</text>
+				<text class="textphone">{{user.telephone}}</text>
+			</view>
+			<view class="space2"></view>
+		</view>
+		<view class="viewintro">
+		<!--简介-->
+			<view>
+				<!--标题-->
+				<text class="introduce">个人经历简介</text>
+				<!--编辑图标-->
+				<image src="../../images/mine/edit.png" class="edit"></image>
+			</view>
+			<!--内容-->
+			<text class="content">{{user.introduce}}</text>
+		</view>
+	</view>
+	<view class="middle">
+	<!--授课收入-->
+		<view>
+		<!--标题-->
+			<text class="income">当月收入</text>
+			<text class="incomedetail" bindtap="imcomedetail">收入明细></text>
+		</view>
+		<view class="displayrow">
+		<!--收入分配-->
+			<view  class="displaycolumn viewincome">
+			<!--售课收入-->
+				<view>
+					<text class="fontmoney">¥</text>
+					<!-- <text class="fontnum">{{user.salecourse}}</text> -->
+          <text class="fontnum">{{sold_amt}}</text>
+				</view>
+				<text class="fontword">售课收入(元)</text>
+			</view>
+			<view class="displaycolumn viewincome">
+			<!--授课收入-->
+				<view>
+					<text class="fontmoney">¥</text>
+					<!-- <text class="fontnum">{{user.teachcourse}}</text> -->
+          <text class="fontnum">{{les_amt}}</text>
+				</view>
+				<text class="fontword">授课收入(元)</text>
+			</view>
+		</view>
+	</view>
+	<view class="bottom displayrow">
+	<!--信息管理-->
+		<view class="displaycolumn view" bindtap="certificate">
+		<!--证书照片-->
+			<image src="../../images/mine/certificate.png" class="image"></image>
+			<text>证书相片</text>
+		</view>
+		<view class="displaycolumn view" bindtap="case">
+		<!--会员案例-->
+			<image src="../../images/mine/case.png" class="image"></image>
+			<text>会员案例</text>
+		</view>
+		<view class="displaycolumn view">
+		<!--个人相册-->
+			<image src="../../images/mine/myalbum.png" class="image"></image>
+			<text>个人相册</text>
+		</view>
+		<view class="displaycolumn view" bindtap="space">
+		<!--授课场地-->
+			<image src="../../images/mine/space.png" class="image"></image>
+			<text>授课场地</text>
+		</view>
+		<view class="displaycolumn view" bindtap="mycourse">
+		<!--我的课程-->
+			<image src="../../images/mine/mycourse.png" class="image"></image>
+			<text>我的课程</text>
+		</view>
+		<view class="displaycolumn view"> 
+		<!--我的信息-->
+			<image src="../../images/mine/email.png" class="image"></image>
+			<text>我的信息</text>
+		</view>
+		<view class="displaycolumn view" bindtap="setup">
+		<!--个人设置-->
+			<image src="../../images/mine/setup.png" class="image"></image>
+			<text>个人设置</text>
+		</view>
+		<view class="view1">
+		</view>
+	</view>
+</view>

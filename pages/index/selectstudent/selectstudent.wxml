@@ -1,0 +1,25 @@
+<view class="container displaycolumn">
+	<view class="top">
+		<text class="number">全部学员（23）</text>
+		<text class="confirm" bindtap="back">确定</text>
+	</view>
+	<view class="content displayrow" wx:for="{{student}}" wx:key="this">
+		<view>
+			<image src="{{item.photo}}"></image>
+		</view>
+		<view class="displaycolumn second">
+			<view class="displayrow name">
+				<text>{{item.name}}</text>
+				<image src="{{item.sex}}" class="seximage"></image>
+			</view>
+			<view class="displayrow course">
+<text>累计购课{{item.cumulative}} | 已完成{{item.completed}} | 预约中{{item.ordering}} | 待预约{{item.unorder}}</text>
+			</view>
+		</view>
+		<view class="button">
+			<view id="{{item.id}}" wx:if="{{!item.selected}}" bindtap="selected"></view>
+			<image id="{{item.id}}" src="../../images/index/selected.png" class="selected" 
+						 wx:else bindtap="selected"></image>
+		</view>
+	</view>
+</view>

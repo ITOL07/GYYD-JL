@@ -1,0 +1,17 @@
+<!--pages/user/cash/cash.wxml-->
+<view class="container">
+  <view class="list displaycolumn">
+    <text class="title">可提现余额（元）</text>
+    <text class="money">20,000.00</text>
+    <view class="middle displaycolumn">
+      <text class="title2">提现到微信钱包</text>
+      <view class="middle_item displayrow"> 
+        <input placeholder='每日限额20000元' placeholder-class="place"></input>
+        <button>全部</button>
+      </view>
+    </view>
+    <text class="remark">提现免手续费，预计3个工作日内到账</text>
+    <button class="num">获取验证码</button>
+    <text class="record" bindtap="cashrecordClick">提现记录</text>
+  </view>
+</view>

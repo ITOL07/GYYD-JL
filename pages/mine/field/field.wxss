@@ -1,0 +1,99 @@
+/* inputview */
+.inputview{
+	width: 90%;
+	font-size: 30rpx;
+	color: #333333;
+	background-color: #FFFFFF;
+	border: 1rpx solid #EEEEEE;
+	padding: 15rpx 5%;
+}
+.label{
+	width: 50%;
+	display: block;
+}
+.input{
+	text-align: right;
+}
+
+/* bottom */
+.bottom{
+  width:100%;
+}
+.list_data{
+	width: 100%;
+  height: 230rpx;
+	background-color: #FFFFFF;
+	position: relative;
+}
+.list_item{
+	width:100%;
+	height: 190rpx;
+	border-bottom: 1rpx solid #EEEEEE; 
+  padding: 19rpx 44rpx 19rpx 0;
+  display:flex;
+  flex-direction:row;
+  justify-content: space-around;
+	align-items: center;
+}
+.image2{
+  width: 150rpx;
+  height: 150rpx;
+	margin-left: 15rpx;
+}
+.image{
+  width: 150rpx;
+  height: 150rpx;
+}
+.list_right{
+	margin: auto 30rpx;
+	justify-content: space-between;
+}
+.right1{
+  color:#333333;
+  font-size: 30rpx;
+	line-height: 70rpx;
+}
+.right2{
+  font-size: 22rpx;
+  color: #666666;
+	line-height: 25rpx;
+}
+.right3 image{
+  width: 14rpx;
+  height: 20rpx;
+	margin-right: 26rpx;
+}
+.right3 text{
+  font-size: 20rpx;
+  color: #999999;
+	line-height: 25rpx;
+}
+.space4{
+	width: 88rpx;
+	height: 228rpx;
+}
+.space3{
+	width: 320rpx;
+	height: 228rpx;
+}
+.space1{
+	width: 30rpx;
+	height: 30rpx;
+	background: #EEEEEE;
+	border: 1rpx solid #FFFFFF;
+	border-radius: 100%;
+	position: absolute;
+	right: 100rpx;
+	top: 42%;
+}
+.space1 image{
+	width: 40rpx;
+	height: 40rpx;
+	border-radius: 100%;
+	border: 1rpx solid #FFFFFF;
+	margin-top: -1rpx;
+	margin-left: -6rpx;
+}
+.bgcolor{
+	background-color: rgba(51,55,82,0.1);
+}

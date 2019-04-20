@@ -1,0 +1,85 @@
+<view class="container displaycolumn">
+	<view class="top view">
+	<!--顶部轮播图-->
+		<swiper indicator-dots="{{swiper.indicatordots}}" 
+						indicator-color="{{swiper.indicatorcolor}}"
+						indicator-active-color="{{swiper.indicatoractivecolor}}"
+						autoplay="{{swiper.autoplay}}"
+						interval="{{swiper.interval}}"
+						duration="{{swiper.duration}}"
+						circular="{{swiper.circular}}">
+			<block wx:for="{{swiper.img}}" wx:key="this">
+				<swiper-item>
+					<image src="{{item.imgurl}}" class="imgswiper"/>
+				</swiper-item>
+			</block>
+		</swiper>
+	</view>
+	<view class="middle displaycolumn">
+	<!--中部排课日历-->
+		<view class="displayrow plantime">
+			<view class="dateview">
+				<text>周日历排课表</text>
+				<text>2018年11月</text>
+			</view>
+			<button class="button" bindtap="doplan">排课</button>
+		</view>
+		<view class="displayrow weekview">
+				<view class="displaycolumn">
+					<text>日</text>
+					<text>02</text>
+				</view>
+				<view class="displaycolumn">
+					<text>一</text>
+					<text>03</text>
+				</view>
+				<view class="displaycolumn">
+					<text>二</text>
+					<text>04</text>
+				</view>
+				<view class="displaycolumn">
+					<text>三</text>
+					<text>05</text>
+				</view>
+				<view class="displaycolumn">
+					<text>四</text>
+					<text>06</text>
+				</view>
+				<view class="displaycolumn">
+					<text>五</text>
+					<text>07</text>
+				</view>
+				<view class="displaycolumn">
+					<text>六</text>
+					<text>08</text>
+				</view>
+			</view>
+	</view>
+	<view class="bottom" wx:for="{{detail1}}" wx:key="this">
+	<!--低部学员课程详情-->
+		<view class="displaycolumn vieworder">
+			<view class="displayrow first">
+				<text style="background-color:{{item.bgcolor}}">私</text>
+				<text>{{item.club_name}}</text>
+				<text>{{item.status_desc}}</text>
+			</view>
+			<text class="coursetime">{{item.start_time_1}}</text>
+      <text class="coursetime">{{item.end_time_1}}</text>
+      <text class="coursename">课程内容：{{item.course_name}}</text>
+			<text class="coursename">第{{item.seq_no}}/{{item.total}}课</text>
+			<view class="displayrow last">
+				<view class="displayrow imageview">
+					<image src="{{item.user.imgurl}}" class="imageuser"/>
+					<text class="name" style="height: 70rpx;">{{item.mem_nick_name}}</text>
+				</view>
+				<view wx:if="{{!item.cancel}}" class="buttonview displayrow">
+					<button class="button button2" hidden="{{item.cancel}}">取消</button>
+					<button class="button" hidden="{{item.confirm}}">签到</button>
+				</view>
+				<view wx:else class="buttonview displayrow">
+					<button class="button button1" hidden="{{item.confirm}}">签到</button>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>

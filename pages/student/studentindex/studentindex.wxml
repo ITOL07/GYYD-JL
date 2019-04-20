@@ -1,0 +1,136 @@
+<view class="container">
+	<view class="content font28">
+		<view class="displayrow viewcontent">
+		<!--学员个人信息-->
+			<!--头像-->
+			<image src="{{student.photo}}" class="photo"></image>
+			<view class="displaycolumn viewmsg">
+			<!--姓名性别手机-->
+				<view class="displayrow textname">
+						<!--姓名-->
+						<text class="textname2">{{student.name}}</text>
+						<!--性别-->
+						<image src="{{student.sex}}" class="sex"></image>
+				</view>
+				<!--手机-->
+				<text class="font28">{{student.telephone}}</text>
+			</view>
+			<view>
+			<!--是否置顶-->
+				<view class="demo">
+					<text class="flag">{{student.flag}}</text>
+				</view>
+				<view class="space"></view>
+			</view>
+		</view>
+		<view class="displayrow viewcourse">
+		<!--学员课程详情-->
+			<view class="displaycolumn course">
+			<!--累计授课-->
+				<!--图标-->
+				<image src="../../images/student/cumulative.png" class="icon"></image>
+				<!--文字-->
+				<text>累计购课({{student.course.cumulative}})</text>
+			</view>
+			<view class="displaycolumn course">
+			<!--已完成-->
+				<!--图标-->
+				<image src="../../images/student/completed.png" class="icon"></image>
+				<!--文字-->
+				<text>已完成({{student.course.completed}})</text>
+			</view>
+			<view class="displaycolumn course">
+			<!--预约中-->
+				<!--图标-->
+				<image src="../../images/student/ordering.png" class="icon"></image>
+				<!--文字-->
+				<text>预约中({{student.course.ordering}})</text>
+			</view>
+			<view class="displaycolumn course">
+			<!--待预约-->
+				<!--图标-->
+				<image src="../../images/student/unorder.png" class="icon"></image>
+				<!--文字-->
+				<text>待预约({{student.course.unorder}})</text>
+			</view>
+		</view>
+	</view>
+	<view class="message">
+	<!--学员信息详情-->
+		<view class="displaycolumn over">
+		<!--基本信息-->
+			<view>
+				<text class="textmsg textmsg2">基本信息</text>
+				<image src="../../images/student/edit.png" class="edit" bindtap="navigate"></image>
+			</view>
+			<text class="textbirth">出生年月：{{student.birthday}}</text>
+			<text class="textbirth">身高：{{student.height}}</text>
+		</view>
+		<view class="bottom displaycolumn">
+		<!--身体档案-->
+			<view>
+				<text class="textmsg textmsg3">身体档案</text>
+				<text class="detail" bindtap="navigaterecord">查看详情></text>
+			</view>
+			<view class="displayrow squareview">
+				<view class="square"></view>
+				<view class="square"></view>
+				<view class="square"></view>
+			</view>
+		</view>
+	</view>
+	<view class="history">
+	<!--学员课程详情-->
+		<view>
+		<!--排课-->
+			<view class="displayrow schedule">
+				<view class="textmsg">排课</view>
+				<view class="order">+</view>
+			</view>
+			<view class="displaycolumn courseschedule">
+			<!--排课详情-->
+				<view>
+					<text class="sign">私</text>
+					<text class="textmsg textmsg4">增肌max</text>
+					<text class="textorder">已预约</text>
+				</view>
+				<view> 
+					<text class="textbirth">2018年11月12日  15:00-16:00</text>
+					<text class="textbirth coursetime">第3/10课</text>
+				</view>
+				<text class="textbirth">门店：腾讯众创空间店</text>
+				<text class="textbirth">课程内容：胸部训练</text>
+				<view class="displayrow buttonview">
+					<button class="button cancel">取消</button>
+					<button class="button confirm">签到</button>
+				</view>
+			</view>
+		</view>
+		<view>
+		<!--历史课程-->
+			<view>
+		<!--排课-->
+				<view class="textmsg">历史课程</view>
+				<view class="displaycolumn courseschedule2" wx:for="{{course}}" wx:key="this">
+				<!--排课详情-->
+					<view class="displayrow title">
+						<text class="sign" style="background-color: {{item.signbgcolor}}">
+									{{item.sign}}</text>
+						<text class="textmsg">{{item.name}}</text>
+						<text class="textorder2">{{item.state}}</text>
+					</view>
+					<view> 
+						<text class="textbirth">{{item.date}}</text>
+						<text class="textbirth coursetime">第{{item.time}}课</text>
+					</view>
+					<text class="textbirth">门店：{{item.store}}</text>
+					<text class="textbirth">课程内容：{{item.content}}</text>
+					<view class="displayrow buttonview">
+						<button class="button cancel" hidden="{{item.cancel}}">取消</button>
+						<button class="button confirm" hidden="{{item.confirm}}">签到</button>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>

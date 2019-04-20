@@ -1,0 +1,14 @@
+<view class="container">
+  <view  class="inputview displayrow">
+	<!--学员选择区域-->
+    <text class="label" bindtap="edit">学员</text>
+    <text class="label input">选择学员></text>
+  </view>
+	<view class="displaycolumn detail">
+	<!--案例详情-->
+		<text>健身成果</text>
+		<textarea placeholder="学员健身成果" placeholder-class="place"></textarea>
+		<text>对比照</text>
+		<image src="../../images/mine/plus.png"></image>
+	</view>
+</view>

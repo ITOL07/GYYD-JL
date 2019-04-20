@@ -1,0 +1,38 @@
+<view class="container">
+	<view class="content displaycolumn">
+		<view class="displayrow view">
+			<label class="space">授课日期</label>
+			<text class="space right">2018/11/11</text>
+		</view>
+		<view class="displayrow view">
+			<label class="space">授课时段</label>
+			<picker class="text space right" bindchange="bindPickerChange" 
+							value="{{index}}" range="{{array}}">
+      	{{label}}{{array[index]}}
+  		</picker>
+		</view>
+		<view class="displayrow view">
+			<label class="space">学员</label>
+			<text class="text space right" bindtap="selectstudent">{{label2}}</text>
+		</view>
+		<view class="displayrow view">
+			<label class="space">课程</label>
+			<picker class="text space right" bindchange="bindPickerChange3" 
+							value="{{index3}}" range="{{array3}}">
+      	{{label3}}{{array3[index3]}}
+  		</picker>
+		</view>
+		<view class="displaycolumn textareaview">
+			<label>课程内容</label>
+			<textarea placeholder="输入本次课程内容……" class="textarea"
+								placeholder-class="place"></textarea>
+		</view>
+		<view class="last displayrow">
+			<view>选择配色</view>
+			<view class="orange"></view>
+			<view class="green"> </view>
+			<view class="blue"> </view>
+		</view>
+	</view>
+	<button class="button">提交</button>
+</view>

@@ -1,0 +1,31 @@
+<view class="container">
+  <view wx:if="{{flag}}" class="inputview displayrow">
+    <text class="label" bindtap="edit">编辑</text>
+    <text class="label input">添加</text>
+  </view>
+  <view wx:else class="inputview displayrow">
+    <text class="label" bindtap="cancel">取消</text>
+    <text class="label input">删除</text>
+  </view>
+  <view class="listall">
+    <view class="private_list" wx:for="{{courseData}}" wx:key="this">
+      <!-- <view hidden="{{flag}}" class="shadow"></view> -->
+      <view class="demo1">
+        <view class="imageview">
+          <image src="{{item.imgurl}}"></image>
+          <view class="remark">私教</view>
+        </view>
+        <text class="text1">{{item.title}}</text>
+        <text class="text2">{{item.introduce}}</text>
+        <view class="buy">
+          <text>￥</text>
+          <text class="price">{{item.price}}</text>
+          <text>/课</text>
+        </view>
+      </view>
+      <view hidden="{{flag}}" class="demo2"></view>
+      <view wx:if="{{flag2}}" hidden="{{flag}}" class="check" bindtap="click"></view>
+      <image wx:else src="../images/mine/confirm.png" class="check2" bindtap="click2"></image>
+    </view>
+  </view>
+</view>

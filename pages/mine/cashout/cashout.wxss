@@ -1,0 +1,83 @@
+/* pages/user/cash/cash.wxss */
+.container{
+	height: 1200rpx;
+  background: #FAFAFA;
+}
+.list{
+  width:100%;
+  height:auto;
+  justify-content:center;
+}
+.title{
+  font-size:26rpx;
+  color:#999999;
+  text-align:center;
+  margin-top: 76rpx;
+}
+.money{
+  font-size: 60rpx;
+  color: #333333;
+  text-align:center;
+  margin-top: 40rpx;
+}
+.middle{
+  width: 88%;
+  height: 260rpx;
+  margin: 58rpx 6% 18rpx;
+  background:#FFFFFF;
+  justify-content:center;
+}
+.middle text{
+  width:100%;
+	line-height: 80rpx;
+	text-align: center;
+  font-size: 30rpx;
+  color: #292A2E;
+}
+.middle_item{
+  width:90%;
+  line-height:149rpx;
+  margin: 40rpx 32rpx 90rpx 60rpx;
+  align-items:center;
+}
+.middle_item input{
+  width: 70%;
+  height: 76rpx;
+  background:#FAFAFA;
+}
+.place{
+	font-size: 30rpx;
+	font-family:PingFangSC-Regular;
+	font-weight:400;
+	color:rgba(153,153,153,1);
+	line-height: 22rpx;
+}
+.middle_item button{
+  width: 110rpx;
+  height: 76rpx;
+  line-height: 76rpx;
+  font-size:22rpx;
+  color:#EE6F2D;
+  border:2rpx solid #EE6F2D;
+}
+.remark{
+  font-size:22rpx;
+  color:#999999;
+  margin-left: 80rpx;
+}
+.num{
+  width: 72%;
+  height: 84rpx;
+  background: #F9CE0E;
+  color: #292A2E;
+  text-align:center;
+	line-height: 84rpx;
+  border-radius: 42rpx;
+  margin: 86rpx auto 18rpx;
+}
+.record{
+  font-size:32rpx;
+  color: #F9CF10;
+  text-align:center;
+  text-decoration: underline;
+}

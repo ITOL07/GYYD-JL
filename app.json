@@ -1,0 +1,61 @@
+{
+  "pages":[
+		"pages/mine/mine/mine",
+		"pages/mine/reg/reg",
+		"pages/mine/login/login",
+		"pages/mine/myinfo/myinfo",
+		"pages/mine/case/case",
+		"pages/mine/addcase/addcase",
+		"pages/mine/field/field",
+		"pages/mine/mycourse/mycourse",
+		"pages/mine/incomedetail/imcomedetail",
+		"pages/mine/cashout/cashout",
+		"pages/mine/cashoutrecord/cashoutrecord",
+		"pages/mine/addcertificate/addcertificate",
+
+		"pages/student/student/student",
+		"pages/student/studentindex/studentindex",
+		"pages/student/studentremark/studentremark",
+		"pages/student/bodyrecord/bodyrecord",
+		"pages/student/addbodyrecord/addbodyrecord",
+		
+    "pages/index/index/index",
+    "pages/index/schedule/schedule",
+    "pages/index/selectstudent/selectstudent",
+
+    "pages/log/log"
+  ],
+  "window":{
+		"navigationBarBackgroundColor": "#333752",
+		"navigationBarTextStyle": "white",
+		"navigationBarTitleText": "首页",
+		"backgroundColor": "#ccc",
+		"backgroundTextStyle": "light"
+  },
+	"tabBar": {
+		"color": "#999999",
+		"selectedColor": "#F9CE0E",
+		"backgroundColor": "#333752",
+		"borderStyle": "white",
+		"list": [
+			{
+				"pagePath": "pages/index/index/index",
+				"text": "首页",
+				"iconPath": "pages/images/index/index-unselected.png",
+				"selectedIconPath": "pages/images/index/index-selected.png"
+			},
+			{
+				"pagePath": "pages/student/student/student",
+				"text": "学员",
+				"iconPath": "pages/images/student/student-unselected.png",
+				"selectedIconPath": "pages/images/student/student-selected.png"
+			},
+			{
+				"pagePath": "pages/mine/mine/mine",
+				"text": "我的",
+				"iconPath": "pages/images/mine/mine-unselected.png",
+				"selectedIconPath": "pages/images/mine/mine-selected.png"
+			}
+		]
+	}
+}
