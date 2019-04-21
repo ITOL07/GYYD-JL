@@ -85,7 +85,7 @@ Page({
       url: url_tmp + '/coach/qry',
       data: {
         coach_id: app.globalData.user_id,
-        reg_date: '2019-04-18'
+        // reg_date: '2019-04-18'
       },
       success(res) {
         console.log(res.data)

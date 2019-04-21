@@ -41,7 +41,7 @@
 }
 .dateview text{
 	font-size: 24rpx;
-	margin-left: 40%;
+	/* margin-left: 40%; */
 }
 .textview image{
 	width: 24rpx;

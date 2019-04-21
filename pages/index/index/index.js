@@ -110,6 +110,7 @@ Page({
       url: url_tmp + '/coach/qryLesson',
       data: {
         coach_id: app.globalData.user_id,
+        reg_date: util.formatTime(new Date()),
         status: ''
       },
       success(res) {

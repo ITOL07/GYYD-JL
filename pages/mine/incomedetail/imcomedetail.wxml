@@ -7,19 +7,23 @@
 			<image src="../../images/mine/bgimage.png" class="bgimage"></image>
 		</view>
 		<view class="textview">
-			<view class="displayrow dateview">
-			  <text>2018年11月</text>
-				<image src="../../images/mine/option2.png"></image>
+			<view class="dateview">
+			  <picker mode="date" value="{{date}}" start="2018-09-01" end="2020-09-01" fields="month" bindchange="bindDateChange" class="picker">
+        <view class="date_list">
+            <text class="list_date">{{date}}</text>
+            <image src="../../../static/images/littleicon/sanjiao.png"></image>
+        </view>
+      </picker>
 			</view>
-			<view class="income">¥120,000.00</view>
+			<view class="income">¥{{sold_amt+les_amt}}</view>
 			<view class="income2">总收入</view>
 			<view class="displayrow detailview">
 				<view class="displaycolumn incomeview">
-					<text class="num">¥100,000.00</text>
+					<text class="num">¥{{sold_amt}}</text>
 					<text class="incometext">售课收入</text>
 				</view>
 				<view class="displaycolumn incomeview">
-					<text class="num">¥20,000.00</text>
+					<text class="num">¥{{les_amt}}</text>
 					<text class="incometext">授课收入</text>
 				</view>
 			</view>
@@ -30,7 +34,7 @@
 	 		<image src="../../images/mine/cash.png" class="cash"></image>
 			<view class="displaycolumn moneyview">
 				<text class="incometext">可提现余额（元）</text>
-				<text class="num">120,000.00</text>
+				<text class="num">{{sold_amt+les_amt}}</text>
 			</view>
 			<button class="button">提现</button>
 	 </view>
@@ -41,24 +45,25 @@
 		<view class="displayrow title">
 			<view class="title2 space">课程收入明细</view>		
 			<view class="title3 space">
-				<text>最近半年</text>
-				<image src="../../images/mine/option.png"></image>
+				<!-- <text>最近半年</text>
+				<image src="../../images/mine/option.png"></image> -->
 			</view>		
 		</view>
 		<!--卡片部分-->
 		<view wx:for="{{incomeData}}" wx:key="this" class="displaycolumn card">
 			<view class="first displayrow">
-				<view class="timetext space">{{item.time}}</view>
+				<view class="timetext space">{{item.start_time_1}}</view>
+        <view class="timetext space">{{item.end_time_1}}</view>
 				<view class="space money2">
 					<text class="money">￥</text>
-					<text class="number">{{item.income}}</text>
+					<text class="number">{{item.price}}</text>
 				</view>
 			</view>
 			<view class="course displayrow">
-				<view class="space">课程：{{item.course}}/会员：{{item.student}}</view>
-				<view class="type space">{{item.type}}</view>
+				<view class="space">课程：{{item.course_name}}/会员：{{item.student}}</view>
+				<view class="type space">{{item.type}}原价</view>
 			</view>
-			<view class="field">场地：{{item.field}}</view>
+			<view class="field">场地：{{item.club_name}}</view>
 		</view>
 	</view>
 </view>
