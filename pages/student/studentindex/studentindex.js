@@ -1,4 +1,8 @@
 // pages/student/studentmsg/studentmsg.js
+const app = getApp()
+var fileData = require("../../../utils/data.js");
+var commonData = require("../../../utils/util.js"); 
+
 Page({
 
 	/**
@@ -84,21 +88,58 @@ Page({
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function (options) {
-		if(options.id!=null){
-			console.log(options.id)
-		}
-		if (options.birthday != null) {
-			this.data.student.birthday = options.birthday
-			this.setData({
-				student: this.data.student
-			})
-		}
-		if (options.height != null) {
-			this.data.student.height = options.height
-			this.setData({
-				student: this.data.student
-			})
-		}
+		// if (options.birthday != null) {
+		// 	this.data.student.birthday = options.birthday
+		// 	this.setData({
+		// 		student: this.data.student
+		// 	})
+		// }
+		// if (options.height != null) {
+		// 	this.data.student.height = options.height
+		// 	this.setData({
+		// 		student: this.data.student
+		// 	})
+		// }
+
+    var url_tmp = commonData.getListConfig().url_test;
+    var _this = this;
+    console.log('options.id===' + options.id)
+    wx.request({
+      url: url_tmp + '/member/qry?mem_id=' + options.id,
+      success(res) {
+        console.log(res.data)
+        _this.setData({
+          student: res.data
+        })
+      }
+    })
+    wx.request({
+      url: url_tmp + '/member/qryLesson',
+      data:{
+        mem_id: options.id,
+        status: (typeof (options.status) == "undefined") ? '' : options.status
+      },
+      success(res) {
+        console.log(res.data)
+        _this.setData({
+          course: res.data
+        })
+      }
+    })
+    wx.request({
+      url: url_tmp + '/coach/qryMyMemSum',
+      data: {
+        mem_id: options.id,
+      },
+      success(res) {
+        console.log(res.data)
+        _this.setData({
+          course1: res.data
+        })
+      }
+    })   
+
+
 	},
 
 	/**

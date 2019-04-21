@@ -109,7 +109,7 @@ Page({
     wx.request({
       url: url_tmp + '/coach/qryLesson',
       data: {
-        coach_id: '11',
+        coach_id: app.globalData.user_id,
         status: ''
       },
       success(res) {

@@ -10,10 +10,11 @@
 						<!--姓名-->
 						<text class="textname2">{{student.name}}</text>
 						<!--性别-->
-						<image src="{{student.sex}}" class="sex"></image>
+							<image wx:if="{{item.sex=='1'}}" src="../../images/student/man.png" class="sex"></image>
+            <image wx:if="{{item.sex=='0'}}" src="../../images/student/woman.png" class="sex"></image>
 				</view>
 				<!--手机-->
-				<text class="font28">{{student.telephone}}</text>
+				<text class="font28">{{student.tel}}</text>
 			</view>
 			<view>
 			<!--是否置顶-->
@@ -30,28 +31,28 @@
 				<!--图标-->
 				<image src="../../images/student/cumulative.png" class="icon"></image>
 				<!--文字-->
-				<text>累计购课({{student.course.cumulative}})</text>
+				<text>累计购课({{course1.total}})</text>
 			</view>
 			<view class="displaycolumn course">
 			<!--已完成-->
 				<!--图标-->
 				<image src="../../images/student/completed.png" class="icon"></image>
 				<!--文字-->
-				<text>已完成({{student.course.completed}})</text>
+				<text>已完成({{course1.used}})</text>
 			</view>
 			<view class="displaycolumn course">
 			<!--预约中-->
 				<!--图标-->
 				<image src="../../images/student/ordering.png" class="icon"></image>
 				<!--文字-->
-				<text>预约中({{student.course.ordering}})</text>
+				<text>预约中({{course1.ordering}})</text>
 			</view>
 			<view class="displaycolumn course">
 			<!--待预约-->
 				<!--图标-->
 				<image src="../../images/student/unorder.png" class="icon"></image>
 				<!--文字-->
-				<text>待预约({{student.course.unorder}})</text>
+				<text>待预约({{course1.ordering}})</text>
 			</view>
 		</view>
 	</view>
@@ -64,7 +65,7 @@
 				<image src="../../images/student/edit.png" class="edit" bindtap="navigate"></image>
 			</view>
 			<text class="textbirth">出生年月：{{student.birthday}}</text>
-			<text class="textbirth">身高：{{student.height}}</text>
+			<text class="textbirth">身高：{{student.height}}cm</text>
 		</view>
 		<view class="bottom displaycolumn">
 		<!--身体档案-->
@@ -120,11 +121,11 @@
 						<text class="textorder2">{{item.state}}</text>
 					</view>
 					<view> 
-						<text class="textbirth">{{item.date}}</text>
-						<text class="textbirth coursetime">第{{item.time}}课</text>
+						<text class="textbirth">{{item.start_time_1}}</text>
+						<text class="textbirth coursetime">第{{item.seq_no}}课</text>
 					</view>
-					<text class="textbirth">门店：{{item.store}}</text>
-					<text class="textbirth">课程内容：{{item.content}}</text>
+					<text class="textbirth">门店：{{item.club_name}}</text>
+					<text class="textbirth">课程内容：{{item.course_name}}</text>
 					<view class="displayrow buttonview">
 						<button class="button cancel" hidden="{{item.cancel}}">取消</button>
 						<button class="button confirm" hidden="{{item.confirm}}">签到</button>

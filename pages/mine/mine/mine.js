@@ -69,7 +69,7 @@ Page({
     wx.request({
       url: url_tmp + '/coach/qrySum',
       data: {
-        coach_id: 11,
+        coach_id: app.globalData.user_id,
         reg_date: '2019-04-18'
       },
       success(res) {
@@ -77,6 +77,20 @@ Page({
         _this.setData({
           les_amt: res.data.les_total_amt,
           sold_amt: res.data.sold_total_amt
+        })
+      }
+    })
+
+    wx.request({
+      url: url_tmp + '/coach/qry',
+      data: {
+        coach_id: app.globalData.user_id,
+        reg_date: '2019-04-18'
+      },
+      success(res) {
+        console.log(res.data)
+        _this.setData({
+          user:res.data
         })
       }
     })

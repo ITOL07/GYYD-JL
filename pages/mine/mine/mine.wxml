@@ -7,11 +7,12 @@
 			<view>
 			<!--头像-->
 				<image src="{{user.photo}}" class="photo"></image>
+        
 			</view>
 			<view class="viewname displaycolumn">
 			<!--姓名手机-->
 				<text class="textname">{{user.name}}</text>
-				<text class="textphone">{{user.telephone}}</text>
+				<text class="textphone">{{user.tel}}</text>
 			</view>
 			<view class="space2"></view>
 		</view>
@@ -24,7 +25,7 @@
 				<image src="../../images/mine/edit.png" class="edit"></image>
 			</view>
 			<!--内容-->
-			<text class="content">{{user.introduce}}</text>
+			<text class="content">{{user.comment}}</text>
 		</view>
 	</view>
 	<view class="middle">

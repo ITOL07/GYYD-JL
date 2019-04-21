@@ -1,4 +1,7 @@
 // pages/student/student.js
+const app = getApp()
+var util = require("../../../utils/util.js"); 
+
 Page({
 
 	/**
@@ -83,8 +86,9 @@ Page({
 	},
 
 	navigate: function(e){
+    console.log("e.currentTarget.id====" + e.currentTarget.id)
 		wx.navigateTo({
-			url: "../studentindex/studentindex?id"+e.target.id
+      url: "../studentindex/studentindex?id=" + e.currentTarget.id
 		})
 	},
 
@@ -92,7 +96,20 @@ Page({
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function (options) {
-
+    var _this = this
+    var url_tmp = util.getListConfig().url_test;
+    wx.request({
+      url: url_tmp + '/coach/qryMyMember',
+      data: {
+        coach_id: app.globalData.user_id
+      },
+      success(res) {
+        console.log(res.data)
+        _this.setData({
+          student: res.data
+        })
+      }
+    })
 	},
 
 	/**
