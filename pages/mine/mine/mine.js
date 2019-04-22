@@ -15,7 +15,7 @@ Page({
 			introduce: "瘦腿、提臀、马甲线、增肌、肩颈腰膝康复#国家职业认证健身教练#4s国际脊柱康复认证教练#ZUMBA中国认证教练…",
 			salecourse: "8,620",
 			teachcourse: "8,620"
-		}
+		},
 	},
 
 	incomedetail: function(){

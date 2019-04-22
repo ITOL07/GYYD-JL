@@ -1,5 +1,8 @@
 const app = getApp()
 var fileData = require("data.js");
+data:{
+  photos:null
+}
 
 const formatTime = date => {
   const year = date.getFullYear()
@@ -34,8 +37,8 @@ function getListConfig() {
   var arr =
   {
     url_sc: 'http://39.106.156.239:80',
-    url_test: 'https://www.guyueyundong.com',
-    // url_test: 'http://localhost:8099'
+    // url_test: 'https://www.guyueyundong.com',
+    url_test: 'http://localhost:8099'
   }
   return arr;
 }
@@ -117,6 +120,51 @@ function Type(obj) {
   return typeStr.substr(0, typeStr.length - 1).toLowerCase();
 }
 
+/**
+ * 选择照片
+ */
+function chooseImg() {
+  var that = this
+  wx.chooseImage({
+    count: 9, // 默认9
+    sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+    sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+    success: function (res) {
+      // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+      var tempFilePaths = res.tempFilePaths
+      that.setData({
+        photos: tempFilePaths
+      })
+      console.log(that.data.photos)
+    }
+  })
+}
+/**
+* 上传照片
+*/
+function uploadImgs(url_in,type) {
+  var that = this
+  for (var i = 0; i < that.data.photos.length; i++) {
+    that.uploadImg(url_in,that.data.photos[i],type)
+  }
+}
+function uploadImg (url_in,filepath,type) {
+  var that = this
+  wx.uploadFile({
+    url: url_in, //仅为示例，非真实的接口地址
+    filePath: filepath,
+    name: 'file',
+    formData: {
+      'user_id': app.globalData.user_id,
+      'type': type
+    },
+    success: function (res) {
+      var data = res.data
+      console.log(data)
+      //do something
+    }
+  })
+}
 module.exports = {
   formatTime: formatTime,
   formatTime1: formatTime1,
@@ -125,7 +173,13 @@ module.exports = {
   DateAddDay: DateAddDay,
   FirstDayInThisWeek: FirstDayInThisWeek,
   getListConfig: getListConfig,
+<<<<<<< Updated upstream
   type: Type,
   addZero: formatNumber,
   wxlogin: wxlogin
+=======
+  wxlogin: wxlogin,
+  chooseImg: chooseImg,
+  uploadImgs: uploadImgs
+>>>>>>> Stashed changes
 }

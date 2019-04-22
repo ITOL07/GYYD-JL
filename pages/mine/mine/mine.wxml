@@ -6,7 +6,7 @@
 		<!--头像姓名手机-->
 			<view>
 			<!--头像-->
-				<image src="{{user.photo}}" class="photo"></image>
+				<image src="{{user.icon}}" class="photo"></image>
         
 			</view>
 			<view class="viewname displaycolumn">
