@@ -20,41 +20,32 @@
 		<view class="displayrow plantime">
 			<view class="dateview">
 				<text>周日历排课表</text>
-				<text>2018年11月</text>
+				<text>{{dateCurrenttext}}</text>
 			</view>
 			<button class="button" bindtap="doplan">排课</button>
 		</view>
-		<view class="displayrow weekview">
-				<view class="displaycolumn">
-					<text>日</text>
-					<text>02</text>
-				</view>
-				<view class="displaycolumn">
-					<text>一</text>
-					<text>03</text>
-				</view>
-				<view class="displaycolumn">
-					<text>二</text>
-					<text>04</text>
-				</view>
-				<view class="displaycolumn">
-					<text>三</text>
-					<text>05</text>
-				</view>
-				<view class="displaycolumn">
-					<text>四</text>
-					<text>06</text>
-				</view>
-				<view class="displaycolumn">
-					<text>五</text>
-					<text>07</text>
-				</view>
-				<view class="displaycolumn">
-					<text>六</text>
-					<text>08</text>
-				</view>
-			</view>
-	</view>
+  </view>
+   <view class="date-choose shrink">
+      <view class="data-month">{{dateMonth}}</view>
+      <swiper class="date-choose-swiper" indicator-dots="{{false}}" current="{{swiperCurrent}}" bindchange="dateSwiperChange">
+        <block wx:for="{{dateList}}" wx:for-item="date" wx:key="date.id">
+          <swiper-item class="swiper-item">
+            <view class="weekday">
+              <block wx:for-item="weekday" wx:for="{{dateListArray}}" wx:key="{{index}}">
+                <text class="week">{{weekday}}</text>
+              </block>
+            </view>
+            <view class="dateday">
+              <block wx:for="{{date.days}}" wx:for-item="day" wx:key="{{day.id}}">
+                <text class="day" id="{{day.id}}" bindtap="chooseDate">
+                  <text class="{{dateCurrentStr==day.id?'active':''}}">{{day.day}}</text>
+                </text>
+              </block>
+            </view>
+          </swiper-item>
+        </block>
+      </swiper>
+   </view>
 	<view class="bottom" wx:for="{{detail1}}" wx:key="this">
 	<!--低部学员课程详情-->
 		<view class="displaycolumn vieworder">

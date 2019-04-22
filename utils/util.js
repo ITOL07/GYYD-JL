@@ -79,10 +79,53 @@ function wxlogin() {
     }
   })
 }
+// 时间格式转换 yyyy/mm/dd
+function formatTime2(date) {
+  var year = date.getFullYear()
+  var month = date.getMonth() + 1
+  var day = date.getDate()
+
+  var hour = date.getHours()
+  var minute = date.getMinutes()
+  var second = date.getSeconds()
+
+
+  return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
+}
+
+function formatDate(date, split) {
+  var year = date.getFullYear()
+  var month = date.getMonth() + 1
+  var day = date.getDate()
+  return [year, month, day].map(formatNumber).join(split || '')
+}
+
+// 计算变化多少天后的日期
+function DateAddDay(d, days) {
+  var d = new Date(d);
+  return new Date(d.setDate(d.getDate() + days));
+}
+// 获得本周周日的日期
+function FirstDayInThisWeek(d) {
+  var d = new Date(d);
+  return this.DateAddDay(d, 0 - d.getDay());
+}
+
+// 判断类型
+function Type(obj) {
+  var typeStr = Object.prototype.toString.call(obj).split(" ")[1];
+  return typeStr.substr(0, typeStr.length - 1).toLowerCase();
+}
 
 module.exports = {
   formatTime: formatTime,
   formatTime1: formatTime1,
+  formatTime2: formatTime2,
+  formatDate: formatDate,
+  DateAddDay: DateAddDay,
+  FirstDayInThisWeek: FirstDayInThisWeek,
   getListConfig: getListConfig,
+  type: Type,
+  addZero: formatNumber,
   wxlogin: wxlogin
 }

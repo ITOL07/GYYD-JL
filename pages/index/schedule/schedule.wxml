@@ -1,31 +1,51 @@
 <view class="container">
 	<view class="content displaycolumn">
-		<view class="displayrow view">
-			<label class="space">授课日期</label>
-			<text class="space right">2018/11/11</text>
+  <view class="displayrow view">
+			<view class="space">学员</view>
+      <picker class="space" bindchange="memberChange" value="{{member}}" range="{{members}}">
+     <view class="text right">
+      <text id='member_name'>{{members[member]}}</text>
+     </view>
+  </picker>
 		</view>
 		<view class="displayrow view">
-			<label class="space">授课时段</label>
-			<picker class="text space right" bindchange="bindPickerChange" 
-							value="{{index}}" range="{{array}}">
-      	{{label}}{{array[index]}}
-  		</picker>
+			<view class="space">日期</view>
+      <picker class="space" bindchange="dateChange" value="{{date}}" range="{{dates}}">
+     <view class="text right">
+      <text>{{dates[date]}}</text>
+     </view>
+  </picker>
 		</view>
 		<view class="displayrow view">
-			<label class="space">学员</label>
-			<text class="text space right" bindtap="selectstudent">{{label2}}</text>
+			<view class="space">时段</view>
+      <picker class="space" bindchange="timeChange" value="{{time}}" range="{{times}}">
+     <view class="text right">
+      <text placeholder="选择时段>">{{times[time]}}</text>
+     </view>
+  </picker>
 		</view>
 		<view class="displayrow view">
-			<label class="space">课程</label>
-			<picker class="text space right" bindchange="bindPickerChange3" 
-							value="{{index3}}" range="{{array3}}">
-      	{{label3}}{{array3[index3]}}
-  		</picker>
+			<view class="space">课程</view>
+      <picker class="space" bindchange="courseChange" value="{{course}}" range="{{courses}}">
+     <view class="text right">
+      <text placeholder="选择课程>">{{courses[course]}}</text>
+     </view>
+  </picker>
+		</view>
+    <view class="displayrow view">
+			<view class="space">门店</view>
+      <picker class="space" bindchange="clubChange" value="{{club}}" range="{{clubs}}">
+     <view class="text right">
+      <text placeholder="选择门店>">{{clubs[club]}}</text>
+     </view>
+  </picker>
 		</view>
 		<view class="displaycolumn textareaview">
-			<label>课程内容</label>
-			<textarea placeholder="输入本次课程内容……" class="textarea"
-								placeholder-class="place"></textarea>
+			<label>教案</label>
+			<textarea class="areas" placeholder="输入本次课程内容……" class="textarea" minlength="{{min}}" maxlength="{{max}}" bindinput="inputs" placeholder-class="place">
+      <text class="currentWordNumber">{{currentWordNumber|0}}/{{max}}</text>
+        <text class="hint">{{texts}}</text>
+        </textarea>
 		</view>
 		<view class="last displayrow">
 			<view>选择配色</view>
@@ -34,5 +54,5 @@
 			<view class="blue"> </view>
 		</view>
 	</view>
-	<button class="button">提交</button>
+	<button class="button" bindtap='submit'>提交</button>
 </view>
