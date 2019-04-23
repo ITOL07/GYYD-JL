@@ -148,6 +148,21 @@ function uploadImgs(url_in,type) {
     that.uploadImg(url_in,that.data.photos[i],type)
   }
 }
+// 计算两个经纬度之间的距离
+const distance = (la1, lo1, la2, lo2) => {
+  var La1 = la1 * Math.PI / 180.0;
+  var La2 = la2 * Math.PI / 180.0;
+  var La3 = La1 - La2;
+  var Lb3 = lo1 * Math.PI / 180.0 - lo2 * Math.PI / 180.0;
+  var s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(La3 / 2), 2) + Math.cos(La1) * Math.cos(La2) * Math.pow(Math.sin(Lb3 / 2), 2)));
+  s = s * 6378.137; //地球半径
+  s = Math.round(s * 10000) / 10;
+  // console.log("计算结果",s)
+  //计算精度 4位可精确到米
+  s = s.toFixed(1);
+  return s
+}
+
 function uploadImg (url_in,filepath,type) {
   var that = this
   wx.uploadFile({
@@ -173,13 +188,10 @@ module.exports = {
   DateAddDay: DateAddDay,
   FirstDayInThisWeek: FirstDayInThisWeek,
   getListConfig: getListConfig,
-<<<<<<< Updated upstream
   type: Type,
   addZero: formatNumber,
-  wxlogin: wxlogin
-=======
   wxlogin: wxlogin,
   chooseImg: chooseImg,
-  uploadImgs: uploadImgs
->>>>>>> Stashed changes
+  uploadImgs: uploadImgs,
+  distance: distance
 }

@@ -57,7 +57,13 @@
 				"text": "我的",
 				"iconPath": "pages/images/mine/mine-unselected.png",
 				"selectedIconPath": "pages/images/mine/mine-selected.png"
-			}
-		]
-	}
+			}      
+		]},
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  }
+
+	
 }

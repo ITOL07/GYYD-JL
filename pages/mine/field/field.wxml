@@ -22,7 +22,7 @@
 					<text class="right2">{{item.address}}</text>
 					<view class="right3">
 						<image src="../../images/mine/address.png"></image>
-						<text>{{item.distance}}</text>
+						<text>{{item.dis}}</text>
 					</view>
 				</view>
 				<view wx:if="{{flag=='true'}}" class="space4"></view>

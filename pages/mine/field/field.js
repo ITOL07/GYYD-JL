@@ -1,3 +1,6 @@
+const app = getApp()
+var fileData = require("../../../utils/data.js");
+var util = require("../../../utils/util.js"); 
 Page({
 
   /**
@@ -115,7 +118,52 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var _this = this
+    wx.getLocation({
+      //type: 'wgs84',  
+      type: 'gcj02', //微信可用的坐标
+      success(res) {
+        // _this.setData({
+        //   la: res.latitude,
+        //   lo: res.longitude
+        // })
+        const la = res.latitude
+        const lo = res.longitude
+        console.log(res.latitude + '| ' + res.longitude)
+        console.log("开始请求门店信息！！")
+        var url_tmp = util.getListConfig().url_test;
+        wx.request({
+          url: url_tmp + '/club/getClub',
+          success(res) {
+            console.log(res.data)
+            let tmp = [];
+            var json = {};
+            for (var i = 0; i < res.data.length; i++) {
+              var distance = util.distance(la, lo, res.data[i].la, res.data[i].lo)
+              console.log('i===' + i + ' lat==' + res.data[i].la + ' lo==' + res.data[i].lo + '_this.la =====' + la + ' distance===' + distance)
+              json = res.data[i]
+              json.dis = distance
+              // if(distance<15000){
+              // if (distance >900000) {
+              tmp.push(json)
+              // }
+            }
+            if (tmp.length === 0) {
+              console.log('无符合条件记录')
+            }
 
+            _this.setData({
+              storeListData: tmp
+            })
+
+            // _this.setData({
+            //   storeListData: res.data
+            // })
+          }
+        })
+      }
+
+    })
   },
 
   /**
