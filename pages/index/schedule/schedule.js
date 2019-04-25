@@ -1,4 +1,5 @@
 // pages/index/schedule/schedule.js
+const app = getApp()
 Page({
 
 	/**
@@ -6,6 +7,7 @@ Page({
 	 */
 	data: {
     texts: "至少2个字",
+    areatests:'',
     min: 2,//最少字数
     max: 20, //最多字数 (根据自己需求改变)
     //学员
@@ -13,7 +15,7 @@ Page({
     members_bac: [],
     member:0,
     //日期
-    date:'',
+    date:'2019-01-01',
     dates:[],
       //时间段
     times: [
@@ -94,6 +96,13 @@ Page({
       }
     })
   },
+  //点击切换时间
+  dateChange:function(e){
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      date: e.detail.value
+    })
+  },
   //点击切换时段
   timeChange:function(e){
     console.log('picker发送选择改变，携带值为', e.detail.value)
@@ -123,7 +132,8 @@ Page({
     if (len > this.data.max) return;
     // 当输入框内容的长度大于最大长度限制（max)时，终止setData()的执行
     this.setData({
-      currentWordNumber: len //当前字数  
+      currentWordNumber: len, //当前字数  
+      areatests:value
     });
   },
 memberInfo:function(){
@@ -160,11 +170,12 @@ submit:function(){
     data:{
       mem_id: '201904050003',//that.data.members_bac[that.data.member],
       real_club: that.data.clubs_bac[that.data.club],
-      real_coach: '11',
+      real_coach: '11',//app.globalData.user_id,
       sale_id: that.data.courses_bac[that.data.course], 
-      seq_no:'5', 
-      start_time_2: '2019-04-03 '+that.data.times[that.data.time].split('-')[0].replace(" ", ""), 
-      end_time_2: '2019-04-03 '+that.data.times[that.data.time].split('-')[1].replace(" ", ""), 
+      seq_no:'', 
+      bz1: that.data.areatests,
+      start_time_2: that.data.date+' '+that.data.times[that.data.time].split('-')[0].replace(" ", ""), 
+      end_time_2: that.data.date + ' '+that.data.times[that.data.time].split('-')[1].replace(" ", ""), 
     },header: {
       'content-type': 'application/x-www-form-urlencoded'
     },success:function(res){

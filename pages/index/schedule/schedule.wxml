@@ -10,10 +10,10 @@
 		</view>
 		<view class="displayrow view">
 			<view class="space">日期</view>
-      <picker class="space" bindchange="dateChange" value="{{date}}" range="{{dates}}">
-     <view class="text right">
-      <text>{{dates[date]}}</text>
-     </view>
+      <picker class="space" mode="date" bindchange="dateChange" value="{{date}}" start="2019-01-01" end="2017-1-23" >
+     <view class="picker" style='algin'>  
+       {{date}}  
+    </view>
   </picker>
 		</view>
 		<view class="displayrow view">
