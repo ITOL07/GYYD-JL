@@ -1,5 +1,6 @@
 // pages/index/schedule/schedule.js
 const app = getApp()
+var util = require("../../../utils/util.js"); 
 Page({
 
 	/**
@@ -15,15 +16,17 @@ Page({
     members_bac: [],
     member:0,
     //日期
-    date:'2019-01-01',
+    newdate: new Date(),
+    date: '',
     dates:[],
       //时间段
     times: [
-      '8:00 - 9:00', '9:00 - 10:00', '10:00 - 11:00', '11:00 - 12:00'],
+      '8:00 - 9:00', '9:00 - 10:00', '10:00 - 11:00', '11:00 - 12:00', '14:00 - 15:00', '15:00 - 16:00', '16:00 - 17:00', '17:00 - 18:00', '19:00 - 20:00', '20:00 - 21:00'],
     time:0,
     //课程
     courses:[],
     courses_bac:[],
+    kc_ids:[],
     course:0,
     //门店
     clubs:[],
@@ -32,9 +35,10 @@ Page({
     //教案
     teachingPlan:'暂无教案信息',
     //排课提交后提示信息及图标
-    titleInfo:'排课失败，请查看信息是否正确',
+    titleInfo:'排课失败，请查看是否为会员安排此课课时',
     iconTyoe:'none'
 	},
+ //学员变更记录学员信息并触调用查询课程方法
   memberChange: function (e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
@@ -42,16 +46,25 @@ Page({
     })
     this.changeCourse();
   },
-  //学员变更自动加载课程列表
-  changeCourse:function(){
+  //点击课程时记录课程信息并自动调用查询场地信息方法
+  courseChange: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      course: e.detail.value
+    })
+    //调用场地查询方法
+    this.changeClub();
+  },
+  //查询课程信息，成功返回后，调用查询场地信息方法
+  changeCourse:function(e){
     var that = this
     console.log(that.data.members_bac[that.data.member])
     wx.request({
       url: 'http://localhost:8099/coach/course_info',
       method:'post',
       data: {
-        mem_id:'201904050003',
-        // mem_id: that.data.members_bac[that.data.member]
+        //mem_id:'201904050003',
+        mem_id: that.data.members_bac[that.data.member]
       },
       header:{
         'content-type': 'application/x-www-form-urlencoded' 
@@ -59,21 +72,25 @@ Page({
         console.log(res)
         that.setData({
           courses:res.data.course_name,
-          courses_bac:res.data.course_id
+          courses_bac:res.data.course_id,
+          kc_ids:res.data.kc_id,
         })
+        //成功后调用查询场地信息方法
+        that.changeClub();
       },fail:function(){
-
+        console.log("查询课程信息失败！")
       }
     })
   },
-  //点击课程时
-  courseChange: function (e) {
+
+  //点击场地时记录场地信息
+  clubChange: function (e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
-      course: e.detail.value
+      club: e.detail.value
     })
-    this.changeClub();
   },
+  //场地查询方法
   changeClub:function(){
     var that = this
     wx.request({
@@ -92,7 +109,7 @@ Page({
           clubs_bac: res.data.club_id
         })
       },fail:function(){
-
+        console.log("查询场地信息失败！")
       }
     })
   },
@@ -142,11 +159,19 @@ memberInfo:function(){
     url: 'http://localhost:8099/coach/getMemberInfo',
     method:'post',
     data:{
-      coachid:'11'
+      coachid: app.globalData.user_id,
     }, header: {
       'content-type': 'application/x-www-form-urlencoded' 
     },success:function(res){
-      console.log(res)
+      console.log(res.data.length)
+      if (res.data.length == 0){
+        wx.showToast({
+          title: '暂时没有需要排课的学员哦',
+          icon: 'none',
+          duration: 1500,
+          mask: false
+        })
+      }
       var array = new Array();
       var array_bac = new Array();
       for(var i=0;i<res.data.length;i++){
@@ -157,8 +182,9 @@ memberInfo:function(){
         members_bac: array_bac,
         members:array
       })
+      that.changeCourse();
     },fail:function(){
-
+        console.log("查询学员信息失败！")
     }
   })
 },
@@ -168,21 +194,20 @@ submit:function(){
     url: 'http://localhost:8099/schedule/lesson',
     method:'post',
     data:{
-      mem_id: '201904050003',//that.data.members_bac[that.data.member],
+      mem_id: that.data.members_bac[that.data.member],// '201904050003',
       real_club: that.data.clubs_bac[that.data.club],
-      real_coach: '11',//app.globalData.user_id,
+      real_coach: app.globalData.user_id,
       sale_id: that.data.courses_bac[that.data.course], 
-      seq_no:'', 
+      kc_id: that.data.kc_ids[that.data.course], 
+      seq_no:'', //课程节数由后台获取
       bz1: that.data.areatests,
-      start_time_2: that.data.date+' '+that.data.times[that.data.time].split('-')[0].replace(" ", ""), 
-      end_time_2: that.data.date + ' '+that.data.times[that.data.time].split('-')[1].replace(" ", ""), 
+      start_time_1: that.data.date+' '+that.data.times[that.data.time].split('-')[0].replace(" ", ""), 
+      end_time_1: that.data.date + ' '+that.data.times[that.data.time].split('-')[1].replace(" ", ""), 
     },header: {
       'content-type': 'application/x-www-form-urlencoded'
     },success:function(res){
       console.log(res)
-      var titleInfo = ''
-      var iconTyoe=''
-      if(res.data){
+      if (res.data.statusCode == 200){
         that.setData({
           titleInfo:'排课成功',
           iconTyoe:'success'
@@ -191,7 +216,7 @@ submit:function(){
       wx.showToast({
         title: that.data.titleInfo,
         icon: that.data.iconTyoe,
-        duration: 1000,
+        duration: 1500,
         mask: false
       })
     }
@@ -201,6 +226,10 @@ submit:function(){
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function (options) {
+    var datex = util.formatDate1(new Date())
+    this.setData({
+      date: datex
+    })
     this.memberInfo();
 	},
 

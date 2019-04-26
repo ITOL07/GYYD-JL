@@ -10,7 +10,7 @@
 		</view>
 		<view class="displayrow view">
 			<view class="space">日期</view>
-      <picker class="space" mode="date" bindchange="dateChange" value="{{date}}" start="2019-01-01" end="2017-1-23" >
+      <picker class="space" mode="date" bindchange="dateChange" value="{{date}}" start="{{newdate}}" end="2100-1-23" >
      <view class="picker" style='algin'>  
        {{date}}  
     </view>
@@ -47,12 +47,12 @@
         <text class="hint">{{texts}}</text>
         </textarea>
 		</view>
-		<view class="last displayrow">
+		<!-- <view class="last displayrow">
 			<view>选择配色</view>
 			<view class="orange"></view>
 			<view class="green"> </view>
 			<view class="blue"> </view>
-		</view>
+		</view> -->
 	</view>
 	<button class="button" bindtap='submit'>提交</button>
 </view>
