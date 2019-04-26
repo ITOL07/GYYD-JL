@@ -1,4 +1,6 @@
 // pages/index/schedule/schedule.js
+var app=getApp()
+var util = require("../../../utils/util.js"); 
 Page({
 
 	/**
@@ -6,6 +8,7 @@ Page({
 	 */
 	data: {
     texts: "至少2个字",
+    url_tmp: util.getListConfig().url_test,
     min: 2,//最少字数
     max: 20, //最多字数 (根据自己需求改变)
     //学员
@@ -45,11 +48,11 @@ Page({
     var that = this
     console.log(that.data.members_bac[that.data.member])
     wx.request({
-      url: 'http://localhost:8099/coach/course_info',
+      url: that.data.url_tmp+'/coach/course_info',
       method:'post',
       data: {
-        mem_id:'201904050003',
-        // mem_id: that.data.members_bac[that.data.member]
+        // mem_id:'201904050003',
+        mem_id: that.data.members_bac[that.data.member]
       },
       header:{
         'content-type': 'application/x-www-form-urlencoded' 
@@ -74,8 +77,9 @@ Page({
   },
   changeClub:function(){
     var that = this
+
     wx.request({
-      url: 'http://localhost:8099/coach/getClubInfo',
+      url: that.data.url_tmp+'/coach/getClubInfo',
       method:'post',
       data:{
         course_id:that.data.courses_bac[that.data.course]
@@ -126,36 +130,37 @@ Page({
       currentWordNumber: len //当前字数  
     });
   },
-memberInfo:function(){
-  var that = this
-  wx.request({
-    url: 'http://localhost:8099/coach/getMemberInfo',
-    method:'post',
-    data:{
-      coachid:'11'
-    }, header: {
-      'content-type': 'application/x-www-form-urlencoded' 
-    },success:function(res){
-      console.log(res)
-      var array = new Array();
-      var array_bac = new Array();
-      for(var i=0;i<res.data.length;i++){
-          array[i] = res.data[i].name;
-          array_bac[i] = res.data[i].mem_id;
-      }
-      that.setData({
-        members_bac: array_bac,
-        members:array
-      })
-    },fail:function(){
+  //获取学员信息
+  memberInfo:function(){
+    var that = this
+    wx.request({
+      url: that.data.url_tmp +'/coach/getMemberInfo',
+      method:'post',
+      data:{
+        coachid:app.globalData.user_id
+      }, header: {
+        'content-type': 'application/x-www-form-urlencoded' 
+      },success:function(res){
+        console.log(res)
+        var array = new Array();
+        var array_bac = new Array();
+        for(var i=0;i<res.data.length;i++){
+            array[i] = res.data[i].name;
+            array_bac[i] = res.data[i].mem_id;
+        }
+        that.setData({
+          members_bac: array_bac,
+          members:array
+        })
+      },fail:function(){
 
-    }
-  })
+      }
+    })
 },
 submit:function(){
   var that = this
   wx.request({
-    url: 'http://localhost:8099/schedule/lesson',
+    url: that.data.url_tmp +'/schedule/lesson',
     method:'post',
     data:{
       mem_id: '201904050003',//that.data.members_bac[that.data.member],
