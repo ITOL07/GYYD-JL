@@ -65,7 +65,7 @@
 				</view>
 				<view wx:if="{{!item.cancel}}" class="buttonview displayrow">
 					<button class="button button2" hidden="{{item.cancel}}">取消</button>
-					<button class="button" hidden="{{item.confirm}}">签到</button>
+					<button class="button" hidden="{{item.confirm}}" bindtap='attendClass' data-seq_no="{{item.seq_no}}" data-status='{{item.status}}' data-kc_id='{{item.kc_id}}'>{{item.status == 0 ? '签到':(item.status == 1 ? '签退' :'已签退')}}</button>
 				</view>
 				<view wx:else class="buttonview displayrow">
 					<button class="button button1" hidden="{{item.confirm}}">签到</button>

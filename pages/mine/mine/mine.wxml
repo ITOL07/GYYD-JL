@@ -6,8 +6,7 @@
 		<!--头像姓名手机-->
 			<view>
 			<!--头像-->
-				<image src="{{user.icon}}" class="photo"></image>
-        
+				<image src="{{user.icon}}" class="photo" bindtap="headImageClick"></image>  
 			</view>
 			<view class="viewname displaycolumn">
 			<!--姓名手机-->
@@ -96,5 +95,9 @@
 		</view>
 		<view class="view1">
 		</view>
+    <action-sheet hidden="{{actionSheetHidden}}" bindchange="actionSheetChange">
+      <action-sheet-item bindtap="selectPhoto">从相册选择照片</action-sheet-item>
+      <action-sheet-cancel>取消</action-sheet-cancel>
+    </action-sheet>
 	</view>
 </view>

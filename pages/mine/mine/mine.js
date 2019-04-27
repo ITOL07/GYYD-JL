@@ -7,6 +7,7 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
+    actionSheetHidden:true,
 		user: {
 			id: 1,
 			name: "冯提莫",
@@ -17,6 +18,16 @@ Page({
 			teachcourse: "8,620"
 		},
 	},
+  headImageClick: function () {
+    this.setData({
+      actionSheetHidden: false
+    })
+  },
+  actionSheetChange: function () {
+    this.setData({
+      actionSheetHidden: true
+    })
+  },
 
 	incomedetail: function(){
 		var param = "?id="+this.data.user.id
@@ -38,6 +49,66 @@ Page({
 			url: "../case/case" + param
 		})
 	},
+  selectPhoto:function(){
+    var that = this
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['original', 'compressed'],
+      sourceType: ['album', 'camera'],
+      success: function(res) {
+        wx.showToast({
+          icon: "loading",
+          title: "正在上传"
+        })
+        var tempFilePaths = res.tempFilePaths;
+        wx.uploadFile({
+          url: 'http://localhost:8099/img/upload',
+          method:'post',
+          filePath: tempFilePaths[0],
+          name: 'file',
+          formData: {
+            user:'lilei'
+          },
+          header: {
+            'content-type': 'application/x-www-form-urlencoded'
+          },
+          success:function(res){
+            console.log(res)
+            that.setData({
+              actionSheetHidden: true
+            })
+            if (res.statusCode == 200) {
+              console.log(res.statusCode == 200)
+              wx.request({
+                url: 'http://localhost:8099/img/load',
+                method: 'post',
+                data:{
+                  userid:'lilei'
+                },
+                header: {
+                  'content-type': 'application/x-www-form-urlencoded'
+                },
+                success: function (res) {
+                  console.log(res)
+                  console.log(tempFilePaths[0])
+                  if (res.data.code == 200) {
+                    wx.showToast({
+                      title: '修改成功',
+                      icon: 'success',
+                      duration: 2500
+                    })
+                    that.setData({
+                      "user.photo": tempFilePaths[0]
+                    });
+                  }
+                }
+              })
+            }
+          }
+        })
+      },
+    })
+  },
 
 	space: function(){
 		var param = "?id=" + this.data.user.id

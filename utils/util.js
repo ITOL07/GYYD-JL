@@ -27,6 +27,14 @@ const formatTime1 = date => {
   // return [year, month, day].map(formatNumber).join('-') + ' ' + [hour, minute, second].map(formatNumber).join(':')
   return [year, month].map(formatNumber).join('')
 }
+
+const formatTimeHM = date => {
+  const hour = date.getHours()
+  const minute = date.getMinutes()
+
+  // return [year, month, day].map(formatNumber).join('-') + ' ' + [hour, minute, second].map(formatNumber).join(':')
+  return [hour, minute].map(formatNumber).join(':')
+}
 const formatNumber = n => {
   n = n.toString()
   return n[1] ? n : '0' + n
@@ -119,6 +127,19 @@ function Type(obj) {
   var typeStr = Object.prototype.toString.call(obj).split(" ")[1];
   return typeStr.substr(0, typeStr.length - 1).toLowerCase();
 }
+//根据传入日期返回年-月-日格式的数据
+function formatDate1(param){
+  var timestamp = Date.parse(param);
+  var date1 = new Date(timestamp);
+  //获取年份  
+  var Y = date1.getFullYear();
+  //获取月份  
+  var M = (date1.getMonth() + 1 < 10 ? '0' + (date1.getMonth() + 1) : date1.getMonth() + 1);
+  //获取当日日期 
+  var D = date1.getDate() < 10 ? '0' + date1.getDate() : date1.getDate();
+  console.log("当前时间：" + Y + '年' + M + '月' + D + '日');
+  return (Y + '-' + M + '-' + D)
+}
 
 /**
  * 选择照片
@@ -185,6 +206,8 @@ module.exports = {
   formatTime1: formatTime1,
   formatTime2: formatTime2,
   formatDate: formatDate,
+  formatDate1: formatDate1,
+  formatTimeHM: formatTimeHM,
   DateAddDay: DateAddDay,
   FirstDayInThisWeek: FirstDayInThisWeek,
   getListConfig: getListConfig,

@@ -12,7 +12,6 @@ Page({
       activity: { pageNo: 1, data: [] },
       brand: { pageNo: 1, data: [] },
     },
-
     dateList: [],   // 日历数据数组
     swiperCurrent: 0, // 日历轮播正处在哪个索引位置
     dateCurrenttext:'',
@@ -50,6 +49,10 @@ Page({
 				}
 			]
 		},
+    num1:'',
+    num2:'',
+    detail1: [],
+    detail1_bak:[],
 		detail:[
 			{
 				id: 1,
@@ -113,17 +116,108 @@ Page({
 			}
 		]
 	},
+  attendClass:function(event){
+    console.log(event)
+    var that = this
+    var url_tmp = util.getListConfig().url_test;
+    var kc_id=event.currentTarget.dataset.kc_id
+    var seq_no=event.currentTarget.dataset.seq_no
+    var choose_flag=event.currentTarget.dataset.status
+    if (choose_flag == 2) {
+      wx.showToast({
+        title: '此课已经完结了呢亲',
+        icon: 'none',
+        duration: 1000,
+        mask: false
+      })
+      return
+    }
+    wx.request({
+      url: url_tmp+'/attendClass/updateCourseInfos',
+      method: 'post',
+      data: {
+        kc_id: kc_id,
+        seq_no: seq_no,
+        choose_flag: choose_flag
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      }, success: function (res) {
+        console.log(res)
+        if(res.data.flag){
+        wx.showToast({
+          title: event._relatedInfo.anchorTargetText+'成功',
+            icon: 'success',
+            duration: 1000,
+            mask: false
+        })
+        //签到签退后获取新的登录状态，为后面局部刷新做处理
+          wx.request({
+            url: url_tmp + '/coach/qryLesson',
+            data: {
+              coach_id: app.globalData.user_id,
+              reg_date: util.formatTime(new Date()),
+              status: ''
+            },
+            success(res) {
+              console.log(res.data)
+              that.setData({
+                detail1_bak: res.data
+              })
+          for (let j = 0; j < that.data.detail1_bak.length;j++){    
+            console.log(j)
+            if (kc_id == that.data.detail1_bak[j].kc_id && seq_no == that.data.detail1_bak[j].seq_no){
+              console.log(j)
+                that.setData({
+                  num1:j
+                })
+              }
+          }
+          for (let i = 0; i < that.data.detail1.length; i++) {
+            if (kc_id == that.data.detail1[i].kc_id && seq_no == that.data.detail1[i].seq_no) {
+                that.setData({
+                  num2: i
+                })
+              }
+          }
+          console.log(that.data.num1)
+          console.log(that.data.num2)
+                that.setData({
+                  ["detail1[" + that.data.num2 + "]"]: that.data.detail1_bak[that.data.num1]
+                })
+            }
+          })
+        }
+      }, fail: function () {
+
+      }
+    })
+  },
 
 	doplan: function(){
 		wx.navigateTo({
 			url: '../schedule/schedule'
 		})
 	},
-
+  sysinfo:function(){
+    wx.getSystemInfo({
+      success: function (res) {
+        console.log(res.system)
+        console.log(res.system.toLowerCase())
+        //var system = res.system.indexOf("IOS");
+        // that.setData({
+        //   systemInfo: res
+        // });
+      }
+    })
+  },
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function (options) {
+    var _this = this
+    //this.sysinfo();//测试获取系统版本
+
     this.initDate(); // 日历组件程序
     this.getLess();
 	},
