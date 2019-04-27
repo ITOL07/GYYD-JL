@@ -1,0 +1,58 @@
+<view class="container">
+	<view class="content displaycolumn">
+  <view class="displayrow view">
+			<view class="space">学员</view>
+      <picker class="space" bindchange="memberChange" value="{{member}}" range="{{members}}">
+     <view class="text right">
+      <text id='member_name'>{{members[member]}}</text>
+     </view>
+  </picker>
+		</view>
+		<view class="displayrow view">
+			<view class="space">日期</view>
+      <picker class="space" mode="date" bindchange="dateChange" value="{{date}}" start="{{newdate}}" end="2100-1-23" >
+     <view class="picker" style='algin'>  
+       {{date}}  
+    </view>
+  </picker>
+		</view>
+		<view class="displayrow view">
+			<view class="space">时段</view>
+      <picker class="space" bindchange="timeChange" value="{{time}}" range="{{times}}">
+     <view class="text right">
+      <text placeholder="选择时段>">{{times[time]}}</text>
+     </view>
+  </picker>
+		</view>
+		<view class="displayrow view">
+			<view class="space">课程</view>
+      <picker class="space" bindchange="courseChange" value="{{course}}" range="{{courses}}">
+     <view class="text right">
+      <text placeholder="选择课程>">{{courses[course]}}</text>
+     </view>
+  </picker>
+		</view>
+    <view class="displayrow view">
+			<view class="space">门店</view>
+      <picker class="space" bindchange="clubChange" value="{{club}}" range="{{clubs}}">
+     <view class="text right">
+      <text placeholder="选择门店>">{{clubs[club]}}</text>
+     </view>
+  </picker>
+		</view>
+		<view class="displaycolumn textareaview">
+			<label>教案</label>
+			<textarea class="areas" placeholder="输入本次课程内容……" class="textarea" minlength="{{min}}" maxlength="{{max}}" bindinput="inputs" placeholder-class="place">
+      <text class="currentWordNumber">{{currentWordNumber|0}}/{{max}}</text>
+        <text class="hint">{{texts}}</text>
+        </textarea>
+		</view>
+		<!-- <view class="last displayrow">
+			<view>选择配色</view>
+			<view class="orange"></view>
+			<view class="green"> </view>
+			<view class="blue"> </view>
+		</view> -->
+	</view>
+	<button class="button" bindtap='submit'>提交</button>
+</view>
