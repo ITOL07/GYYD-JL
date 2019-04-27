@@ -15,10 +15,16 @@
 	font-size: 30rpx;
 	color: #999999;
 }
+.container view{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
 .container image{
 	width: 120rpx;
 	height: 120rpx;
 	margin-left: 4%;
+	margin-bottom: 3%;
 }
 .container button{
 	width: 72%;

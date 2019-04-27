@@ -78,15 +78,18 @@ Page({
 
 	unselected: function(e){
 		var data = this.data.storeListData
+		var d = 0
 		for(var index in data){
 			if(data[index].id==e.target.id){
 				data[index].selected = !data[index].selected
 				data[index].bgcolor = ""		
+				d=index	
 			}
 		}
 		this.setData({
 			storeListData: data		
 		})
+		console.log(data[d].selected)
 	},
 
 	add: function () {

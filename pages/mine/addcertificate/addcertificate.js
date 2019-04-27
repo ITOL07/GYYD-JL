@@ -8,7 +8,8 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
-    photos:null
+    photos:null,
+    actionSheetHidden: true
 	},
 
   /**
@@ -55,6 +56,46 @@ Page({
         console.log(data)
         //do something
       }
+    })
+  },
+  selectPhoto: function () {
+    var that = this
+    var image = that.data.images
+  		wx.chooseImage({
+			count: 3,
+			sourceType: "album",
+			success: function(res) {
+				var data = res.tempFilePaths
+				for(var index in data){
+					image.push(data[index])
+				}
+				that.setData({
+					actionSheetHidden: true,
+					images: image
+				})
+			},
+		})
+	},
+  shot: function () {
+    wx.chooseImage({
+      sourceType: "camera",
+      success: function (res) {
+        this.setData({
+          actionSheetHidden: true,
+          images: res.tempFilePaths[0]
+        })
+      },
+    })
+  },
+  upload: function () {
+    this.setData({
+      actionSheetHidden: false
+    })
+  },
+
+  actionSheetChange: function () {
+    this.setData({
+      actionSheetHidden: true
     })
   },
 	/**

@@ -1,8 +1,13 @@
 {
   "pages": [
     "pages/mine/login/login",
+    "pages/index/schedule/schedule",
     "pages/mine/reg/reg",
+    "pages/index/selectstudent/selectstudent",
+    "pages/mine/forgetPass/forgetPass",
     "pages/mine/mine/mine",
+    "pages/mine/bindphone/bindphone",
+    "pages/mine/addintroduce/addintroduce",
     "pages/mine/myinfo/myinfo",
     "pages/mine/case/case",
     "pages/mine/addcase/addcase",
@@ -18,8 +23,6 @@
     "pages/student/bodyrecord/bodyrecord",
     "pages/student/addbodyrecord/addbodyrecord",
     "pages/index/index/index",
-    "pages/index/schedule/schedule",
-    "pages/index/selectstudent/selectstudent",
     "pages/log/log"
   ],
   "window": {

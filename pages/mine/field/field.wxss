@@ -80,7 +80,6 @@
 	width: 30rpx;
 	height: 30rpx;
 	background: #EEEEEE;
-	border: 1rpx solid #FFFFFF;
 	border-radius: 100%;
 	position: absolute;
 	right: 100rpx;
@@ -91,8 +90,7 @@
 	height: 40rpx;
 	border-radius: 100%;
 	border: 1rpx solid #FFFFFF;
-	margin-top: -1rpx;
-	margin-left: -6rpx;
+	margin-left: -9rpx;
 }
 .bgcolor{
 	background-color: rgba(51,55,82,0.1);

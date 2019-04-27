@@ -227,6 +227,27 @@ submit:function(){
     }
   })
 },
+
+	bindPickerChange: function (e) {
+		this.setData({
+			label: "",
+			index: e.detail.value
+		})
+	},
+
+	bindPickerChange3: function (e) {
+		this.setData({
+			label3: "",
+			index3: e.detail.value
+		})
+	},
+
+	selectstudent: function(){
+		wx.navigateTo({
+			url: "../selectstudent/selectstudent"
+		})
+	},
+
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
