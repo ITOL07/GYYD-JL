@@ -1,4 +1,4 @@
-// pages/mine/addcertificate/addcertificate.js
+// pages/mine/addintroduce/addintroduce.js
 Page({
 
 	/**
