@@ -1,0 +1,19 @@
+<view class="container">
+	<view class="list">
+		<text class="text1">绑定手机号</text>
+		<text class="text2">{{phone}} </text> 
+		<image src="../../images/mine/left.png"></image>
+	</view>
+	<view class="list">
+		<text class="text1">修改密码</text>
+		<text class="text2">{{password}} </text>
+		<image src="../../images/mine/left.png"></image>
+	</view>
+	<view class="list1">
+		<text class="text1">版本信息</text>
+		<text class="text2">V1.0.0</text>
+	</view>
+	<view class="listbtn">
+		<button>退出登录</button>
+	</view>
+</view>

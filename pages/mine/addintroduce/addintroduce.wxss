@@ -1,0 +1,18 @@
+.container textarea{
+	width: 84%;
+	height: 254rpx;
+	border: 2rpx solid #EEEEEE;
+	margin: 3%;
+	padding: 5%;
+}
+.container textarea .place{
+	font-size: 22rpx;
+	color: #999999;
+}
+.container button{
+	width: 72%;
+	height: 84rpx;
+	background-color: #F9CE0E;
+	border-radius: 42rpx;
+	margin-top: 2%;
+}
