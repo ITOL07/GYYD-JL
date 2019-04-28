@@ -1,6 +1,8 @@
 // pages/index/schedule/schedule.js
 const app = getApp()
 var util = require("../../../utils/util.js"); 
+var fileData = require("../../../utils/data.js");
+var commonData = require("../../../utils/util.js");
 Page({
 
 	/**
@@ -58,23 +60,35 @@ Page({
   //查询课程信息，成功返回后，调用查询场地信息方法
   changeCourse:function(e){
     var that = this
+    var url_tmp = fileData.getListConfig().url_test;
     console.log(that.data.members_bac[that.data.member])
     wx.request({
-      url: 'http://localhost:8099/coach/course_info',
+      url: url_tmp + '/coach/course_info',
       method:'post',
       data: {
         //mem_id:'201904050003',
-        mem_id: that.data.members_bac[that.data.member]
+        mem_id: that.data.members_bac[that.data.member],
+        coach_id: app.globalData.user_id
       },
       header:{
         'content-type': 'application/x-www-form-urlencoded' 
       },success:function(res){
         console.log(res)
-        that.setData({
-          courses:res.data.course_name,
-          courses_bac:res.data.course_id,
-          kc_ids:res.data.kc_id,
-        })
+        if(res.statusCode == 200){
+          that.setData({
+            courses:res.data.course_name,
+            courses_bac:res.data.course_id,
+            kc_ids:res.data.kc_id,
+          })
+        }else{
+          wx.showToast({
+            title: '系统错误',
+            icon: 'none',
+            duration: 1500,
+            mask: false
+          })
+          return
+        }
         //成功后调用查询场地信息方法
         that.changeClub();
       },fail:function(){
@@ -93,8 +107,9 @@ Page({
   //场地查询方法
   changeClub:function(){
     var that = this
+    var url_tmp = fileData.getListConfig().url_test;
     wx.request({
-      url: 'http://localhost:8099/coach/getClubInfo',
+      url: url_tmp + '/coach/getClubInfo',
       method:'post',
       data:{
         course_id:that.data.courses_bac[that.data.course]
@@ -155,8 +170,9 @@ Page({
   },
 memberInfo:function(){
   var that = this
+  var url_tmp = fileData.getListConfig().url_test;
   wx.request({
-    url: 'http://localhost:8099/coach/getMemberInfo',
+    url: url_tmp + '/coach/getMemberInfo',
     method:'post',
     data:{
       coachid: app.globalData.user_id,
@@ -190,8 +206,9 @@ memberInfo:function(){
 },
 submit:function(){
   var that = this
+  var url_tmp = fileData.getListConfig().url_test;
   wx.request({
-    url: 'http://localhost:8099/schedule/lesson',
+    url: url_tmp + '/schedule/lesson',
     method:'post',
     data:{
       mem_id: that.data.members_bac[that.data.member],// '201904050003',
@@ -207,7 +224,7 @@ submit:function(){
       'content-type': 'application/x-www-form-urlencoded'
     },success:function(res){
       console.log(res)
-      if (res.data.statusCode == 200){
+      if (res.statusCode == 200){
         that.setData({
           titleInfo:'排课成功',
           iconTyoe:'success'
