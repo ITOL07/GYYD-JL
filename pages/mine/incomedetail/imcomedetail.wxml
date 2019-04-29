@@ -36,7 +36,7 @@
 				<text class="incometext">可提现余额（元）</text>
 				<text class="num">{{sold_amt+les_amt}}</text>
 			</view>
-			<button class="button">提现</button>
+			<button class="button" bindtap="cashout">提现</button>
 	 </view>
 	</view>
 	<!--详细部分-->
@@ -45,8 +45,10 @@
 		<view class="displayrow title">
 			<view class="title2 space">课程收入明细</view>		
 			<view class="title3 space">
-				<!-- <text>最近半年</text>
-				<image src="../../images/mine/option.png"></image> -->
+				<picker range="{{daterange}}" value="{{time}}" bindchange="changetime">
+					{{daterange[time]}}
+					<image src="../../images/mine/option.png"></image>
+				</picker>
 			</view>		
 		</view>
 		<!--卡片部分-->

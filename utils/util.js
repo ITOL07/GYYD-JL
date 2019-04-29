@@ -1,5 +1,8 @@
 const app = getApp()
 var fileData = require("data.js");
+data:{
+  photos:null
+}
 
 const formatTime = date => {
   const year = date.getFullYear()
@@ -23,6 +26,14 @@ const formatTime1 = date => {
 
   // return [year, month, day].map(formatNumber).join('-') + ' ' + [hour, minute, second].map(formatNumber).join(':')
   return [year, month].map(formatNumber).join('')
+}
+
+const formatTimeHM = date => {
+  const hour = date.getHours()
+  const minute = date.getMinutes()
+
+  // return [year, month, day].map(formatNumber).join('-') + ' ' + [hour, minute, second].map(formatNumber).join(':')
+  return [hour, minute].map(formatNumber).join(':')
 }
 const formatNumber = n => {
   n = n.toString()
@@ -130,16 +141,80 @@ function formatDate1(param){
   return (Y + '-' + M + '-' + D)
 }
 
+/**
+ * 选择照片
+ */
+function chooseImg() {
+  var that = this
+  wx.chooseImage({
+    count: 9, // 默认9
+    sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+    sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+    success: function (res) {
+      // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+      var tempFilePaths = res.tempFilePaths
+      that.setData({
+        photos: tempFilePaths
+      })
+      console.log(that.data.photos)
+    }
+  })
+}
+/**
+* 上传照片
+*/
+function uploadImgs(url_in,type) {
+  var that = this
+  for (var i = 0; i < that.data.photos.length; i++) {
+    that.uploadImg(url_in,that.data.photos[i],type)
+  }
+}
+// 计算两个经纬度之间的距离
+const distance = (la1, lo1, la2, lo2) => {
+  var La1 = la1 * Math.PI / 180.0;
+  var La2 = la2 * Math.PI / 180.0;
+  var La3 = La1 - La2;
+  var Lb3 = lo1 * Math.PI / 180.0 - lo2 * Math.PI / 180.0;
+  var s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(La3 / 2), 2) + Math.cos(La1) * Math.cos(La2) * Math.pow(Math.sin(Lb3 / 2), 2)));
+  s = s * 6378.137; //地球半径
+  s = Math.round(s * 10000) / 10;
+  // console.log("计算结果",s)
+  //计算精度 4位可精确到米
+  s = s.toFixed(1);
+  return s
+}
+
+function uploadImg (url_in,filepath,type) {
+  var that = this
+  wx.uploadFile({
+    url: url_in, //仅为示例，非真实的接口地址
+    filePath: filepath,
+    name: 'file',
+    formData: {
+      'user_id': app.globalData.user_id,
+      'type': type
+    },
+    success: function (res) {
+      var data = res.data
+      console.log(data)
+      //do something
+    }
+  })
+}
 module.exports = {
   formatTime: formatTime,
   formatTime1: formatTime1,
   formatTime2: formatTime2,
   formatDate: formatDate,
   formatDate1: formatDate1,
+  formatTimeHM: formatTimeHM,
   DateAddDay: DateAddDay,
   FirstDayInThisWeek: FirstDayInThisWeek,
   getListConfig: getListConfig,
   type: Type,
   addZero: formatNumber,
-  wxlogin: wxlogin
+  wxlogin: wxlogin,
+  chooseImg: chooseImg,
+  uploadImgs: uploadImgs,
+  distance: distance
 }

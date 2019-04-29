@@ -2,3 +2,4 @@
 	<textarea placeholder="输入您的私教经历和简介……" placeholder-class="place"></textarea>
 	<button>保存</button>
 </view>
+

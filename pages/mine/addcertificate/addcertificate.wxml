@@ -1,5 +1,20 @@
 <view class="container displaycolumn">
  <input placeholder="证书名称……" placeholder-class="place"></input>
- <image src="../../images/mine/plus.png"></image>
- <button>确认提交</button>
+ <image src="../../images/mine/plus.png" bindtap='chooseImgs'></image>
+ <button bindtap='uploadImgs'>确认提交</button>
 </view>
+
+<!-- <view class="container displaycolumn">
+	<input placeholder="证书名称……" placeholder-class="place"></input>
+	<view>
+		<block wx:for="{{images}}" wx:key="this">
+			<image src="{{item}}" bindtap="upload"></image>
+		</block>
+	</view>
+	<button>确认提交</button>
+	<action-sheet hidden="{{actionSheetHidden}}" bindchange="actionSheetChange">
+			<action-sheet-item bindtap="shot">拍摄</action-sheet-item>
+			<action-sheet-item bindtap="selectPhoto">从相册选择照片</action-sheet-item>
+			<action-sheet-cancel>取消</action-sheet-cancel>
+	</action-sheet>
+</view> -->

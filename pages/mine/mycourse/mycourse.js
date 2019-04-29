@@ -98,9 +98,11 @@ Page({
 
 	click2: function (e) {
 		var data = this.data.courseData
+		var m = 0
 		for(var i=0;i<data.length;i++){
 			if(data[i].id==e.target.id){
 				data[i].selected = false
+				m=i
 			}
 		}
 		this.setData({

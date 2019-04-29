@@ -99,6 +99,27 @@ Page({
       }
     })
   },
+  changedate: function (e) {
+    var date = e.detail.value
+    date = date.split("-", 2)
+    date = date[0] + "年" + date[1] + "月"
+    this.setData({
+      date: date
+    })
+  },
+
+  cashout: function () {
+    var param = "?income=" + this.data.allIncome
+    wx.navigateTo({
+      url: "../cashout/cashout" + param
+    })
+  },
+
+  changetime: function (e) {
+    this.setData({
+      time: e.detail.value
+    })
+  },  
 	/**
 	 * 生命周期函数--监听页面加载
 	 */

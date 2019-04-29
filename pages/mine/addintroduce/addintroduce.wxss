@@ -1,3 +1,4 @@
+
 .container textarea{
 	width: 84%;
 	height: 254rpx;
@@ -16,3 +17,4 @@
 	border-radius: 42rpx;
 	margin-top: 2%;
 }
+

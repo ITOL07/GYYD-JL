@@ -133,7 +133,7 @@ Page({
       return
     }
     wx.request({
-      url: 'http://localhost:8099/attendClass/updateCourseInfos',
+      url: url_tmp+'/attendClass/updateCourseInfos',
       method: 'post',
       data: {
         kc_id: kc_id,
@@ -218,12 +218,17 @@ Page({
     var _this = this
     //this.sysinfo();//测试获取系统版本
     this.initDate(); // 日历组件程序
+    this.getLess();
+	},
+
+  getLess:function(){
+    var _this = this
     var url_tmp = util.getListConfig().url_test;
     wx.request({
       url: url_tmp + '/coach/qryLesson',
       data: {
         coach_id: app.globalData.user_id,
-        reg_date: util.formatTime(new Date()),
+        reg_date: _this.data.dateCurrentStr,
         status: ''
       },
       success(res) {
@@ -233,7 +238,7 @@ Page({
         })
       }
     })
-	},
+  },
 
 	/**
 	 * 生命周期函数--监听页面初次渲染完成
@@ -369,5 +374,6 @@ Page({
       dateCurrenttext: str.split("-")[0] + '年' + str.split("-")[1] + '月',
       });
     console.log('当前选择日期：' + str)
+    this.getLess();
   },
 })

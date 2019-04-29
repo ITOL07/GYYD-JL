@@ -3,6 +3,7 @@ const app = getApp()
 var util = require("../../../utils/util.js"); 
 var fileData = require("../../../utils/data.js");
 var commonData = require("../../../utils/util.js");
+
 Page({
 
 	/**
@@ -10,6 +11,8 @@ Page({
 	 */
 	data: {
     texts: "至少2个字",
+
+    url_tmp: util.getListConfig().url_test,
     areatests:'',
     min: 2,//最少字数
     max: 20, //最多字数 (根据自己需求改变)
@@ -89,6 +92,7 @@ Page({
           })
           return
         }
+
         //成功后调用查询场地信息方法
         that.changeClub();
       },fail:function(){
@@ -107,9 +111,8 @@ Page({
   //场地查询方法
   changeClub:function(){
     var that = this
-    var url_tmp = fileData.getListConfig().url_test;
     wx.request({
-      url: url_tmp + '/coach/getClubInfo',
+      url: that.data.url_tmp+'/coach/getClubInfo',
       method:'post',
       data:{
         course_id:that.data.courses_bac[that.data.course]
@@ -168,11 +171,13 @@ Page({
       areatests:value
     });
   },
+
+ //获取学员信息
 memberInfo:function(){
   var that = this
   var url_tmp = fileData.getListConfig().url_test;
   wx.request({
-    url: url_tmp + '/coach/getMemberInfo',
+    url: that.data.url_tmp +'/coach/getMemberInfo',
     method:'post',
     data:{
       coachid: app.globalData.user_id,
@@ -208,7 +213,8 @@ submit:function(){
   var that = this
   var url_tmp = fileData.getListConfig().url_test;
   wx.request({
-    url: url_tmp + '/schedule/lesson',
+
+    url: that.data.url_tmp +'/schedule/lesson',
     method:'post',
     data:{
       mem_id: that.data.members_bac[that.data.member],// '201904050003',
@@ -224,7 +230,8 @@ submit:function(){
       'content-type': 'application/x-www-form-urlencoded'
     },success:function(res){
       console.log(res)
-      if (res.statusCode == 200){
+
+      if (res.data.statusCode == 200){
         that.setData({
           titleInfo:'排课成功',
           iconTyoe:'success'
@@ -239,6 +246,27 @@ submit:function(){
     }
   })
 },
+
+	bindPickerChange: function (e) {
+		this.setData({
+			label: "",
+			index: e.detail.value
+		})
+	},
+
+	bindPickerChange3: function (e) {
+		this.setData({
+			label3: "",
+			index3: e.detail.value
+		})
+	},
+
+	selectstudent: function(){
+		wx.navigateTo({
+			url: "../selectstudent/selectstudent"
+		})
+	},
+
 	/**
 	 * 生命周期函数--监听页面加载
 	 */

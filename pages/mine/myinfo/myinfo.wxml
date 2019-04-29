@@ -1,26 +1,29 @@
 <!--pages/userinfo/userinfo.wxml-->
 <view class="container">
+<form bindsubmit="submit">
 	<view class="list1">
 		<text class="text1">头像</text>
-		<image src="../../images/mine/photo.png" class="image"></image>
-	</view>
+		<image wx:if="{{photos==null}}" src="{{user.icon}}" class="image" bindtap='chooseImg'></image>
+	  <image wx:if="{{photos!=null}}" src="{{photos}}" class="image"></image>
+  </view>
 	<view class="list">
 		<text class="text1">昵称</text>
-		<text class="text2">Chuang</text> 
+			<input bindinput='bindNickName' placeholder='{{user.nickName}}' class="text2" name='nickName'></input>
 	</view>
 	<view class="list">
 		<text class="text1">性别</text>
-		<text class="text2">男</text>
+		<input bindinput='bindSex' placeholder='{{user.sex}}' class="text2" name='sex'></input>
 	</view>
 	<view class="list">
 		<text class="text1">出生年月</text>
-		<text class="text2">1990年04月13日</text>
+		<input bindinput='bindBirth' placeholder='{{user.birthday}}' class="text2" name='birthday'></input>
 	</view>
 	<view class="list">
 		<text class="text1">身高</text>
-		<text class="text2">173cm</text>
+		<input bindinput='bindHeight' placeholder='{{user.height}}' class="text2" name='height'></input>
 	</view>
 	<view class="listbtn">
-		<button>保存</button>
+		<button bindtap='submit'>保存</button>
 	</view>
+  </form>
 </view>
