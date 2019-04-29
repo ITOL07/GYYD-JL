@@ -1,0 +1,53 @@
+/* pages/reg/reg.wxss */
+.container{
+  background:#FFFFFF;
+}
+.top{
+  width:100%;
+  margin-left: 5%;
+  margin-top:20rpx;
+}
+.top text{
+  font-size: 26rpx;
+	margin-right: 30rpx;
+}
+.text1{
+  color:#FAC830;
+}
+.text2{
+  color:#999999;
+}
+.middle{
+  width: 110%;
+  margin: 100rpx 5% 40rpx;
+}
+.middle input{
+  width:80%;
+	height: 95rpx;
+  border-bottom: 2rpx solid #EEEEEE;
+}
+.placetext{
+	font-size: 26rpx;
+	color: #999999;
+}
+.middle text{
+	font-size: 20rpx;
+	color: #E1E1E1;
+}
+.bottom{
+  width:100%;
+  margin-top: 90rpx;
+}
+.bottom button{
+  width: 72%;
+  height: 84rpx;
+  border-radius: 42rpx;
+  background:#F9CE0E;
+}
+.bottom text{
+	font-size: 22rpx;
+	color: #999999;
+	display: block;
+	text-align: center;
+	margin-top: 10rpx;
+}

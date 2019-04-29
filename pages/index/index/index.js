@@ -217,7 +217,6 @@ Page({
 	onLoad: function (options) {
     var _this = this
     //this.sysinfo();//测试获取系统版本
-
     this.initDate(); // 日历组件程序
     this.getLess();
 	},
