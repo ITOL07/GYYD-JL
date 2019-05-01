@@ -19,10 +19,10 @@
 		<view class="displayrow view">
 			<view class="space">时段</view>
       <picker class="space" bindchange="timeChange" value="{{time}}" range="{{times}}">
-     <view class="text right">
-      <text placeholder="选择时段>">{{times[time]}}</text>
-     </view>
-  </picker>
+        <view class="text right">
+          <text placeholder="选择时段>">{{times[time]}}</text>
+        </view>
+      </picker>
 		</view>
 		<view class="displayrow view">
 			<view class="space">课程</view>

@@ -76,7 +76,7 @@ Page({
   submit:function(){
     var _this = this
     var url_tmp = util.getListConfig().url_test;
-    _this.uploadImg(_this.data.photos[0])
+    // _this.uploadImg(_this.data.photos[0])
     wx.request({
       url: url_tmp + '/coach/update',
       data: {

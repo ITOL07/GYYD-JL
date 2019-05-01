@@ -63,7 +63,7 @@ Page({
   //查询课程信息，成功返回后，调用查询场地信息方法
   changeCourse:function(e){
     var that = this
-    var url_tmp = fileData.getListConfig().url_test;
+    var url_tmp = util.getListConfig().url_test;
     console.log(that.data.members_bac[that.data.member])
     wx.request({
       url: url_tmp + '/coach/course_info',
@@ -175,7 +175,7 @@ Page({
  //获取学员信息
 memberInfo:function(){
   var that = this
-  var url_tmp = fileData.getListConfig().url_test;
+  var url_tmp = util.getListConfig().url_test;
   wx.request({
     url: that.data.url_tmp +'/coach/getMemberInfo',
     method:'post',
@@ -211,7 +211,7 @@ memberInfo:function(){
 },
 submit:function(){
   var that = this
-  var url_tmp = fileData.getListConfig().url_test;
+  var url_tmp = util.getListConfig().url_test;
   wx.request({
 
     url: that.data.url_tmp +'/schedule/lesson',

@@ -1,11 +1,11 @@
 <!--pages/userinfo/userinfo.wxml-->
 <view class="container">
 <form bindsubmit="submit">
-	<view class="list1">
+	<!-- <view class="list1">
 		<text class="text1">头像</text>
 		<image wx:if="{{photos==null}}" src="{{user.icon}}" class="image" bindtap='chooseImg'></image>
 	  <image wx:if="{{photos!=null}}" src="{{photos}}" class="image"></image>
-  </view>
+  </view> -->
 	<view class="list">
 		<text class="text1">昵称</text>
 			<input bindinput='bindNickName' placeholder='{{user.nickName}}' class="text2" name='nickName'></input>
