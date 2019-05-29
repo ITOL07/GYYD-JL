@@ -11,7 +11,7 @@
 		<view class="displayrow view">
 			<view class="space">日期</view>
       <picker class="space" mode="date" bindchange="dateChange" value="{{date}}" start="{{newdate}}" end="2100-1-23" >
-     <view class="picker" style='algin'>  
+     <view class="text right" style='algin'>  
        {{date}}  
     </view>
   </picker>
