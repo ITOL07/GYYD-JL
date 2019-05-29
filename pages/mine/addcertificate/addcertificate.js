@@ -49,7 +49,7 @@ Page({
       name: 'file',
       formData: {
         'user_id': app.globalData.user_id,
-        'type': 1
+        'type': 2
       },
       success: function (res) {
         var data = res.data
@@ -102,7 +102,7 @@ Page({
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function (options) {
-
+    
 	},
 
 	/**

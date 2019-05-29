@@ -1,8 +1,8 @@
 <view class="container displaycolumn">
 	<view class="top displayrow">
 	<!--顶部搜索框-->
-		<image src="../../images/student/search.png"  class="icontop"></image>
-		<input class="inputtext" placeholder="{{inputtext}}"></input>
+		<image src="../../images/student/search.png"  bindtap="search" class="icontop"></image>
+		<input class="inputtext" placeholder="{{inputtext}}" bindinput='search_in'></input>
 	</view>
 	<view class="content font28" wx:for="{{student}}" wx:key="this">
 	<!--学员列表-->

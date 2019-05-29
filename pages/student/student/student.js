@@ -38,35 +38,8 @@ Page({
 					"unorder": 6
 				}
 			},
-			{
-				id: 3,
-				photo: "../../images/student/photo.png",
-				name: "冯提莫",
-				sex: "../../images/student/woman.png",
-				telephone: "13294097319",
-				flag: false,
-				course: {
-					"cumulative": 6,
-					"completed": 6,
-					"ordering": 6,
-					"unorder": 6
-				}
-			},
-			{
-				id: 4,
-				photo: "../../images/student/photo.png",
-				name: "冯提莫",
-				sex: "../../images/student/woman.png",
-				telephone: "13294097319",
-				flag: false,
-				course: {
-					"cumulative": 6,
-					"completed": 6,
-					"ordering": 6,
-					"unorder": 6
-				}
-			}
-		]
+		],
+    input_tmp:null
 	},
 
 	changeflag: function(e){
@@ -159,5 +132,15 @@ Page({
 	 */
 	onShareAppMessage: function () {
 
-	}
+	},
+  search_in:function(e){
+    console.log(e.detail)
+    this.setData({
+      input_tmp:e.detail.value
+    })
+  },
+  search:function(){
+    console.log("过滤学员。。。。")
+    console.log(this.data.student[2].MemInfo)
+  }
 })

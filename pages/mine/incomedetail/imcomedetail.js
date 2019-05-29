@@ -54,9 +54,9 @@ Page({
     this.setData({
       date: e.detail.value
     })
-    this.getSumData();
+    this.getSumData(this.data.date);
   },
-  getSumData: function () {
+  getSumData: function (date) {
     var _this = this
     var url_tmp = util.getListConfig().url_test;
     wx.request({
@@ -64,7 +64,7 @@ Page({
       data: {
         coach_id: app.globalData.user_id,
         // reg_date: util.formatTime(new Date())+'-31'
-        reg_date:_this.data.date+'-31'
+        reg_date:date+'-27'
       },
       success(res) {
         console.log(res.data)
@@ -124,7 +124,7 @@ Page({
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function (options) {
-    this.getSumData();
+    this.getSumData(this.data.date);
 	},
 
 

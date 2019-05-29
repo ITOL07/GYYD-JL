@@ -1,5 +1,6 @@
 // pages/mine/mine.js
 const app = getApp()
+const date = new Date()
 var util = require("../../../utils/util.js"); 
 Page({
 
@@ -8,7 +9,9 @@ Page({
 	 */
 	data: {
     actionSheetHidden:true,
-    user:null
+    user:null,
+    icon:null,
+    date: util.formatDate(date)
 		// user: {
 		// 	id: 1,
 		// 	name: "冯提莫",
@@ -50,66 +53,7 @@ Page({
 			url: "../case/case" + param
 		})
 	},
-  selectPhoto:function(){
-    var that = this
-    wx.chooseImage({
-      count: 1,
-      sizeType: ['original', 'compressed'],
-      sourceType: ['album', 'camera'],
-      success: function(res) {
-        wx.showToast({
-          icon: "loading",
-          title: "正在上传"
-        })
-        var tempFilePaths = res.tempFilePaths;
-        wx.uploadFile({
-          url: 'http://localhost:8099/img/upload',
-          method:'post',
-          filePath: tempFilePaths[0],
-          name: 'file',
-          formData: {
-            user:'lilei'
-          },
-          header: {
-            'content-type': 'application/x-www-form-urlencoded'
-          },
-          success:function(res){
-            console.log(res)
-            that.setData({
-              actionSheetHidden: true
-            })
-            if (res.statusCode == 200) {
-              console.log(res.statusCode == 200)
-              wx.request({
-                url: 'http://localhost:8099/img/load',
-                method: 'post',
-                data:{
-                  userid:'lilei'
-                },
-                header: {
-                  'content-type': 'application/x-www-form-urlencoded'
-                },
-                success: function (res) {
-                  console.log(res)
-                  console.log(tempFilePaths[0])
-                  if (res.data.code == 200) {
-                    wx.showToast({
-                      title: '修改成功',
-                      icon: 'success',
-                      duration: 2500
-                    })
-                    that.setData({
-                      "user.photo": tempFilePaths[0]
-                    });
-                  }
-                }
-              })
-            }
-          }
-        })
-      },
-    })
-  },
+ 
 
 	space: function(){
 		var param = "?id=" + this.data.user.id
@@ -176,15 +120,16 @@ Page({
                 success: function (res) {
                   console.log(res)
                   console.log(tempFilePaths[0])
-                  if (res.data.code == 200) {
+                  if (res.statusCode == 200) {
                     wx.showToast({
                       title: '修改成功',
                       icon: 'success',
                       duration: 2500
                     })
                     that.setData({
-                      "user.img_url": tempFilePaths[0]
+                      icon: res.data[res.data.length-1].img_url
                     });
+                    console.log(that.data.icon)
                   }
                 }
               })
@@ -204,7 +149,7 @@ Page({
       url: url_tmp + '/coach/qrySum',
       data: {
         coach_id: app.globalData.user_id,
-        reg_date: '2019-04-18'
+        reg_date: _this.data.date,
       },
       success(res) {
         console.log(res.data)
@@ -224,7 +169,8 @@ Page({
       success(res) {
         console.log(res.data)
         _this.setData({
-          user:res.data
+          user:res.data,
+          icon:res.data.icon
         })
       }
     })

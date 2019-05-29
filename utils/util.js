@@ -108,7 +108,7 @@ function formatDate(date, split) {
   var year = date.getFullYear()
   var month = date.getMonth() + 1
   var day = date.getDate()
-  return [year, month, day].map(formatNumber).join(split || '')
+  return [year, month, day].map(formatNumber).join('-')
 }
 
 // 计算变化多少天后的日期

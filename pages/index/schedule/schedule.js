@@ -176,6 +176,7 @@ Page({
 memberInfo:function(){
   var that = this
   var url_tmp = util.getListConfig().url_test;
+  console.log('coach_id=====' + app.globalData.user_id)
   wx.request({
     url: that.data.url_tmp +'/coach/getMemberInfo',
     method:'post',
@@ -231,7 +232,7 @@ submit:function(){
     },success:function(res){
       console.log(res)
 
-      if (res.data.statusCode == 200){
+      if (res.statusCode == 200){
         that.setData({
           titleInfo:'排课成功',
           iconTyoe:'success'
@@ -242,6 +243,14 @@ submit:function(){
         icon: that.data.iconTyoe,
         duration: 1500,
         mask: false
+      })
+      wx.switchTab({
+        url: '../index/index',
+        success: function () {
+          wx.setNavigationBarTitle({
+            title: '首页'
+          })
+        }
       })
     }
   })
