@@ -1,12 +1,12 @@
 <view class="container">
-  <view wx:if="{{flag}}" class="inputview displayrow">
+  <!-- <view wx:if="{{flag}}" class="inputview displayrow">
     <text class="label" bindtap="edit">编辑</text>
     <text class="label input" bindtap="edit">添加</text>
   </view>
   <view wx:else class="inputview displayrow">
     <text class="label" bindtap="cancel">取消</text>
     <text class="label input">删除</text>
-  </view>
+  </view> -->
   <view class="listall">
     <view class="private_list displaycolumn {{bgcolor}}" wx:for="{{courseData}}" wx:key="this">
 			<view class="imageview">

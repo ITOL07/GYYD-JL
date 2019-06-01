@@ -49,7 +49,7 @@ Page({
       name: 'file',
       formData: {
         'user_id': app.globalData.user_id,
-        'type': 2
+        'type': 23
       },
       success: function (res) {
         var data = res.data

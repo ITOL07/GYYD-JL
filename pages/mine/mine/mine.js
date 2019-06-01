@@ -41,21 +41,59 @@ Page({
 	},
 
 	certificate: function(){
-		var param = "?id=" + this.data.user.id
+    var param = "?coachid=" + app.globalData.user_id +"&type=23"
+    console.log('coachid===' + app.globalData.user_id)
 		wx.navigateTo({
-			url: "../addcertificate/addcertificate" + param
+			// url: "../addcertificate/addcertificate" + param
+      url:"../certificate/certificate"+param,
+      success: function () {
+        wx.setNavigationBarTitle({
+          title: '我的证书'
+        })
+      }
 		})
 	},
+  myalbum: function () {
+    var param = "?coachid=" + app.globalData.user_id + "&type=25"
+    console.log('coachid===' + app.globalData.user_id)
+    wx.navigateTo({
+      // url: "../addcertificate/addcertificate" + param
+      url: "../certificate/certificate" + param,
+      success: function () {
+        wx.setNavigationBarTitle({
+          title: '我的相册'
+        })
+      }
+    })
+  },
+  space: function(){
+    var param = "?coachid=" + app.globalData.user_id + "&type=25"
+    console.log('coachid===' + app.globalData.user_id)
+    wx.navigateTo({
+      // url: "../addcertificate/addcertificate" + param
+      url: "../field/field" + param,
+      success: function () {
+        wx.setNavigationBarTitle({
+          title: '我的场地'
+        })
+      }
+    })
+	},
+  agreement:function(){
+    var param = "?coachid=" + app.globalData.user_id + "&type=25"
+    console.log('coachid===' + app.globalData.user_id)
+    wx.navigateTo({
+      // url: "../addcertificate/addcertificate" + param
+      url: "../agreement/agreement" + param,
+      success: function () {
+        wx.setNavigationBarTitle({
+          title: '用户协议'
+        })
+      }
+    })
+  },
 
 	case: function(){
-		var param = "?id=" + this.data.user.id
-		wx.navigateTo({
-			url: "../case/case" + param
-		})
-	},
- 
-
-	space: function(){
 		var param = "?id=" + this.data.user.id
 		wx.navigateTo({
 			url: "../field/field" + param

@@ -45,8 +45,8 @@ function getListConfig() {
   var arr =
   {
     url_sc: 'http://39.106.156.239:80',
-    url_test: 'https://www.guyueyundong.com',
-    // url_test: 'http://localhost:8099'
+    // url_test: 'https://www.guyueyundong.com',
+    url_test: 'http://localhost:8099'
   }
   return arr;
 }
@@ -201,6 +201,31 @@ function uploadImg (url_in,filepath,type) {
     }
   })
 }
+//点击图片查看大图
+//e表示当前查看的图片的下标，imgs表示将要预览的图片列表
+function previewImg(e, imgs) {
+  var index = e.currentTarget.dataset.index
+  var imgArr = imgs
+  wx.previewImage({
+    current: imgArr[index],     //当前图片地址
+    urls: imgArr,               //所有要预览的图片的地址集合 数组形式
+    success: function (res) {
+      console.log("width=" + res.width)
+    },
+    fail: function (res) { },
+    complete: function (res) { },
+  })
+}
+function routers(routers, title) {
+  wx.navigateTo({
+    url: routers,
+    success: function () {
+      wx.setNavigationBarTitle({
+        title: title
+      })
+    }
+  })
+}
 module.exports = {
   formatTime: formatTime,
   formatTime1: formatTime1,
@@ -216,5 +241,7 @@ module.exports = {
   wxlogin: wxlogin,
   chooseImg: chooseImg,
   uploadImgs: uploadImgs,
-  distance: distance
+  distance: distance,
+  previewImg: previewImg,
+  routers,
 }

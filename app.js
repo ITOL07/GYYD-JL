@@ -33,10 +33,17 @@ App({
         }
       }
     })
+    wx.getSystemInfo({
+      success: res => {
+        console.log(res)
+        this.globalData.systemInfo = res.system.toUpperCase()
+      }
+    })
   },
   globalData: {
     userInfo: null,
     openid: null,
-    user_id: null
+    user_id: null,
+    systemInfo:null
   }
 })

@@ -15,6 +15,8 @@
     "pages/mine/mycourse/mycourse",
     "pages/mine/incomedetail/imcomedetail",
     "pages/mine/cashout/cashout",
+    "pages/mine/agreement/agreement",
+    "pages/mine/useragree/useragree",
     "pages/mine/cashoutrecord/cashoutrecord",
     "pages/mine/addcertificate/addcertificate",
     "pages/student/student/student",

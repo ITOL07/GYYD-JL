@@ -34,34 +34,6 @@ Page({
 				introduce: '私人定制肌肉强化训练',
 				price: '199'
 			},
-			{
-				id: "4",
-				imgurl: '../../images/mine/course.png',
-				title: '增肌max',
-				introduce: '私人定制肌肉强化训练',
-				price: '199'
-			},
-			{
-				id: "5",
-				imgurl: '../../images/mine/course.png',
-				title: '增肌max',
-				introduce: '私人定制肌肉强化训练',
-				price: '199'
-			},
-			{
-				id: "6",
-				imgurl: '../../images/mine/course.png',
-				title: '增肌max',
-				introduce: '私人定制肌肉强化训练',
-				price: '199'
-			},
-			{
-				id: "7",
-				imgurl: '../../images/mine/course.png',
-				title: '增肌max',
-				introduce: '私人定制肌肉强化训练',
-				price: '199'
-			}
 		],
 		flag: true,
 		flag2: true,

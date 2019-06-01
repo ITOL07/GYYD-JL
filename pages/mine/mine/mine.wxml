@@ -63,12 +63,12 @@
 			<image src="../../images/mine/certificate.png" class="image"></image>
 			<text>证书相片</text>
 		</view>
-		<view class="displaycolumn view" bindtap="case">
+		<!-- <view class="displaycolumn view" bindtap="case"> -->
 		<!--会员案例-->
-			<image src="../../images/mine/case.png" class="image"></image>
+			<!-- <image src="../../images/mine/case.png" class="image"></image>
 			<text>会员案例</text>
-		</view>
-		<view class="displaycolumn view">
+		</view> -->
+		<view class="displaycolumn view" bindtap="myalbum">
 		<!--个人相册-->
 			<image src="../../images/mine/myalbum.png" class="image"></image>
 			<text>个人相册</text>
@@ -92,6 +92,10 @@
 		<!--个人设置-->
 			<image src="../../images/mine/setup.png" class="image"></image>
 			<text>个人设置</text>
+		</view>
+    <view class="displaycolumn view" bindtap="agreement">
+    			<image src="../../images/mine/case.png" class="image"></image>
+			<text>用户协议</text>
 		</view>
 		<view class="view1">
 		</view>

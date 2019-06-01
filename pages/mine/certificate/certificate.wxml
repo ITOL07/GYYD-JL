@@ -1,0 +1,9 @@
+<!--pages/certificate/certificate.wxml-->
+<view class="container">
+	<view class='header'>      
+		<block wx:for='{{icons_url}}' wx:key="this">
+			<image  src='{{item}}' data-index='{{index}}' bindtap='previewImg'
+							mode="aspectFit"></image>
+		</block>
+	</view>
+</view>
