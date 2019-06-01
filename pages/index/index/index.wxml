@@ -8,9 +8,9 @@
 						interval="{{swiper.interval}}"
 						duration="{{swiper.duration}}"
 						circular="{{swiper.circular}}">
-			<block wx:for="{{swiper.img}}" wx:key="this">
+			<block wx:for="{{swiperImg}}" wx:key="this">
 				<swiper-item>
-					<image src="{{item.imgurl}}" class="imgswiper"/>
+					<image src="{{item.img_url}}" class="imgswiper"/>
 				</swiper-item>
 			</block>
 		</swiper>

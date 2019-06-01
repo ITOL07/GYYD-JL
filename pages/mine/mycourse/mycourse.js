@@ -1,4 +1,7 @@
 // pages/mine/mycourse/mycourse.js
+const app = getApp()
+var fileData = require("../../../utils/data.js");
+var commonData = require("../../../utils/util.js");
 Page({
 
 	/**
@@ -20,74 +23,46 @@ Page({
 				introduce: '私人定制肌肉强化训练',
 				price: '199'
 			},
-			{
-				id: "2",
-				imgurl: '../../images/mine/course.png',
-				title: '增肌max',
-				introduce: '私人定制肌肉强化训练',
-				price: '199'
-			},
-			{
-				id: "3",
-				imgurl: '../../images/mine/course.png',
-				title: '增肌max',
-				introduce: '私人定制肌肉强化训练',
-				price: '199'
-			},
+			
 		],
 		flag: true,
 		flag2: true,
 		bgcolor: ""
 	},
 
-	edit: function (e) {
-		this.setData({
-			flag: false,
-			bgcolor: "bgcolor"
-		})
-	},
-
-	cancel: function () {
-		this.setData({
-			flag: true,
-			bgcolor: ""
-		})
-	},
-
-	click: function (e) {
-		var data = this.data.courseData
-		for(var index in data){
-			if(data[index].id==e.target.id){
-				data[index].selected = true
-			}
-		}
-		this.setData({
-			flag2: false,
-			courseData: data
-		})
-		console.log(e)
-	},
-
-	click2: function (e) {
-		var data = this.data.courseData
-		var m = 0
-		for(var i=0;i<data.length;i++){
-			if(data[i].id==e.target.id){
-				data[i].selected = false
-				m=i
-			}
-		}
-		this.setData({
-			flag2: true,
-			courseData: data
-		})
-	},
+  getCourseInfo: function (para1,para2) {
+    var that = this
+    var url_tmp = commonData.getListConfig().url_test;
+    console.log('获取教练课程信息' + para1)
+    wx.request({
+      // url: url_tmp + '/course/getCourseInfo',
+      url: url_tmp + '/coach/qryCourse',
+      method: 'POST',
+      data: {
+        coach_id: para1,
+        try_flag: '',
+        club_id: (typeof (para2) == "undefined") ? '' : para2
+      },//param
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'  //发送post请求
+      }, success: function (res) {
+        console.info(res.data)
+        if (res.statusCode == 200) {
+          that.setData({
+            courseData: res.data
+          })
+        }
+      }
+    })
+  },
 
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function (options) {
-
+    //默认加载教授课程信息
+    console.log(options)
+    this.getCourseInfo(options.id);
 	},
 
 	/**

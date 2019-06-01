@@ -101,9 +101,14 @@ Page({
 	},
 
 	mycourse: function(){
-		var param = "?id=" + this.data.user.id
+    var param = "?id=" + app.globalData.user_id
 		wx.navigateTo({
-			url: "../mycourse/mycourse" + param
+			url: "../mycourse/mycourse" + param,
+      success: function () {
+        wx.setNavigationBarTitle({
+          title: '我的课程'
+        })
+      }
 		})
 	},
 

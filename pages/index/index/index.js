@@ -219,8 +219,26 @@ Page({
     //this.sysinfo();//测试获取系统版本
     this.initDate(); // 日历组件程序
     this.getLess();
+    this.getbanner();
 	},
-
+  getbanner:function(){
+    var _this = this
+    var url_tmp = util.getListConfig().url_test;
+    wx.request({
+      // url: url_tmp + '/coach/qry',
+      url: url_tmp + '/img/load1',
+      data: {
+        //6为轮播图
+        type: 6
+      },
+      success(res) {
+        console.log(res.data)
+        _this.setData({
+          swiperImg: res.data
+        })
+      }
+    }) 
+  },
   getLess:function(){
     var _this = this
     var url_tmp = util.getListConfig().url_test;

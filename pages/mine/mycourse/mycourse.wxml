@@ -10,14 +10,14 @@
   <view class="listall">
     <view class="private_list displaycolumn {{bgcolor}}" wx:for="{{courseData}}" wx:key="this">
 			<view class="imageview">
-				<image src="{{item.imgurl}}"></image>
+				<image src="{{item.bz2}}"></image>
 				<view class="remark">私教</view>
 			</view>
-			<text class="text1">{{item.title}}</text>
-			<text class="text2">{{item.introduce}}</text>
+			<text class="text1">{{item.courseName}}</text>
+			<text class="text2">{{item.brief}}</text>
 			<view class="buy">
 				<text>￥</text>
-				<text class="price">{{item.price}}</text>
+				<text class="price">{{item.min_price}}</text>
 				<text>/课</text>
 			</view>
 			<view id="{{item.id}}"  hidden="{{flag}}" class="check" bindtap="click"></view>

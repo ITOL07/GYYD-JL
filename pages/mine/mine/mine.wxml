@@ -88,16 +88,16 @@
 			<image src="../../images/mine/email.png" class="image"></image>
 			<text>我的信息</text>
 		</view>
-		<view class="displaycolumn view" bindtap="setup">
-		<!--个人设置-->
-			<image src="../../images/mine/setup.png" class="image"></image>
-			<text>个人设置</text>
-		</view>
     <view class="displaycolumn view" bindtap="agreement">
     			<image src="../../images/mine/case.png" class="image"></image>
 			<text>用户协议</text>
 		</view>
-		<view class="view1">
+		<!-- <view class="view1">
+		</view> -->
+    <view class="displaycolumn view" bindtap="setup">
+		<!--个人设置-->
+			<image src="../../images/mine/setup.png" class="image"></image>
+			<text>个人设置</text>
 		</view>
     <action-sheet hidden="{{actionSheetHidden}}" bindchange="actionSheetChange">
       <action-sheet-item bindtap="selectPhoto">从相册选择照片</action-sheet-item>

@@ -1,11 +1,11 @@
 <!--pages/agreement/agreement.wxml-->
 <view class="container">
   <view class="list" bindtap='loadClick' id="user">
-    <text>古越运动用户协议</text>
+    <text>古越私教用户协议</text>
     <image src="../../../static/images/littleicon/more.png"></image>
   </view>
   <view class="list" bindtap="loadClick" id="priv">
-    <text>古越会员隐私协议</text>
+    <text>古越私教隐私协议</text>
     <image src="../../../static/images/littleicon/more.png"></image>
   </view>
   <view class="list" bindtap="loadClick" id="lesson">
