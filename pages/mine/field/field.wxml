@@ -1,5 +1,6 @@
+<wxs module="filters" src="../../../utils/util.wxs"></wxs>
 <view class="container">
-	<view wx:if="{{flag=='true'}}" class="inputview displayrow">
+	<!-- <view wx:if="{{flag=='true'}}" class="inputview displayrow">
 		<text class="label" bindtap="edit">编辑</text>
 		<text class="label input" bindtap="add">添加</text>
 	</view>
@@ -10,19 +11,21 @@
 	<view wx:elif="{{flag=='add'}}" class="inputview displayrow">
 		<text class="label" bindtap="cancel">全部场地（60）</text>
 		<text class="label input">删除</text>
-	</view>
+	</view> -->
 	<view class="bottom">
 		<view wx:for="{{storeListData}}" wx:key="this" class="list_data">
 			<view class="list_item  displayrow {{item.bgcolor}}">
 				<view class="image2">
-					<image src="{{item.imgurl}}" class="image"></image>
+					<image src="{{item.icon}}" class="image"></image>
 				</view>
 				<view class="list_right displaycolumn">
 					<text class="right1">{{item.name}}</text>
 					<text class="right2">{{item.address}}</text>
 					<view class="right3">
 						<image src="../../images/mine/address.png"></image>
-						<text>距我{{item.dis}}米</text>
+						 <text wx:if="{{item.dis>1&&item.dis<=1000}}">{{filters.toFix(item.dis/1,0)}}m</text>
+            <text wx:if="{{item.dis>1000&&item.dis<=50000}}">{{filters.toFix(item.dis/1000,1)}}km</text>
+             <text wx:if="{{item.dis>50000}}">{{filters.toFix(item.dis/1000,0)}}km</text>
 					</view>
 				</view>
 				<view wx:if="{{flag=='true'}}" class="space4"></view>

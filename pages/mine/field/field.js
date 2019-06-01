@@ -29,27 +29,6 @@ Page({
 				address: '西小口路66号中关村东升科技园B6号c座地下一层C02（星巴克楼下）',
 				distance: '3.6km '
 			},
-			{
-				id: '3',
-				imgurl: '../../images/mine/image2.png',
-				name: '金域国际金融中心店',
-				address: '西小口路66号中关村东升科技园B6号c座地下一层C02（星巴克楼下）',
-				distance: '3.6km'
-			},
-			{
-				id: '4',
-				imgurl: '../../images/mine/image2.png',
-				name: '金域国际金融中心店',
-				address: '西小口路66号中关村东升科技园B6号c座地下一层C02（星巴克楼下）',	
-				distance: '3.6km'
-			},
-			{
-				id: '5',
-				imgurl: '../../images/mine/image2.png',
-				name: '腾讯重创空间店',
-				address: '北京市昌平区回龙观东大街338号腾讯重创空间B座349',
-				distance: '364m'
-			}
 		],
 		flag: "true"
   },
