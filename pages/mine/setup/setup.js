@@ -1,19 +1,73 @@
-// pages/userinfo/userinfo.js
+// pages/set/set.js
+var app = getApp()
+var commonData = require("../../../utils/util.js");
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-		phone: "136****2345",
-		password: ""
+    phoneNo: app.globalData.phoneNo,
+    open_id: app.globalData.openid,
+    version: app.globalData.version
+  },
+  exitClick: function () {
+    wx.showModal({
+      title: '提示',
+      content: '确认是否退出',
+      success: function (res) {
+        if (res.confirm) {
+          wx.navigateTo({
+            url: '../login/login',
+            success: function () {
+              wx.setNavigationBarTitle({
+                title: '登录'
+              })
+            }
+          })
+        }
+      }
+    })
+  },
+
+  bindPhone: function (options) {
+    var addupRouter = '../../mine/bindPhone/bindPhone?id=' + options.currentTarget.id;
+    console.log(options)
+    if (options.currentTarget.id == "0") {
+      var addupTitle = '绑定手机号';
+    } else {
+      var addupTitle = '解绑手机号';
+    }
+    commonData.routers(addupRouter, addupTitle);
+  },
+  unBindPhone: function (options) {
+    var addupRouter = '../../mine/unBindPhone/unBindPhone?id=' + options.currentTarget.id;
+    if (options.currentTarget.id == "0") {
+      var addupTitle = '绑定手机号';
+    } else {
+      var addupTitle = '解绑手机号';
+    }
+    commonData.routers(addupRouter, addupTitle);
+  },
+
+  forgetPass: function () {
+    var addupRouter = '../../mine/forgetPass/forgetPass';
+    var addupTitle = '忘记密码';
+    commonData.routers(addupRouter, addupTitle);
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      phoneNo: app.globalData.phoneNo,
+      open_id: app.globalData.openid,
+      version: app.globalData.version
+    })
+    console.log('this.data.open_id====' + this.data.open_id)
+    console.log('this.data.phoneNo====' + this.data.phoneNo)
   },
 
   /**

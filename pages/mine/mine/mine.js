@@ -9,6 +9,7 @@ Page({
 	 */
 	data: {
     actionSheetHidden:true,
+    userInfo: app.globalData.userInfo,
     user:null,
     icon:null,
     date: util.formatDate(date)
@@ -115,73 +116,9 @@ Page({
 	setup: function(){
 		var param = "?id=" + this.data.user.id
 		wx.navigateTo({
-			url: "../myinfo/myinfo" + param
+      url: "../setup/setup" + param
 		})
 	},
-  selectPhoto:function(){
-    var that = this
-    var url_tmp = util.getListConfig().url_test;
-    wx.chooseImage({
-      count: 1,
-      sizeType: ['original', 'compressed'],
-      sourceType: ['album', 'camera'],
-      success: function(res) {
-        wx.showToast({
-          icon: "loading",
-          title: "正在上传"
-        })
-        var tempFilePaths = res.tempFilePaths;
-        wx.uploadFile({
-          url: url_tmp+'/img/upload',
-          method:'post',
-          filePath: tempFilePaths[0],
-          name: 'file',
-          formData: {
-            'user_id': app.globalData.user_id,
-            'type': 1
-          },
-          header: {
-            'content-type': 'application/x-www-form-urlencoded'
-          },
-          success:function(res){
-            console.log(res)
-            that.setData({
-              actionSheetHidden: true
-            })
-            if (res.statusCode == 200) {
-              console.log(res.statusCode == 200)
-              wx.request({
-                url: url_tmp+'/img/load2',
-                method: 'post',
-                data:{
-                  'user_id': app.globalData.user_id,
-                  'type': 1
-                },
-                header: {
-                  'content-type': 'application/x-www-form-urlencoded'
-                },
-                success: function (res) {
-                  console.log(res)
-                  console.log(tempFilePaths[0])
-                  if (res.statusCode == 200) {
-                    wx.showToast({
-                      title: '修改成功',
-                      icon: 'success',
-                      duration: 2500
-                    })
-                    that.setData({
-                      icon: res.data[res.data.length-1].img_url
-                    });
-                    console.log(that.data.icon)
-                  }
-                }
-              })
-            }
-          }
-        })
-      },
-    })
-  },
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
@@ -218,24 +155,6 @@ Page({
       }
     })
 	},
-  uploadImg: function (filepath) {
-    var that = this
-    var url_tmp = util.getListConfig().url_test;
-    wx.uploadFile({
-      url: url_tmp + '/img/upload', //仅为示例，非真实的接口地址
-      filePath: filepath,
-      name: 'file',
-      formData: {
-        'user_id': app.globalData.user_id,
-        'type': 1
-      },
-      success: function (res) {
-        var data = res.data
-        console.log(data)
-        //do something
-      }
-    })
-  },
 	/**
 	 * 生命周期函数--监听页面初次渲染完成
 	 */

@@ -9,36 +9,6 @@ Page({
 	 */
 	data: {
 		inputtext: "搜索学员昵称或手机号",
-		student: [
-			{
-				id: 1,
-				photo: "../../images/student/photo.png",
-				name: "冯提莫",
-				sex: "../../images/student/woman.png",
-				telephone: "13294097319",
-				flag: true,
-				course: {
-					"cumulative": 6,
-					"completed": 6,
-					"ordering": 6,
-					"unorder": 6
-				}
-			},
-			{
-				id: 2,
-				photo: "../../images/student/photo.png",
-				name: "冯提莫",
-				sex: "../../images/student/woman.png",
-				telephone: "13294097319",
-				flag: false,
-				course: {
-					"cumulative": 6,
-					"completed": 6,
-					"ordering": 6,
-					"unorder": 6
-				}
-			},
-		],
     input_tmp:null
 	},
 

@@ -44,6 +44,7 @@ App({
     userInfo: null,
     openid: null,
     user_id: null,
-    systemInfo:null
+    systemInfo:null,
+    version:'1.0.5'
   }
 })

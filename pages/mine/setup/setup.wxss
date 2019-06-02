@@ -1,51 +1,38 @@
-/* container */
+/* pages/set/set.wxss */
 .container{
-	height: 1200rpx;
-	background-color: #FAFAFA;
-	padding-top: 4%;
+  background:#FAFAFA;
+	align-items: center;
+	padding-top: 30rpx;
 }
-
-.list, .list1{
-  width: 100%;
+.top{
+  width: 93%;
   height: 90rpx;
-	font-size: 30rpx;
-  color:#666666;
 	background-color: #FFFFFF;
-  border-bottom:3rpx solid #EEEEEE;
+	line-height: 90rpx;
+	border: 2rpx solid #EEEEEE; 
+	padding: 0 3.5%;
   display:flex;
   flex-direction:row;
+  justify-content:space-between;
 	align-items: center;
 }
-.list1{
-	margin-top: 22rpx;
+.top text, .top1 text{
+  color:#666666;
+  font-size: 30rpx;
 }
-.text1{
-  display:block;
-  width: 47%;
-  text-align:left;
-	margin-left: 3%;
+.top image{
+	width: 20rpx;
+	height: 35rpx;
 }
-.text2{
-  display:block;
-  width: 42%;
-  text-align:right;
-	margin-right: 3%;
+.else{
+	margin-top: 30rpx;
 }
-.list image{
-	width: 12rpx;
-	height: 20rpx;
-	transform: rotate(180deg);
-}
-.listbtn{
-  width:100%;
-  height:100rpx;
-  margin: 80rpx auto;
-  
-}
-.listbtn button{
-  width:80%;
-  height: 90rpx;
-  background: #F9CE0E;
-  color:#292A2E;
-  border-radius:50rpx;
+button{
+  width:72%;
+  height: 84rpx;
+  margin-top: 80rpx;
+  font-size: 32rpx;
+	color: #292A2E;
+  border-radius: 42rpx;
+  background:linear-gradient(0deg,rgba(251,191,70,0.53),rgba(255,255,255,0.53));
 }

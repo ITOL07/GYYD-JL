@@ -6,11 +6,12 @@
 		<!--头像姓名手机-->
 			<view>
 			<!--头像-->
-				<image src="{{icon}}" class="photo" bindtap="headImageClick"></image>  
+				<!-- <image src="{{userInfo.avatarUrl}}" class="photo" bindtap="headImageClick"></image>   -->
+        <image src="{{userInfo.avatarUrl}}" class="photo"></image>
 			</view>
 			<view class="viewname displaycolumn">
 			<!--姓名手机-->
-				<text class="textname">{{user.name}}</text>
+				<text class="textname">{{userInfo.nickName}}</text>
 				<text class="textphone">{{user.tel}}</text>
 			</view>
 			<view class="space2"></view>
@@ -21,7 +22,7 @@
 				<!--标题-->
 				<text class="introduce">个人经历简介</text>
 				<!--编辑图标-->
-				<image src="../../images/mine/edit.png" class="edit"></image>
+				<!-- <image src="../../images/mine/edit.png" class="edit"></image> -->
 			</view>
 			<!--内容-->
 			<text class="content">{{user.comment}}</text>
@@ -99,9 +100,10 @@
 			<image src="../../images/mine/setup.png" class="image"></image>
 			<text>个人设置</text>
 		</view>
-    <action-sheet hidden="{{actionSheetHidden}}" bindchange="actionSheetChange">
-      <action-sheet-item bindtap="selectPhoto">从相册选择照片</action-sheet-item>
-      <action-sheet-cancel>取消</action-sheet-cancel>
-    </action-sheet>
+    
+    <!-- <action-sheet hidden="{{actionSheetHidden}}" bindchange="actionSheetChange"> -->
+      <!-- <action-sheet-item bindtap="selectPhoto">从相册选择照片</action-sheet-item>
+      <action-sheet-cancel>取消</action-sheet-cancel> -->
+    <!-- </action-sheet> -->
 	</view>
 </view>

@@ -55,24 +55,7 @@ Page({
       height: e.detail.value
     })
   },
-  uploadImg: function (filepath) {
-    var that = this
-    var url_tmp = util.getListConfig().url_test;
-    wx.uploadFile({
-      url: url_tmp + '/img/upload', //仅为示例，非真实的接口地址
-      filePath: filepath,
-      name: 'file',
-      formData: {
-        'user_id': app.globalData.user_id,
-        'type': 1
-      },
-      success: function (res) {
-        var data = res.data
-        console.log(data)
-        //do something
-      }
-    })
-  },
+ 
   submit:function(){
     var _this = this
     var url_tmp = util.getListConfig().url_test;

@@ -33,14 +33,15 @@
 	padding-top: 60rpx;
 }
 .photo{
-	width: 120rpx;
-	height: 120rpx;
-	margin-top: 38rpx;
+  display:block;
+  width:119rpx;
+  height:119rpx;
+  border-radius:50%;
 }
 .viewmsg{
 	margin-left: 40rpx;
 	margin-right: 33%;
-	padding-top: 50rpx;
+	padding-top: 10rpx;
 }
 .textname{
 	align-items: center;

@@ -1,15 +1,15 @@
 <view class="container displaycolumn">
-	<view class="top displayrow">
-	<!--顶部搜索框-->
+	<!-- <view class="top displayrow">
+	
 		<image src="../../images/student/search.png"  bindtap="search" class="icontop"></image>
 		<input class="inputtext" placeholder="{{inputtext}}" bindinput='search_in'></input>
-	</view>
+	</view> -->
 	<view class="content font28" wx:for="{{student}}" wx:key="this">
 	<!--学员列表-->
 		<view id="{{item.MemInfo.memId}}" bindtap="navigate" class="displayrow viewcontent">
 		<!--学员信息详情-->
 			<!--头像-->
-			<image src="{{item.MemInfo.photo}}" class="photo"></image>
+			<image src="{{item.MemInfo.icon}}" class="photo"></image>
 			<view class="displaycolumn viewmsg">
 			<!--姓名性别手机-->
 				<view class="displayrow textname">
@@ -26,10 +26,10 @@
 			</view>
 			<view>
 			<!--是否置顶-->
-				<view id="{{item.MemInfo.memId}}" class="demo" catchtap="changeflag">
+				<!-- <view id="{{item.MemInfo.memId}}" class="demo" catchtap="changeflag">
 					<text class="flag">{{item.flag==true?"取消置顶":"置顶"}}</text>
 				</view>
-				<view class="space"></view>
+				<view class="space"></view> -->
 			</view>
 		</view>
 		<view class="displayrow viewcourse" id="{{item.MemInfo.memId}}" bindtap="navigate">

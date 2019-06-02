@@ -19,6 +19,8 @@
     "pages/mine/useragree/useragree",
     "pages/mine/cashoutrecord/cashoutrecord",
     "pages/mine/addcertificate/addcertificate",
+    "pages/mine/setup/setup",
+    "pages/mine/unBindPhone/unBindPhone",
     "pages/student/student/student",
     "pages/student/studentindex/studentindex",
     "pages/student/studentremark/studentremark",
