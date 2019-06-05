@@ -14,7 +14,7 @@
 				<view class="viewname displaycolumn">
 				<!--姓名手机-->
 					<text class="textname">{{userInfo.nickName}}</text>
-					<text class="textphone" wx:if="{{user.tel!=null}}">{{user.tel}}</text>
+					<text class="textphone" wx:if="{{user!=null&&user.tel!=null}}">{{user.tel}}</text>
 					<text class="textphone" wx:else>尚未绑定手机号</text>
 				</view>
 				<view class="space2"></view>

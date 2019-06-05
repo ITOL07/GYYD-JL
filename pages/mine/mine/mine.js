@@ -12,11 +12,10 @@ Page({
     userInfo: {},
 		hasUserInfo: false,
 		canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    user:null,
+    user: {},
     // icon:null,
 		sold_amt: 0,
 		les_amt: 0,
-		tel: '',
     date: util.formatDate(date)
 		// user: {
 		// 	id: 1,
@@ -136,7 +135,7 @@ Page({
 				mem_id: app.globalData.user_id
 			},
 			success(res) {
-				console.log("查询手机号："+res)
+				console.log("查询手机号："+res.data)
 				app.globalData.phoneNo = res.data.userName
 				_this.setData({
 					tel: res.data.userName
@@ -179,7 +178,7 @@ Page({
         // reg_date: '2019-04-18'
       },
       success(res) {
-        console.log(res.data)
+        console.log("教练信息："+JSON.stringify(res.data))
         _this.setData({
           user:res.data,
           // icon:res.data.icon
@@ -227,7 +226,7 @@ Page({
 				}
 			})
 		}
-		this.getPhoneNo();
+		// this.getPhoneNo();
 	},
 
 	/**
