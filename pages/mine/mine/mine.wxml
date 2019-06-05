@@ -2,20 +2,24 @@
 <view class="shadow"></view>
 	<view class="top">
 	<!--个人简介-->
-		<view class=" displayrow viewphoto">
-		<!--头像姓名手机-->
-			<view>
-			<!--头像-->
-				<!-- <image src="{{userInfo.avatarUrl}}" class="photo" bindtap="headImageClick"></image>   -->
-        <image src="{{userInfo.avatarUrl}}" class="photo"></image>
+		<button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" 	                                       bindgetuserinfo="getUserInfo"> 
+			获取头像昵称
+		</button>
+		<block wx:else>
+			<view class=" displayrow viewphoto">
+			<!--头像姓名手机-->
+				<view>
+					<image src="{{userInfo.avatarUrl}}" class="photo"></image>
+				</view>
+				<view class="viewname displaycolumn">
+				<!--姓名手机-->
+					<text class="textname">{{userInfo.nickName}}</text>
+					<text class="textphone" wx:if="{{user.tel!=null}}">{{user.tel}}</text>
+					<text class="textphone" wx:else>尚未绑定手机号</text>
+				</view>
+				<view class="space2"></view>
 			</view>
-			<view class="viewname displaycolumn">
-			<!--姓名手机-->
-				<text class="textname">{{userInfo.nickName}}</text>
-				<text class="textphone">{{user.tel}}</text>
-			</view>
-			<view class="space2"></view>
-		</view>
+		</block>
 		<view class="viewintro">
 		<!--简介-->
 			<view>
@@ -25,7 +29,8 @@
 				<!-- <image src="../../images/mine/edit.png" class="edit"></image> -->
 			</view>
 			<!--内容-->
-			<text class="content">{{user.comment}}</text>
+			<text class="content" wx:if="{{user.comment!=null}}">{{user.comment}}</text>
+			<text class="content" wx:else>暂无简介</text>
 		</view>
 	</view>
 	<view class="middle">
@@ -51,7 +56,7 @@
 				<view>
 					<text class="fontmoney">¥</text>
 					<!-- <text class="fontnum">{{user.teachcourse}}</text> -->
-          <text class="fontnum">{{les_amt}}</text>
+          <text class="fontnum">{{les_amt==null?0:les_amt}}</text>
 				</view>
 				<text class="fontword">授课收入(元)</text>
 			</view>

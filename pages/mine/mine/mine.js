@@ -9,9 +9,13 @@ Page({
 	 */
 	data: {
     actionSheetHidden:true,
-    userInfo: app.globalData.userInfo,
+    userInfo: {},
+		hasUserInfo: false,
+		canIUse: wx.canIUse('button.open-type.getUserInfo'),
     user:null,
-    icon:null,
+    // icon:null,
+		sold_amt: 0,
+		les_amt: 0,
     date: util.formatDate(date)
 		// user: {
 		// 	id: 1,
@@ -113,6 +117,33 @@ Page({
 		})
 	},
 
+	getUserInfo: function (e) {
+		console.log("请求用户信息："+e.detail.userInfo)
+		app.globalData.userInfo = e.detail.userInfo
+		this.setData({
+			userInfo: e.detail.userInfo,
+			hasUserInfo: true
+		})
+	},
+
+	getPhoneNo: function () {
+		var url_tmp = util.getListConfig().url_test;
+		var _this = this
+		wx.request({
+			url: url_tmp + '/user/qry',
+			data: {
+				mem_id: app.globalData.user_id
+			},
+			success(res) {
+				console.log("查询手机号："+res)
+				app.globalData.phoneNo = res.data.userName
+				_this.setData({
+					tel: res.data.userName
+				})
+			}
+		})
+	},
+
 	setup: function(){
 		var param = "?id=" + this.data.user.id
 		wx.navigateTo({
@@ -134,8 +165,8 @@ Page({
       success(res) {
         console.log(res.data)
         _this.setData({
-          les_amt: res.data.les_total_amt,
-          sold_amt: res.data.sold_total_amt
+          // les_amt: res.data.les_total_amt,
+          // sold_amt: res.data.sold_total_amt
         })
       }
     })
@@ -150,7 +181,7 @@ Page({
         console.log(res.data)
         _this.setData({
           user:res.data,
-          icon:res.data.icon
+          // icon:res.data.icon
         })
       }
     })
@@ -163,10 +194,39 @@ Page({
 	},
 
 	/**
-	 * 生命周期函数--监听页面显示
-	 */
+		 * 生命周期函数--监听页面显示
+		 */
 	onShow: function () {
-
+		this.show();
+	},
+	show: function () {
+		if (app.globalData.userInfo) {
+			this.setData({
+				userInfo: app.globalData.userInfo,
+				hasUserInfo: true
+			})
+		} else if (this.data.canIUse) {
+			// 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+			// 所以此处加入 callback 以防止这种情况
+			app.userInfoReadyCallback = res => {
+				this.setData({
+					userInfo: res.userInfo,
+					hasUserInfo: true
+				})
+			}
+		} else {
+			// 在没有 open-type=getUserInfo 版本的兼容处理
+			wx.getUserInfo({
+				success: res => {
+					app.globalData.userInfo = res.userInfo
+					this.setData({
+						userInfo: res.userInfo,
+						hasUserInfo: true
+					})
+				}
+			})
+		}
+		this.getPhoneNo();
 	},
 
 	/**
