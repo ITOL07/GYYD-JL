@@ -16,6 +16,7 @@ Page({
     // icon:null,
 		sold_amt: 0,
 		les_amt: 0,
+		tel: '',
     date: util.formatDate(date)
 		// user: {
 		// 	id: 1,
