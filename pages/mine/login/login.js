@@ -12,6 +12,7 @@ Page({
     inputVal1: '',
     inputVal2: '',
     logflag: wx.getStorageSync("logFlag")
+
   },
   inputValue1: function (res) {
     this.setData({
@@ -103,12 +104,12 @@ Page({
     // })
   },
   quickClick: function () {
-    var regRouter = '../../user/reg/reg';
+    var regRouter = '../reg/reg';
     var regTitle = '注册';
     commonData.routers(regRouter, regTitle);
   },
   forgetClick: function(){
-    var regRouter = '../../user/forgetPass/forgetPass';
+    var regRouter = '../forgetPass/forgetPass';
     var regTitle = '重置密码';
     commonData.routers(regRouter, regTitle);
   },
@@ -122,7 +123,6 @@ Page({
       }
     })  },
   wxlogin:function(){
-
     // 登录
     commonData.wxlogin();
   },
@@ -161,50 +161,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-     var _this=this
-    // wx.getSetting({
-    //   success(res) {
-    //     console.log(res.authSetting['scope.userInfo'])
-    //     if (res.authSetting['scope.userInfo']){
-    //       wx.getUserInfo({
-    //         success: res => {
-    //           // 可以将 res 发送给后台解码出 unionId
-    //           app.globalData.userInfo = res.userInfo
-    //           console.log(app.globalData.userInfo)
+    console.log('logflag======' + this.data.logflag)
 
-    //           // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-    //           // 所以此处加入 callback 以防止这种情况
-    //           if (app.userInfoReadyCallback) {
-    //             app.userInfoReadyCallback(res)
-    //           }
-    //         }
-    //       })
-    //       _this.wxlogin()
-    //     }
-    //   }
-    // })
-    // wx.openSetting({
-    //   success(res) {
-    //     console.log(res.authSetting)
-    //     res.authSetting = {
-    //       "scope.userInfo": true,
-    //       "scope.userLocation": true
-    //     }
-    //   }
-    // })
-
-    console.log('logflag======' + _this.data.logflag)
-
-    if (app.globalData.userInfo && _this.data.logflag) {
-      _this.wxlogin()
+    if (app.globalData.userInfo && this.data.logflag) {
+      this.wxlogin()
     }
 
     // 给app.js 定义一个方法。
     app.userInfoReadyCallback = res => {
       console.log('userInfoReadyCallback: ', res);
       console.log('获取用户信息成功');
-      if (_this.data.logflag) {
-        _this.wxlogin()
+      if (this.data.logflag) {
+        this.wxlogin()
       }
 
     };
