@@ -84,13 +84,13 @@
 	<!--学员课程详情-->
 		<view>
 		<!--排课-->
-			<view class="displayrow schedule">
+			<!-- <view class="displayrow schedule">
 				<view class="textmsg">排课</view>
 				<view class="order">+</view>
-			</view>
-			<view class="displaycolumn courseschedule">
+			</view> -->
+			<!-- <view class="displaycolumn courseschedule"> -->
 			<!--排课详情-->
-				<view>
+				<!-- <view>
 					<text class="sign">私</text>
 					<text class="textmsg textmsg4">增肌max</text>
 					<text class="textorder">已预约</text>
@@ -104,8 +104,8 @@
 				<view class="displayrow buttonview">
 					<button class="button cancel">取消</button>
 					<button class="button confirm">签到</button>
-				</view>
-			</view>
+				</view> -->
+			<!-- </view> -->
 		</view>
 		<view>
 		<!--历史课程-->

@@ -38,32 +38,6 @@ Page({
 				content: "胸部训练",
 				cancel: true,
 				confirm: true
-			},
-			{
-				id: 2,
-				sign: "私",
-				signbgcolor: "#F9CE0E",
-				name: "增肌max",
-				state: "已签到",
-				date: "2018年11月12日  15:00-16:00",
-				time: "3/10",
-				store: "腾讯众创空间店",
-				content: "胸部训练",
-				cancel: true,
-				confirm: true
-			},
-			{
-				id: 3,
-				sign: "私",
-				signbgcolor: "#F9CE0E",
-				name: "增肌max",
-				state: "未签到",
-				date: "2018年11月12日  15:00-16:00",
-				time: "3/10",
-				store: "腾讯众创空间店",
-				content: "胸部训练",
-				cancel: true,
-				confirm: false
 			}
 		]
 	},
