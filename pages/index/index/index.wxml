@@ -54,8 +54,8 @@
 				<text>{{item.club_name}}</text>
 				<text>{{item.status_desc}}</text>
 			</view>
-			<text class="coursetime">{{item.start_time_1}}</text>
-      <text class="coursetime">{{item.end_time_1}}</text>
+			<text class="coursetime">{{item.datex}}</text>
+      <text class="coursetime">{{item.timex}}</text>
       <text class="coursename">课程内容：{{item.course_name}}</text>
 			<text class="coursename">第{{item.seq_no}}/{{item.total}}课</text>
 			<view class="displayrow last">
