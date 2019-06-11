@@ -45,8 +45,8 @@ function getListConfig() {
   var arr =
   {
     url_sc: 'http://39.106.156.239:80',
-    // url_test: 'https://www.guyueyundong.com',
-    url_test: 'http://localhost:9099'
+    url_test: 'https://www.guyueyundong.com',
+    // url_test: 'http://localhost:9099'
   }
   return arr;
 }
@@ -66,7 +66,7 @@ function wxlogin() {
           type:2,
           nickName: app.globalData.userInfo.nickName,
           gender: app.globalData.userInfo.gender,
-          icon: null
+          icon: ''
         },
         method: 'POST',
         // dataType: 'json',

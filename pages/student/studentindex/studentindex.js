@@ -57,6 +57,11 @@ Page({
 			url: "../bodyrecord/bodyrecord?id="+this.data.student.id
 		})
 	},
+  doplan: function () {
+    wx.navigateTo({
+      url: '../../index/schedule/schedule'
+    })
+  },
 
 	/**
 	 * 生命周期函数--监听页面加载
@@ -87,11 +92,29 @@ Page({
         })
       }
     })
+    //待预约课程
     wx.request({
       url: url_tmp + '/member/qryLesson',
       data:{
         mem_id: options.id,
-        status: (typeof (options.status) == "undefined") ? '' : options.status
+        coach_id: app.globalData.user_id,
+        status: 0
+      },
+      success(res) {
+        console.log(res.data)
+        _this.setData({
+          course_s: res.data
+        })
+      }
+    })
+
+    //历史课程（已完成和已取消）
+    wx.request({
+      url: url_tmp + '/member/qryLesson',
+      data: {
+        mem_id: options.id,
+        coach_id: app.globalData.user_id,
+        status: 2
       },
       success(res) {
         console.log(res.data)
@@ -104,6 +127,7 @@ Page({
       url: url_tmp + '/coach/qryMyMemSum',
       data: {
         mem_id: options.id,
+        coach_id: app.globalData.user_id
       },
       success(res) {
         console.log(res.data)

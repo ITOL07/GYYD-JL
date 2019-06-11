@@ -45,7 +45,7 @@
 				<!--图标-->
 				<image src="../../images/student/ordering.png" class="icon"></image>
 				<!--文字-->
-				<text>预约中({{course1.ordering}})</text>
+				<text>预约中({{course1.ordered}})</text>
 			</view>
 			<view class="displaycolumn course">
 			<!--待预约-->
@@ -84,41 +84,16 @@
 	<!--学员课程详情-->
 		<view>
 		<!--排课-->
-			<!-- <view class="displayrow schedule">
+			<view class="displayrow schedule">
 				<view class="textmsg">排课</view>
-				<view class="order">+</view>
-			</view> -->
-			<!-- <view class="displaycolumn courseschedule"> -->
-			<!--排课详情-->
-				<!-- <view>
+				<view class="order" bindtap='doplan'>+</view>
+			</view>
+			<view class="displaycolumn courseschedule" wx:for="{{course_s}}" wx:key="this">
+			<!-- 排课详情-->
+				<view>
 					<text class="sign">私</text>
-					<text class="textmsg textmsg4">增肌max</text>
-					<text class="textorder">已预约</text>
-				</view>
-				<view> 
-					<text class="textbirth">2018年11月12日  15:00-16:00</text>
-					<text class="textbirth coursetime">第3/10课</text>
-				</view>
-				<text class="textbirth">门店：腾讯众创空间店</text>
-				<text class="textbirth">课程内容：胸部训练</text>
-				<view class="displayrow buttonview">
-					<button class="button cancel">取消</button>
-					<button class="button confirm">签到</button>
-				</view> -->
-			<!-- </view> -->
-		</view>
-		<view>
-		<!--历史课程-->
-			<view>
-		<!--排课-->
-				<view class="textmsg">历史课程</view>
-				<view class="displaycolumn courseschedule2" wx:for="{{course}}" wx:key="this">
-				<!--排课详情-->
-					<view class="displayrow title">
-						<text class="sign" style="background-color: {{item.signbgcolor}}">
-									{{item.sign}}</text>
-						<text class="textmsg">{{item.name}}</text>
-						<text class="textorder2">{{item.state}}</text>
+					<text class="textmsg">{{item.course_name}}</text>
+						<text class="textorder2">预约中</text>
 					</view>
 					<view> 
 						<text class="textbirth">{{item.start_time_1}}</text>
@@ -126,10 +101,33 @@
 					</view>
 					<text class="textbirth">门店：{{item.club_name}}</text>
 					<text class="textbirth">课程内容：{{item.course_name}}</text>
-					<view class="displayrow buttonview">
+				<!-- <view class="displayrow buttonview">
+					<button class="button cancel" bindtap='doplan'>排课</button>
+				</view> -->
+			</view> 
+		</view>
+		<view>
+		<!--历史课程-->
+			<view>
+		<!--排课-->
+				<view class="textmsg">历史课程</view>
+				<view class="displaycolumn courseschedule" wx:for="{{course}}" wx:key="this">
+				<!--排课详情-->
+					<view class="displayrow title">
+						<text class="sign">私</text>
+						<text class="textmsg">{{item.course_name}}</text>
+						<text class="textorder2">已完成</text>
+					</view>
+					<view> 
+						<text class="textbirth">{{item.start_time_1}}</text>
+						<text class="textbirth coursetime">第{{item.seq_no}}课</text>
+					</view>
+					<text class="textbirth">门店：{{item.club_name}}</text>
+					<text class="textbirth">课程内容：{{item.brief}}</text>
+					<!-- <view class="displayrow buttonview">
 						<button class="button cancel" hidden="{{item.cancel}}">取消</button>
 						<button class="button confirm" hidden="{{item.confirm}}">签到</button>
-					</view>
+					</view> -->
 				</view>
 			</view>
 		</view>
