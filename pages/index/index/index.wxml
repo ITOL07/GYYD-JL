@@ -50,18 +50,21 @@
 	<!--低部学员课程详情-->
 		<view class="displaycolumn vieworder">
 			<view class="displayrow first">
-				<text style="background-color:{{item.bgcolor}}">私</text>
-				<text>{{item.club_name}}</text>
-				<text>{{item.status_desc}}</text>
+				<view class="displayrow">
+					<view style="background-color:{{item.bgcolor}}">私</view>
+					<text class="club_name">{{item.club_name}}</text>
+				</view>
+				<text class="status">{{item.status_desc}}</text>
 			</view>
-			<text class="coursetime">{{item.datex}}</text>
-      <text class="coursetime">{{item.timex}}</text>
-      <text class="coursename">课程内容：{{item.course_name}}</text>
-			<text class="coursename">第{{item.seq_no}}/{{item.buy_count}}课</text>
+			<!-- <text class="coursetime">{{item.datex}}</text> -->
+      <text class="coursetime">{{item.timex}} 第{{item.seq_no}}/{{item.buy_count}}课</text>
+      <text class="coursetime">课程内容：{{item.course_name}}</text>
+			<!-- <text class="coursename">第{{item.seq_no}}/{{item.total}}课</text> -->
 			<view class="displayrow last">
-				<view class="displayrow imageview">
-					<image src="{{item.mem_icon}}" class="imageuser"/>
+				<view class="displayrow">
+					<image src="{{item.user.imgurl}}" class="imageuser"/>
 					<text class="name" style="height: 70rpx;">{{item.mem_name}}</text>
+
 				</view>
 				<view wx:if="{{!item.cancel}}" class="buttonview displayrow">
 					<button class="button button2" hidden="{{item.cancel}}">取消</button>

@@ -17,10 +17,18 @@
   </picker>
 		</view>
 		<view class="displayrow view">
-			<view class="space">时段</view>
-      <picker class="space" bindchange="timeChange" value="{{time}}" range="{{times}}">
+			<view class="space">开始时间</view>
+      <picker class="space" bindchange="timeChange1" mode="time" value="{{time1}}">
         <view class="text right">
-          <text placeholder="选择时段>">{{times[time]}}</text>
+          <text>{{time1}}</text>
+        </view>
+      </picker>
+		</view>
+		<view class="displayrow view">
+			<view class="space">结束时间</view>
+      <picker class="space" bindchange="timeChange2" mode="time" value="{{time2}}">
+        <view class="text right">
+          <text>{{time2}}</text>
         </view>
       </picker>
 		</view>

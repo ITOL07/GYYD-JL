@@ -2,7 +2,6 @@
 .container{
    overflow: hidden;
 	background-color: #F3F1F1;
-	/* align-items: center; */
 }
 /* top */
 .top{
@@ -77,39 +76,46 @@
 .vieworder{
 	width: 100%;
 	height: 100%;
-	padding: 5rpx 26rpx;
+	padding: 14rpx;
 	justify-content: space-around;
 }
-.first text:nth-child(1){
-	width: 28rpx;
-	height: 28rpx;
+.first{
+	align-items: center;
+	justify-content: space-between;
+}
+.first view{
+	width: 50%;
+	align-items: center;
+}
+.first view view:nth-child(1){
+	width: 30rpx;
+	height: 30rpx;
 	background-color: #FF9A2B;
 	font-size: 22rpx;
 	color: #FFFFFF;
 	text-align: center;
-	line-height: 28rpx;
 	border-radius: 4rpx;
-	margin-top: 7rpx;
+	display: inline-block;
 }
-.first text:nth-child(2){
+.club_name{
 	font-size: 28rpx;
 	color: #333333;
 	margin-left: 2%;
-	margin-right: 53%;
-	justify-content: space-around;
 }
-.first text:nth-child(3){
+.status{
 	font-size: 24rpx;
 	color: #EC566B;
 }
-.coursetime, .coursename{
+.coursetime{
 	font-size: 24rpx;
 	color: #666666;
 }
+.last{
+	justify-content: space-between;
+	align-items: center;
+}
 .last view:nth-child(1){
 	width: 55%;
-}
-.imageview{
 	align-items: center;
 }
 .imageuser{
@@ -125,7 +131,6 @@
 .buttonview{
 	width: 40%;
 	align-items: center;
-	justify-content: flex-end;
 }
 .button2{
 	background-color: #EEEEEE;

@@ -1,5 +1,6 @@
 const app = getApp()
 var util = require("../../../utils/util.js"); 
+var commenData = require("../../../utils/data.js"); 
 
 Page({
   data: {
@@ -30,91 +31,13 @@ Page({
 			interval: 3000,
 			duration: 1500,
 			circular: true,
-			img: [
-				{
-					id: 0,
-					imgurl: "../../images/index/man.png"
-				},
-				{
-					id: 1,
-					imgurl: "../../images/index/man.png"
-				},
-				{
-					id: 2,
-					imgurl: "../../images/index/man.png"
-				},
-				{
-					id: 3,
-					imgurl: "../../images/index/man.png"
-				}
-			]
+			img: commenData.getSwiperImgData()
 		},
     num1:'',
     num2:'',
     detail1: [],
     detail1_bak:[],
-		detail:[
-			{
-				id: 1,
-				star: "私",
-				name: "腾讯众创空间",
-				state: "已预约",
-				time: "11:00-11:45  增肌max 第1/10课",
-				content: "课程内容：胸肌训练",
-				bgcolor: "#FF9A2B",
-				user: {
-					imgurl: "../../images/index/user.png",
-					name: "Ali"
-				},
-				cancel: false,
-				confirm: false
-			},
-			{
-				id: 2,
-				star: "私",
-				name: "腾讯众创空间",
-				state: "已签到",
-				time: "11:00-11:45  增肌max 第1/10课",
-				content: "课程内容：胸肌训练",
-				bgcolor: "#8FC31F",
-				user: {
-					imgurl: "../../images/index/user.png",
-					name: "Ali"
-				},
-				cancel: true,
-				confirm: true
-			},
-			{
-				id: 3,
-				star: "私",
-				name: "腾讯众创空间",
-				state: "未签到",
-				time: "11:00-11:45  增肌max 第1/10课",
-				content: "课程内容：胸肌训练",
-				bgcolor: "#00B7EE",
-				user: {
-					imgurl: "../../images/index/user.png",
-					name: "Ali"
-				},
-				cancel: true,
-				confirm: false
-			},
-			{
-				id: 4,
-				star: "私",
-				name: "腾讯众创空间",
-				state: "旷课",
-				time: "11:00-11:45  增肌max 第1/10课",
-				content: "课程内容：胸肌训练",
-				bgcolor: "#F9CE0E",
-				user: {
-					imgurl: "../../images/index/user.png",
-					name: "Ali"
-				},
-				cancel: true,
-				confirm: true
-			}
-		]
+		detail: commenData.getListData2()
 	},
   attendClass:function(event){
     console.log(event)

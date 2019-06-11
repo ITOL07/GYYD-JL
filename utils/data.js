@@ -22,6 +22,79 @@ function getSwiperImgData() {
   ]
   return arr;
 }
+function getListData2(){
+	var arr = [
+		{
+			id: 1,
+			star: "私",
+			club_name: "腾讯众创空间",
+			status_desc: "已预约",
+			timex: "11:00-11:45", 
+			seq_no: "1",
+			total: "10",
+			course_name: "胸肌训练",
+			bgcolor: "#FF9A2B",
+			mem_nick_name: "Ali",
+			user: {
+				imgurl: "../../images/index/user.png"
+			},
+			cancel: false,
+			confirm: false
+		},
+		{
+			id: 2,
+			star: "私",
+			club_name: "腾讯众创空间",
+			status_desc: "已签到",
+			timex: "11:00-11:45",
+			seq_no: "1",
+			total: "10",
+			course_name: "胸肌训练",
+			bgcolor: "#FF9A2B",
+			mem_nick_name: "Ali",
+			user: {
+				imgurl: "../../images/index/user.png"
+			},
+			cancel: true,
+			confirm: true
+		},
+		{
+			id: 3,
+			star: "私",
+			club_name: "腾讯众创空间",
+			status_desc: "未签到",
+			timex: "11:00-11:45",
+			seq_no: "1",
+			total: "10",
+			course_name: "胸肌训练",
+			bgcolor: "#FF9A2B",
+			mem_nick_name: "Ali",
+			user: {
+				imgurl: "../../images/index/user.png"
+			},
+			cancel: true,
+			confirm: false
+		},
+		{
+			id: 4,
+			star: "私",
+			club_name: "腾讯众创空间",
+			status_desc: "旷课",
+			timex: "11:00-11:45",
+			seq_no: "1",
+			total: "10",
+			course_name: "胸肌训练",
+			bgcolor: "#FF9A2B",
+			mem_nick_name: "Ali",
+			user: {
+				imgurl: "../../images/index/user.png"
+			},
+			cancel: true,
+			confirm: true
+		}
+	]
+	return arr
+}
 //获取列表
 function getListData() {
   var arr = [
@@ -453,6 +526,7 @@ function getVipData() {
 module.exports = {
   getSwiperImgData: getSwiperImgData,
   getListData: getListData,
+  getListData2: getListData2,
   getStoreImgData: getStoreImgData,
   getIncomeData: getIncomeData,
   getCashData: getCashData,

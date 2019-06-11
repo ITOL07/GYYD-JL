@@ -25,9 +25,8 @@ Page({
     date: '',
     dates:[],
       //时间段
-    times: [
-      '8:00 - 9:00', '9:00 - 10:00', '10:00 - 11:00', '11:00 - 12:00', '14:00 - 15:00', '15:00 - 16:00', '16:00 - 17:00', '17:00 - 18:00', '19:00 - 20:00', '20:00 - 21:00'],
-    time:0,
+    time1: '请选择',
+    time2: '请选择',
     //课程
     courses:[],
     courses_bac:[],
@@ -138,13 +137,21 @@ Page({
       date: e.detail.value
     })
   },
-  //点击切换时段
-  timeChange:function(e){
+  //点击切换开始时间
+  timeChange1:function(e){
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
-      time: e.detail.value
+      time1: e.detail.value
     })
-    console.log(this.data.times[this.data.time].split('-')[1].replace(" ",""))
+    // console.log(this.data.times[this.data.time].split('-')[1].replace(" ",""))
+  },
+  //点击切换结束时间
+  timeChange2:function(e){
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      time2: e.detail.value
+    })
+    // console.log(this.data.times[this.data.time].split('-')[1].replace(" ",""))
   },
   //字数限制  
   inputs: function (e) {
