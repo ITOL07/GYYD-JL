@@ -123,6 +123,7 @@ Page({
     var kc_id=event.currentTarget.dataset.kc_id
     var seq_no=event.currentTarget.dataset.seq_no
     var choose_flag=event.currentTarget.dataset.status
+    //判断当前课程状态是否完结
     if (choose_flag == 2) {
       wx.showToast({
         title: '此课已经完结了呢亲',
@@ -132,66 +133,80 @@ Page({
       })
       return
     }
-    wx.request({
-      url: url_tmp+'/attendClass/updateCourseInfos',
-      method: 'post',
-      data: {
-        kc_id: kc_id,
-        seq_no: seq_no,
-        choose_flag: choose_flag
-      },
-      header: {
-        'content-type': 'application/x-www-form-urlencoded'
-      }, success: function (res) {
-        console.log(res)
-        if(res.data.flag){
-        wx.showToast({
-          title: event._relatedInfo.anchorTargetText+'成功',
-            icon: 'success',
-            duration: 1000,
-            mask: false
-        })
-        //签到签退后获取新的登录状态，为后面局部刷新做处理
+    //点击签到按钮，弹出提示框
+    wx.showModal({
+      title: '签到确认',
+      content: '确认后即开始上课哦~',
+      success: function (sm) {
+        if (sm.confirm) {
+          
           wx.request({
-            url: url_tmp + '/coach/qryLesson',
+            url: url_tmp + '/attendClass/updateCourseInfos',
+            method: 'post',
             data: {
-              coach_id: app.globalData.user_id,
-              reg_date: util.formatTime(new Date()),
-              status: ''
+              kc_id: kc_id,
+              seq_no: seq_no,
+              choose_flag: choose_flag
             },
-            success(res) {
-              console.log(res.data)
-              that.setData({
-                detail1_bak: res.data
-              })
-          for (let j = 0; j < that.data.detail1_bak.length;j++){    
-            console.log(j)
-            if (kc_id == that.data.detail1_bak[j].kc_id && seq_no == that.data.detail1_bak[j].seq_no){
-              console.log(j)
-                that.setData({
-                  num1:j
+            header: {
+              'content-type': 'application/x-www-form-urlencoded'
+            }, success: function (res) {
+              console.log(res)
+              if (res.data.flag) {
+                wx.showToast({
+                  title: event._relatedInfo.anchorTargetText + '成功',
+                  icon: 'success',
+                  duration: 1000,
+                  mask: false
+                })
+                //签到签退后获取新的登录状态，为后面局部刷新做处理
+                wx.request({
+                  url: url_tmp + '/coach/qryLesson',
+                  data: {
+                    coach_id: app.globalData.user_id,
+                    reg_date: util.formatTime(new Date()),
+                    status: ''
+                  },
+                  success(res) {
+                    console.log(res.data)
+                    that.setData({
+                      detail1_bak: res.data
+                    })
+                    for (let j = 0; j < that.data.detail1_bak.length; j++) {
+                      console.log(j)
+                      if (kc_id == that.data.detail1_bak[j].kc_id && seq_no == that.data.detail1_bak[j].seq_no) {
+                        console.log(j)
+                        that.setData({
+                          num1: j
+                        })
+                      }
+                    }
+                    for (let i = 0; i < that.data.detail1.length; i++) {
+                      if (kc_id == that.data.detail1[i].kc_id && seq_no == that.data.detail1[i].seq_no) {
+                        that.setData({
+                          num2: i
+                        })
+                      }
+                    }
+                    console.log(that.data.num1)
+                    console.log(that.data.num2)
+                    that.setData({
+                      ["detail1[" + that.data.num2 + "]"]: that.data.detail1_bak[that.data.num1]
+                    })
+                  }
                 })
               }
-          }
-          for (let i = 0; i < that.data.detail1.length; i++) {
-            if (kc_id == that.data.detail1[i].kc_id && seq_no == that.data.detail1[i].seq_no) {
-                that.setData({
-                  num2: i
-                })
-              }
-          }
-          console.log(that.data.num1)
-          console.log(that.data.num2)
-                that.setData({
-                  ["detail1[" + that.data.num2 + "]"]: that.data.detail1_bak[that.data.num1]
-                })
+            }, fail: function () {
+
             }
           })
-        }
-      }, fail: function () {
 
+        } else if (sm.cancel) {
+          console.log('用户点击取消')
+        }
       }
     })
+
   },
 
 	doplan: function(){

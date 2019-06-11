@@ -1,7 +1,7 @@
 // pages/index/schedule/schedule.js
 const app = getApp()
 var util = require("../../../utils/util.js"); 
-var fileData = require("../../../utils/data.js");
+var fileData = require("../../../utils/util.js");
 var commonData = require("../../../utils/util.js");
 
 Page({
@@ -204,12 +204,42 @@ memberInfo:function(){
         members_bac: array_bac,
         members:array
       })
+      //添加对学员某日期排课可选时段的过滤
+      that.getListTime();
       that.changeCourse();
     },fail:function(){
         console.log("查询学员信息失败！")
     }
   })
 },
+ //添加对学员某日期排课可选时段的过滤
+  getListTime: function () {
+    console.log("============")
+    var that = this
+    var url_tmp = util.getListConfig().url_test;
+    wx.request({
+      url: url_tmp + '/schedule/listTimes',
+      method: 'post',
+      data: {
+        mem_id: that.data.members_bac[that.data.member],
+        date: that.data.newdate,
+        times:that.data.times
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      }, success: function (res) {
+        console.log(res)
+        if (res.statusCode == 200) {
+          that.setData({
+            times:res.data
+          })
+        } 
+      }, fail: function () {
+        console.log("查询课程信息失败！")
+      }
+    })
+  },
+
 submit:function(){
   var that = this
   var url_tmp = util.getListConfig().url_test;
