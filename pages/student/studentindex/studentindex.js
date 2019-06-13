@@ -131,7 +131,8 @@ Page({
       data: {
         mem_id: options.id,
         coach_id: app.globalData.user_id,
-        club_id:''
+        club_id:'',
+        reg_date:''
       },
       success(res) {
         console.log(res.data)

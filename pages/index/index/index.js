@@ -226,8 +226,30 @@ Page({
       },
       success(res) {
         console.log(res.data)
+        var tmp=[];
+        for(var i=0;i<res.data.length;i++){
+          if(res.data[i].status!=null){
+            tmp.push(res.data[i])
+          }
+        } 
         _this.setData({
-          detail1: res.data
+          detail1: tmp
+        })
+      }
+    })
+    //已取消
+    wx.request({
+      url: url_tmp + '/member/qryCancelLesson',
+      data: {
+        mem_id: '',
+        coach_id: app.globalData.user_id,
+        club_id: '',
+        reg_date: _this.data.dateCurrentStr
+      },
+      success(res) {
+        console.log(res.data)
+        _this.setData({
+          detail2: res.data
         })
       }
     })

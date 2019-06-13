@@ -48,7 +48,7 @@
    </view>
 	<view class="bottom" wx:for="{{detail1}}" wx:key="this">
 	<!--低部学员课程详情-->
-		<view class="displaycolumn vieworder">
+		<view  class="displaycolumn vieworder">
 			<view class="displayrow first">
 				<view class="displayrow">
 					<view style="background-color:{{item.bgcolor}}">私</view>
@@ -60,7 +60,7 @@
       <text class="coursetime">{{item.timex}} 第{{item.seq_no}}/{{item.buy_count}}课</text>
       <text class="coursetime">课程内容：{{item.course_name}}</text>
 			<!-- <text class="coursename">第{{item.seq_no}}/{{item.total}}课</text> -->
-			<view class="displayrow last">
+			<view  class="displayrow last">
 				<view class="displayrow">
 					<image src="{{item.mem_icon}}" class="imageuser"/>
 					<text class="name" style="height: 70rpx;">{{item.mem_name}}</text>
@@ -70,7 +70,33 @@
 					<button class="button" hidden="{{item.confirm}}" bindtap='attendClass' data-seq_no="{{item.seq_no}}" data-status='{{item.status}}' data-kc_id='{{item.kc_id}}'>{{item.status == 0 ? '签到':(item.status == 1 ? '已签到' :'已完成')}}</button>
 				</view>
 				<view wx:else class="buttonview displayrow">
-					<text class="button button1" hidden="{{item.confirm}}">{{item.status == 0 ? '签到':(item.status == 1 ? '已签到' :'已完成')}}</text>
+					<text class="button button1" hidden="{{item.confirm}}">{{item.status == null ? '待重新排课':(item.status == 1 ? '已签到' :'已完成')}}</text>
+				</view>
+			</view>
+		</view>
+	</view>
+  <view class="bottom" wx:for="{{detail2}}" wx:key="this">
+	<!--低部学员课程详情-->
+		<view class="displaycolumn vieworder">
+			<view class="displayrow first">
+				<view class="displayrow">
+					<view style="background-color:{{item.bgcolor}}">私</view>
+					<text class="club_name">{{item.clubName}}</text>
+				</view>
+				<text class="status">{{item.status_desc}}</text>
+			</view>
+			<!-- <text class="coursetime">{{item.datex}}</text> -->
+      <text class="coursetime">{{item.timex}} 第{{item.seqNo}}/{{item.buy_count}}课</text>
+      <text class="coursetime">课程内容：{{item.courseName}}</text>
+			<!-- <text class="coursename">第{{item.seq_no}}/{{item.total}}课</text> -->
+			<view class="displayrow last">
+				<view class="displayrow">
+					<image src="{{item.memIcon}}" class="imageuser"/>
+					<text class="name" style="height: 70rpx;">{{item.memName}}</text>
+				</view>
+
+				<view class="buttonview displayrow">
+					<text class="button button1" hidden="{{item.confirm}}">已取消</text>
 				</view>
 			</view>
 		</view>
