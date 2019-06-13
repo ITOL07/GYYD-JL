@@ -136,7 +136,7 @@
 	background-color: #EEEEEE;
 }
 .button1{
-	margin-left: 58%;
+	margin-left: 48%;
 }
 
 /*日历内容粘贴*/

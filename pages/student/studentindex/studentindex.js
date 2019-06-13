@@ -109,6 +109,7 @@ Page({
     })
 
     //历史课程（已完成和已取消）
+    //已完成
     wx.request({
       url: url_tmp + '/member/qryLesson',
       data: {
@@ -123,6 +124,7 @@ Page({
         })
       }
     })
+    //已取消
     wx.request({
       url: url_tmp + '/coach/qryMyMemSum',
       data: {

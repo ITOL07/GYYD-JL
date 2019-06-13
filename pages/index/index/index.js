@@ -39,6 +39,43 @@ Page({
     detail1_bak:[],
 		detail: commenData.getListData2()
 	},
+  //取消课程
+  cancleClass: function (event){
+    var that = this
+    var url_tmp = util.getListConfig().url_test;
+    var kc_id = event.currentTarget.dataset.kc_id
+    var seq_no = event.currentTarget.dataset.seq_no
+    wx.showModal({
+      title: '取消',
+      content: '确认取消此课程吗？',
+      success: function (sm) {
+        if (sm.confirm) {
+          wx.request({
+            url: url_tmp + '/attendClass/cancleClass',
+            method: 'post',
+            data: {
+              kc_id: kc_id,
+              seq_no: seq_no
+            },
+            header: {
+              'content-type': 'application/x-www-form-urlencoded'
+            }, success: function (res) {
+              console.log(res)
+              if (res.statusCode == 200) {
+                wx.showToast({
+                  title: res.data.resultInfo,
+                  icon: res.data.resultInfo,
+                  duration: 1000,
+                  mask: false
+                })
+                that.getLess();
+              }
+            }
+          })
+        }
+      }
+    })
+  },
   attendClass:function(event){
     console.log(event)
     var that = this

@@ -64,14 +64,13 @@
 				<view class="displayrow">
 					<image src="{{item.mem_icon}}" class="imageuser"/>
 					<text class="name" style="height: 70rpx;">{{item.mem_name}}</text>
-
 				</view>
-				<view wx:if="{{!item.cancel}}" class="buttonview displayrow">
-					<button class="button button2" hidden="{{item.cancel}}">取消</button>
-					<button class="button" hidden="{{item.confirm}}" bindtap='attendClass' data-seq_no="{{item.seq_no}}" data-status='{{item.status}}' data-kc_id='{{item.kc_id}}'>{{item.status == 0 ? '签到':(item.status == 1 ? '签退' :'已签退')}}</button>
+				<view wx:if="{{item.status<1}}" class="buttonview displayrow">
+					<button class="button button2" bindtap='cancleClass' hidden="{{item.cancel}}" data-seq_no="{{item.seq_no}}" data-kc_id='{{item.kc_id}}'>取消</button>
+					<button class="button" hidden="{{item.confirm}}" bindtap='attendClass' data-seq_no="{{item.seq_no}}" data-status='{{item.status}}' data-kc_id='{{item.kc_id}}'>{{item.status == 0 ? '签到':(item.status == 1 ? '已签到' :'已完成')}}</button>
 				</view>
 				<view wx:else class="buttonview displayrow">
-					<button class="button button1" hidden="{{item.confirm}}">签到</button>
+					<text class="button button1" hidden="{{item.confirm}}">{{item.status == 0 ? '签到':(item.status == 1 ? '已签到' :'已完成')}}</text>
 				</view>
 			</view>
 		</view>
