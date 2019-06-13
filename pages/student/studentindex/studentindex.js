@@ -125,6 +125,21 @@ Page({
       }
     })
     //已取消
+    
+    wx.request({
+      url: url_tmp + '/member/qryCancelLesson',
+      data: {
+        mem_id: options.id,
+        coach_id: app.globalData.user_id,
+        club_id:''
+      },
+      success(res) {
+        console.log(res.data)
+        _this.setData({
+          course_cancel: res.data
+        })
+      }
+    })
     wx.request({
       url: url_tmp + '/coach/qryMyMemSum',
       data: {

@@ -46,14 +46,16 @@
 				<!--图标-->
 				<image src="../../images/student/completed.png" class="icon"></image>
 				<!--文字-->
-				<text>已完成({{item.LessInfo.used}})</text>
+				<!-- <text>已完成({{item.LessInfo.used}})</text> -->
+        <text>已结束({{item.LessInfo.used}})</text>
 			</view>
 			<view class="displaycolumn course">
 			<!--预约中-->
 				<!--图标-->
 				<image src="../../images/student/ordering.png" class="icon"></image>
 				<!--文字-->
-				<text>预约中({{item.LessInfo.ordered}})</text>
+				<!-- <text>预约中({{item.LessInfo.ordered}})</text> -->
+        <text>待完成({{item.LessInfo.ordered}})</text>
 			</view>
 			<view class="displaycolumn course">
 			<!--待预约-->

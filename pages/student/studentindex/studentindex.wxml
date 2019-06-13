@@ -38,14 +38,14 @@
 				<!--图标-->
 				<image src="../../images/student/completed.png" class="icon"></image>
 				<!--文字-->
-				<text>已完成({{course1.used}})</text>
+				<text>已结束({{course1.used}})</text>
 			</view>
 			<view class="displaycolumn course">
 			<!--预约中-->
 				<!--图标-->
 				<image src="../../images/student/ordering.png" class="icon"></image>
 				<!--文字-->
-				<text>预约中({{course1.ordered}})</text>
+				<text>待完成({{course1.ordered}})</text>
 			</view>
 			<view class="displaycolumn course">
 			<!--待预约-->
@@ -124,6 +124,24 @@
 					</view>
 					<text class="textbirth">门店：{{item.club_name}}</text>
 					<text class="textbirth">课程内容：{{item.brief}}</text>
+					<!-- <view class="displayrow buttonview">
+						<button class="button cancel" hidden="{{item.cancel}}">取消</button>
+						<button class="button confirm" hidden="{{item.confirm}}">签到</button>
+					</view> -->
+				</view>
+        <view class="displaycolumn courseschedule" wx:for="{{course_cancel}}" wx:key="this">
+				<!--排课详情-->
+					<view class="displayrow title">
+						<text class="sign">私</text>
+						<text class="textmsg">{{item.courseName}}</text>
+						<text class="textorder2">已取消</text>
+					</view>
+					<view> 
+						<text class="textbirth">{{item.startTime1}}</text>
+						<text class="textbirth coursetime">第{{item.seqNo}}课</text>
+					</view>
+					<text class="textbirth">门店：{{item.clubName}}</text>
+					<text class="textbirth">课程内容：{{item.courseName}}</text>
 					<!-- <view class="displayrow buttonview">
 						<button class="button cancel" hidden="{{item.cancel}}">取消</button>
 						<button class="button confirm" hidden="{{item.confirm}}">签到</button>

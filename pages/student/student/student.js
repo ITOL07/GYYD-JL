@@ -38,7 +38,7 @@ Page({
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
-	onLoad: function (options) {
+	show: function (options) {
     var _this = this
     var url_tmp = util.getListConfig().url_test;
     wx.request({
@@ -54,7 +54,9 @@ Page({
       }
     })
 	},
-
+  onLoad: function (options){
+    this.show(options)
+},
 	/**
 	 * 生命周期函数--监听页面初次渲染完成
 	 */
@@ -65,8 +67,8 @@ Page({
 	/**
 	 * 生命周期函数--监听页面显示
 	 */
-	onShow: function () {
-
+  onShow: function (options) {
+    this.show(options)
 	},
 
 	/**
