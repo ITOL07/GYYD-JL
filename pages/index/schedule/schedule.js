@@ -25,7 +25,8 @@ Page({
     date: '',
     dates:[],
       //时间段
-    times: ['0:00 - 1:00', '1:00 - 2:00', '2:00 - 3:00', '3:00 - 4:00', '4:00 - 5:00', '5:00 - 6:00', '6:00 - 7:00', '7:00 - 8:00', '8:00 - 9:00', '9:00 - 10:00', '10:00 - 11:00', '11:00 - 12:00', '14:00 - 15:00', '15:00 - 16:00', '16:00 - 17:00', '17:00 - 18:00', '19:00 - 20:00', '20:00 - 21:00','21:00 - 22:00', '22:00 - 23:00', '23:00 - 24:00'],
+    times_s: ['0:00 - 1:00', '1:00 - 2:00', '2:00 - 3:00', '3:00 - 4:00', '4:00 - 5:00', '5:00 - 6:00', '6:00 - 7:00', '7:00 - 8:00', '8:00 - 9:00', '9:00 - 10:00', '10:00 - 11:00', '11:00 - 12:00', '14:00 - 15:00', '15:00 - 16:00', '16:00 - 17:00', '17:00 - 18:00', '19:00 - 20:00', '20:00 - 21:00','21:00 - 22:00', '22:00 - 23:00', '23:00 - 24:00'],
+    times:[],
     time:0,
     time1: '请选择',
     time2: '请选择',
@@ -132,12 +133,13 @@ Page({
       }
     })
   },
-  //点击切换时间
+  //点击切换日期
   dateChange:function(e){
-    console.log('picker发送选择改变，携带值为', e.detail.value)
+    console.log('日期选择值改变，携带值为', e.detail.value)
     this.setData({
-      date: e.detail.value
+      newdate: e.detail.value
     })
+    this.getListTime();
   },
   //点击切换时段
   timeChange: function (e) {
@@ -241,7 +243,7 @@ memberInfo:function(){
       data: {
         mem_id: that.data.members_bac[that.data.member],
         date: that.data.newdate,
-        times:that.data.times
+        times: that.data.times_s
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded'
@@ -273,13 +275,16 @@ submit:function(){
       kc_id: that.data.kc_ids[that.data.course], 
       seq_no:'', //课程节数由后台获取
       bz1: that.data.areatests,
-      start_time_1: that.data.date+' '+that.data.times[that.data.time].split('-')[0].replace(" ", ""), 
-      end_time_1: that.data.date + ' '+that.data.times[that.data.time].split('-')[1].replace(" ", ""), 
-    },header: {
+      start_time_1: that.data.newdate+' '+that.data.times[that.data.time].split('-')[0].replace(" ", ""), 
+      end_time_1: that.data.newdate + ' '+that.data.times[that.data.time].split('-')[1].replace(" ", ""), 
+    },
+    header: {
       'content-type': 'application/x-www-form-urlencoded'
-    },success:function(res){
+    },
+    success:function(res){
       console.log(res)
-
+      console.log(res.statusCode)
+      var resCode = res.statusCode;
       if (res.statusCode == 200){
         // that.setData({
         //   titleInfo:'排课成功',
@@ -288,8 +293,7 @@ submit:function(){
         wx.showToast({
           title: '排课成功',
           icon: 'success',
-          duration: 1500,
-          mask: false
+          duration: 2000
         })
       }
       
@@ -331,7 +335,7 @@ submit:function(){
 	onLoad: function (options) {
     var datex = util.formatDate1(new Date())
     this.setData({
-      date: datex
+      newdate: datex
     })
     this.memberInfo();
 	},
