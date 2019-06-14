@@ -25,6 +25,8 @@ Page({
     date: '',
     dates:[],
       //时间段
+    times: ['0:00 - 1:00', '1:00 - 2:00', '2:00 - 3:00', '3:00 - 4:00', '4:00 - 5:00', '5:00 - 6:00', '6:00 - 7:00', '7:00 - 8:00', '8:00 - 9:00', '9:00 - 10:00', '10:00 - 11:00', '11:00 - 12:00', '14:00 - 15:00', '15:00 - 16:00', '16:00 - 17:00', '17:00 - 18:00', '19:00 - 20:00', '20:00 - 21:00','21:00 - 22:00', '22:00 - 23:00', '23:00 - 24:00'],
+    time:0,
     time1: '请选择',
     time2: '请选择',
     //课程
@@ -137,6 +139,15 @@ Page({
       date: e.detail.value
     })
   },
+  //点击切换时段
+  timeChange: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      time: e.detail.value
+    })
+    console.log(this.data.times[this.data.time].split('-')[1].replace(" ", ""))
+  },
+
   //点击切换开始时间
   timeChange1:function(e){
     console.log('picker发送选择改变，携带值为', e.detail.value)
@@ -270,17 +281,18 @@ submit:function(){
       console.log(res)
 
       if (res.statusCode == 200){
-        that.setData({
-          titleInfo:'排课成功',
-          iconTyoe:'success'
+        // that.setData({
+        //   titleInfo:'排课成功',
+        //   iconTyoe:'success'
+        // })
+        wx.showToast({
+          title: '排课成功',
+          icon: 'success',
+          duration: 1500,
+          mask: false
         })
       }
-      wx.showToast({
-        title: that.data.titleInfo,
-        icon: that.data.iconTyoe,
-        duration: 1500,
-        mask: false
-      })
+      
       wx.switchTab({
         url: '../index/index',
         success: function () {

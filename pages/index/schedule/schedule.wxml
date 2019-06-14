@@ -17,21 +17,21 @@
   </picker>
 		</view>
 		<view class="displayrow view">
-			<view class="space">开始时间</view>
-      <picker class="space" bindchange="timeChange1" mode="time" value="{{time1}}">
+			<view class="space">时间段</view>
+      <picker class="space" bindchange="timeChange" range="{{times}}"  value="{{times}}">
         <view class="text right">
-          <text>{{time1}}</text>
+          <text>{{times[time]}}</text>
         </view>
       </picker>
 		</view>
-		<view class="displayrow view">
+		<!-- <view class="displayrow view">
 			<view class="space">结束时间</view>
       <picker class="space" bindchange="timeChange2" mode="time" value="{{time2}}">
         <view class="text right">
           <text>{{time2}}</text>
         </view>
       </picker>
-		</view>
+		</view> -->
 		<view class="displayrow view">
 			<view class="space">课程</view>
       <picker class="space" bindchange="courseChange" value="{{course}}" range="{{courses}}">
