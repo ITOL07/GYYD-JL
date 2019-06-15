@@ -50,7 +50,7 @@
 		</view>
 		<view class="displaycolumn textareaview">
 			<label>教案</label>
-			<textarea class="areas" placeholder="输入本次课程内容……" class="textarea" minlength="{{min}}" maxlength="{{max}}" bindinput="inputs" placeholder-class="place">
+			<textarea class="areas" placeholder="请填写教案" class="textarea" minlength="{{min}}" maxlength="{{max}}" bindinput="inputs" placeholder-class="place">
       <text class="currentWordNumber">{{currentWordNumber|0}}/{{max}}</text>
         <text class="hint">{{texts}}</text>
         </textarea>

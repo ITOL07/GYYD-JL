@@ -206,6 +206,7 @@ memberInfo:function(){
       'content-type': 'application/x-www-form-urlencoded' 
     },success:function(res){
       console.log(res.data.length)
+      console.log('获取学员信息'+res)
       if (res.data.length == 0){
         wx.showToast({
           title: '暂时没有需要排课的学员哦',
@@ -284,7 +285,7 @@ submit:function(){
     success:function(res){
       console.log(res)
       console.log(res.statusCode)
-      var resCode = res.statusCode;
+      
       if (res.statusCode == 200){
         // that.setData({
         //   titleInfo:'排课成功',
@@ -295,18 +296,18 @@ submit:function(){
           icon: 'success',
           duration: 2000
         })
-      }
-      
-      wx.switchTab({
-        url: '../index/index',
-        success: function () {
-          wx.setNavigationBarTitle({
-            title: '首页'
-          })
-        }
-      })
+        wx.switchTab({
+          url: '../index/index',
+          success: function () {
+            wx.setNavigationBarTitle({
+              title: '首页'
+            })
+          }
+        })
+      }  
     }
   })
+  
 },
 
 	bindPickerChange: function (e) {

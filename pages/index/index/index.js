@@ -238,6 +238,7 @@ Page({
       }
     })
     //已取消
+    console.log('已取消' + _this.data.dateCurrentStr)
     wx.request({
       url: url_tmp + '/member/qryCancelLesson',
       data: {
