@@ -78,11 +78,11 @@ Page({
       header:{
         'content-type': 'application/x-www-form-urlencoded' 
       },success:function(res){
-        console.log(res)
+        console.log('返回的课程信息：'+res.data)
         if(res.statusCode == 200){
           that.setData({
             courses:res.data.course_name,
-            courses_bac:res.data.course_id,
+            courses_bac:res.data.course_type,
             kc_ids:res.data.kc_id,
           })
         }else{
@@ -117,6 +117,8 @@ Page({
       url: that.data.url_tmp+'/coach/getClubInfo',
       method:'post',
       data:{
+        mem_id: that.data.members_bac[that.data.member],
+        coach_id: app.globalData.user_id,
         course_id:that.data.courses_bac[that.data.course]
       },
       header: {
@@ -272,7 +274,7 @@ submit:function(){
       mem_id: that.data.members_bac[that.data.member],// '201904050003',
       real_club: that.data.clubs_bac[that.data.club],
       real_coach: app.globalData.user_id,
-      sale_id: that.data.courses_bac[that.data.course], 
+      // sale_id: that.data.courses_bac[that.data.course], 
       kc_id: that.data.kc_ids[that.data.course], 
       seq_no:'', //课程节数由后台获取
       bz1: that.data.areatests,

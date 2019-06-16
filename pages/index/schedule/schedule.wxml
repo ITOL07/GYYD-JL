@@ -18,7 +18,7 @@
 		</view>
 		<view class="displayrow view">
 			<view class="space">时间段</view>
-      <picker class="space" bindchange="timeChange" range="{{times}}"  value="{{times}}">
+      <picker class="space" bindchange="timeChange" range="{{times}}" value="{{times[time]}}">
         <view class="text right">
           <text>{{times[time]}}</text>
         </view>
