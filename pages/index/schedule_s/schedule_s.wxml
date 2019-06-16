@@ -1,0 +1,68 @@
+<view class="container">
+	<view class="content displaycolumn">
+  <view class="displayrow view">
+			<view class="space">学员</view>
+      <!-- <picker class="space" bindchange="memberChange" value="{{member}}" range="{{members}}"> -->
+      <view class="space">
+     <view class="text right">
+      <text id='member_name'>{{mem_name}}</text>
+     </view>
+  <!-- </picker> -->
+  </view>
+		</view>
+		<view class="displayrow view">
+			<view class="space">日期</view>
+      <picker class="space" mode="date" bindchange="dateChange" value="{{date}}" start="{{date}}" end="2100-1-23" >
+     <view class="text right" style='algin'>  
+       {{newdate}}  
+    </view>
+  </picker>
+		</view>
+		<view class="displayrow view">
+			<view class="space">时间段</view>
+      <picker class="space" bindchange="timeChange" range="{{times}}" value="{{times[time]}}">
+        <view class="text right">
+          <text>{{times[time]}}</text>
+        </view>
+      </picker>
+		</view>
+		<!-- <view class="displayrow view">
+			<view class="space">结束时间</view>
+      <picker class="space" bindchange="timeChange2" mode="time" value="{{time2}}">
+        <view class="text right">
+          <text>{{time2}}</text>
+        </view>
+      </picker>
+		</view> -->
+		<view class="displayrow view">
+			<view class="space">课程</view>
+      <picker class="space" bindchange="courseChange" value="{{course}}" range="{{courses}}">
+     <view class="text right">
+      <text placeholder="选择课程>">{{courses[course]}}</text>
+     </view>
+  </picker>
+		</view>
+    <view class="displayrow view">
+			<view class="space">门店</view>
+      <picker class="space" bindchange="clubChange" value="{{club}}" range="{{clubs}}">
+     <view class="text right">
+      <text placeholder="选择门店>">{{clubs[club]}}</text>
+     </view>
+  </picker>
+		</view>
+		<view class="displaycolumn textareaview">
+			<label>教案</label>
+			<textarea class="areas" placeholder="请填写教案" class="textarea" minlength="{{min}}" maxlength="{{max}}" bindinput="inputs" placeholder-class="place">
+      <text class="currentWordNumber">{{currentWordNumber|0}}/{{max}}</text>
+        <text class="hint">{{texts}}</text>
+        </textarea>
+		</view>
+		<!-- <view class="last displayrow">
+			<view>选择配色</view>
+			<view class="orange"></view>
+			<view class="green"> </view>
+			<view class="blue"> </view>
+		</view> -->
+	</view>
+	<button class="button" bindtap='submit'>提交</button>
+</view>

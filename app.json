@@ -2,6 +2,7 @@
   "pages": [
     "pages/mine/login/login",
     "pages/index/schedule/schedule",
+    "pages/index/schedule_s/schedule_s",
     "pages/mine/reg/reg",
     "pages/index/selectstudent/selectstudent",
     "pages/mine/forgetPass/forgetPass",

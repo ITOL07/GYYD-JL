@@ -45,14 +45,14 @@ Page({
     titleInfo:'排课失败，请查看是否为会员安排此课课时',
     iconTyoe:'none'
 	},
- //学员变更记录学员信息并触调用查询课程方法
-  memberChange: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
-    this.setData({
-      member: e.detail.value
-    })
-    this.changeCourse();
-  },
+//  //学员变更记录学员信息并触调用查询课程方法
+//   memberChange: function (e) {
+//     console.log('picker发送选择改变，携带值为', e.detail.value)
+//     this.setData({
+//       member: e.detail.value
+//     })
+//     this.changeCourse();
+//   },
   //点击课程时记录课程信息并自动调用查询场地信息方法
   courseChange: function (e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
@@ -63,16 +63,17 @@ Page({
     this.changeClub();
   },
   //查询课程信息，成功返回后，调用查询场地信息方法
-  changeCourse:function(e){
+  changeCourse:function(){
     var that = this
     var url_tmp = util.getListConfig().url_test;
+    var mem_id=that.data.mem_id;
     console.log(that.data.members_bac[that.data.member])
     wx.request({
       url: url_tmp + '/coach/course_info',
       method:'post',
       data: {
         //mem_id:'201904050003',
-        mem_id: that.data.members_bac[that.data.member],
+        mem_id: mem_id,
         coach_id: app.globalData.user_id,
       },
       header:{
@@ -115,11 +116,12 @@ Page({
   //选定场地时，根据给定的mem_id、coach_id,club_id，course_id获取kc_id
   changeClub:function(){
     var that = this
+    var mem_id=that.data.mem_id
     wx.request({
       url: that.data.url_tmp+'/coach/getClubInfo',
       method:'post',
       data:{
-        mem_id: that.data.members_bac[that.data.member],
+        mem_id: mem_id,
         coach_id: app.globalData.user_id,
         course_id:that.data.courses_bac[that.data.course]
       },
@@ -179,8 +181,8 @@ Page({
     var len = parseInt(value.length);
 
     //最少字数限制
-    if (len <= this.data.min)
-    {
+    if (len <= this.data.min){
+      
       this.setData({
         texts: "至少2个字，留好教案好查看~"
       })
@@ -188,11 +190,9 @@ Page({
     else if (len > this.data.min)
     {
       this.setData({
-        text:" "
+        texts: " "
       })
     }
-      
-
     //最多字数限制
     if (len > this.data.max) return;
     // 当输入框内容的长度大于最大长度限制（max)时，终止setData()的执行
@@ -203,7 +203,7 @@ Page({
   },
 
  //获取学员信息
-memberInfo:function(){
+memberInfo:function(options){
   var that = this
   var url_tmp = util.getListConfig().url_test;
   console.log('coach_id=====' + app.globalData.user_id)
@@ -248,11 +248,12 @@ memberInfo:function(){
     console.log("============")
     var that = this
     var url_tmp = util.getListConfig().url_test;
+    var mem_id=that.data.mem_id
     wx.request({
       url: url_tmp + '/schedule/listTimes',
       method: 'post',
       data: {
-        mem_id: that.data.members_bac[that.data.member],
+        mem_id: mem_id,
         date: that.data.newdate,
         times: that.data.times_s
       },
@@ -273,9 +274,13 @@ memberInfo:function(){
 
 submit:function(){
   var that = this
-  
+  var url_tmp = util.getListConfig().url_test;
+  var mem_id = that.data.mem_id;
+  var club_id = that.data.clubs_bac[that.data.club];
+  var coach_id = app.globalData.user_id;
+  var kc_id = that.data.kc_ids[that.data.club];
   var input = that.data.areatests;
-  if (parseInt(input.length)==0){
+  if (input.length == 0) {
     wx.showModal({
       content: '要写教案哦！',
       showCancel: false,
@@ -285,13 +290,7 @@ submit:function(){
         }
       }
     });
-  }
-  else {
-    var url_tmp = util.getListConfig().url_test;
-    var mem_id = that.data.members_bac[that.data.member];
-    var club_id = that.data.clubs_bac[that.data.club];
-    var coach_id = app.globalData.user_id;
-    var kc_id = that.data.kc_ids[that.data.club];
+  } else{
     console.log("提交之前传入的参数：mem_id=" + mem_id + "  club_id=" + club_id + "coach_id=" + coach_id + "kc_id===" + kc_id);
     wx.request({
 
@@ -333,7 +332,7 @@ submit:function(){
       }
     })
   }
-
+  
   
 },
 
@@ -363,9 +362,15 @@ submit:function(){
 	onLoad: function (options) {
     var datex = util.formatDate1(new Date())
     this.setData({
-      newdate: datex
+      newdate: datex,
+      mem_name:options.name,
+      mem_id:options.id
     })
-    this.memberInfo();
+    console.log("指定会员排课，会员id为"+options.id)
+    
+    // this.memberInfo(options);
+    this.getListTime();
+    this.changeCourse();
 	},
 
 	/**

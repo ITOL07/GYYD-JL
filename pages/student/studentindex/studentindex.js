@@ -59,7 +59,7 @@ Page({
 	},
   doplan: function () {
     wx.navigateTo({
-      url: '../../index/schedule/schedule'
+      url: '../../index/schedule_s/schedule_s?id=' + this.data.student.memId + '&name=' + this.data.student.nickName
     })
   },
 
