@@ -15,14 +15,14 @@ Page({
     url_tmp: util.getListConfig().url_test,
     areatests:'',
     min: 2,//最少字数
-    max: 20, //最多字数 (根据自己需求改变)
+    max: 50, //最多字数 (根据自己需求改变)
     //学员
     members:[],
     members_bac: [],
     member:0,
     //日期
     newdate: new Date(),
-    date: '',
+    date: new Date(),
     dates:[],
       //时间段
     times_s: ['0:00 - 1:00', '1:00 - 2:00', '2:00 - 3:00', '3:00 - 4:00', '4:00 - 5:00', '5:00 - 6:00', '6:00 - 7:00', '7:00 - 8:00', '8:00 - 9:00', '9:00 - 10:00', '10:00 - 11:00', '11:00 - 12:00', '14:00 - 15:00', '15:00 - 16:00', '16:00 - 17:00', '17:00 - 18:00', '19:00 - 20:00', '20:00 - 21:00','21:00 - 22:00', '22:00 - 23:00', '23:00 - 24:00'],
@@ -73,17 +73,17 @@ Page({
       data: {
         //mem_id:'201904050003',
         mem_id: that.data.members_bac[that.data.member],
-        coach_id: app.globalData.user_id
+        coach_id: app.globalData.user_id,
       },
       header:{
         'content-type': 'application/x-www-form-urlencoded' 
       },success:function(res){
-        console.log('返回的课程信息：'+res.data)
+        console.log('返回的课程信息：' + res.data.course_type)
         if(res.statusCode == 200){
           that.setData({
             courses:res.data.course_name,
             courses_bac:res.data.course_type,
-            kc_ids:res.data.kc_id,
+           
           })
         }else{
           wx.showToast({
@@ -105,12 +105,14 @@ Page({
 
   //点击场地时记录场地信息
   clubChange: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
+    console.log('选择场地信息完毕，值为' + e.detail.value + '场地名为：'+this.data.clubs_bac[e.detail.value])
     this.setData({
       club: e.detail.value
     })
+    
   },
   //场地查询方法
+  //选定场地时，根据给定的mem_id、coach_id,club_id，course_id获取kc_id
   changeClub:function(){
     var that = this
     wx.request({
@@ -125,10 +127,11 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'
       },
       success:function(res){
-        console.log(res)
+        console.log("返回的场地信息："+res)
         that.setData({
           clubs: res.data.club_name,
-          clubs_bac: res.data.club_id
+          clubs_bac: res.data.club_id,
+          kc_ids: res.data.kc_id,
         })
       },fail:function(){
         console.log("查询场地信息失败！")
@@ -266,16 +269,21 @@ memberInfo:function(){
 submit:function(){
   var that = this
   var url_tmp = util.getListConfig().url_test;
+  var mem_id = that.data.members_bac[that.data.member];
+  var club_id = that.data.clubs_bac[that.data.club];
+  var coach_id = app.globalData.user_id;
+  var kc_id = that.data.kc_ids[that.data.club];
+  console.log("提交之前传入的参数：mem_id=" + mem_id+"  club_id="+club_id+"coach_id="+coach_id+"kc_id==="+kc_id);
   wx.request({
 
     url: that.data.url_tmp +'/schedule/lesson',
     method:'post',
     data:{
-      mem_id: that.data.members_bac[that.data.member],// '201904050003',
-      real_club: that.data.clubs_bac[that.data.club],
-      real_coach: app.globalData.user_id,
+      mem_id: mem_id,// '201904050003',
+      real_club: club_id,
+      real_coach: coach_id,
       // sale_id: that.data.courses_bac[that.data.course], 
-      kc_id: that.data.kc_ids[that.data.course], 
+      kc_id: kc_id, 
       seq_no:'', //课程节数由后台获取
       bz1: that.data.areatests,
       start_time_1: that.data.newdate+' '+that.data.times[that.data.time].split('-')[0].replace(" ", ""), 
@@ -289,10 +297,6 @@ submit:function(){
       console.log(res.statusCode)
       
       if (res.statusCode == 200){
-        // that.setData({
-        //   titleInfo:'排课成功',
-        //   iconTyoe:'success'
-        // })
         wx.showToast({
           title: '排课成功',
           icon: 'success',
