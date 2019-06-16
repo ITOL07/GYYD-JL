@@ -139,11 +139,11 @@
 						<text class="textorder2">已取消</text>
 					</view>
 					<view> 
-						<text class="textbirth">{{item.start_time_1}}</text>
-						<text class="textbirth coursetime">第{{item.seq_no}}课</text>
+						<text class="textbirth">{{item.datex}} {{item.timex}}</text>
+						<text class="textbirth coursetime">第{{item.seq_no}}/{{item.buy_count}}课</text>
 					</view>
 					<text class="textbirth">门店：{{item.club_name}}</text>
-					<text class="textbirth">课程内容：{{item.course_name}}</text>
+					<text class="textbirth">课程内容：{{item.bz1}}</text>
 					<!-- <view class="displayrow buttonview">
 						<button class="button cancel" hidden="{{item.cancel}}">取消</button>
 						<button class="button confirm" hidden="{{item.confirm}}">签到</button>
