@@ -136,7 +136,7 @@
           <view>
 						<text class="sign">私</text>
 						<text class="textmsg">{{item.course_name}}</text>
-						<text class="textorder2">已取消</text>
+						<text class="textorder2">{{item.cancel_state==2?"已旷课":"已取消"}}</text>
 					</view>
 					<view> 
 						<text class="textbirth">{{item.datex}} {{item.timex}}</text>

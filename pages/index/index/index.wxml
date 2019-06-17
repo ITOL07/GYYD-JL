@@ -96,7 +96,7 @@
 				</view>
 
 				<view class="buttonview displayrow">
-					<text class="button button1" hidden="{{item.confirm}}">已取消</text>
+					<text class="button button1" hidden="{{item.confirm}}">{{item.cancel_state==2?"已旷课":"已取消"}}</text>
 				</view>
 			</view>
 		</view>
