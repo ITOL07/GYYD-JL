@@ -28,7 +28,8 @@ Page({
     times_s: ['0:00 - 1:00', '1:00 - 2:00', '2:00 - 3:00', '3:00 - 4:00', '4:00 - 5:00', '5:00 - 6:00', '6:00 - 7:00', '7:00 - 8:00', '8:00 - 9:00', '9:00 - 10:00', '10:00 - 11:00', '11:00 - 12:00', '14:00 - 15:00', '15:00 - 16:00', '16:00 - 17:00', '17:00 - 18:00', '19:00 - 20:00', '20:00 - 21:00','21:00 - 22:00', '22:00 - 23:00', '23:00 - 24:00'],
     times:[],
     time:0,
-    time1: '请选择',
+    time1: util.formatTimeHM(new Date()),
+    start_time: util.formatTimeHM(new Date()), 
     time2: '请选择',
     //课程
     courses:[],
@@ -143,9 +144,20 @@ Page({
   //点击切换日期
   dateChange:function(e){
     console.log('日期选择值改变，携带值为', e.detail.value)
-    this.setData({
-      newdate: e.detail.value
-    })
+    if (e.detail.value == util.formatDate(new Date())) {
+      console.log("选择日期为当天")
+      this.setData({
+        newdate: e.detail.value,
+        start_time: util.formatTimeHM(new Date()),
+        time1: util.formatTimeHM(new Date()),
+      })
+    } else {
+      this.setData({
+        newdate: e.detail.value,
+        start_time: "0:00",
+        time1: "0:00"
+      })
+    } 
     this.getListTime();
   },
   //点击切换时段
@@ -164,6 +176,7 @@ Page({
       time1: e.detail.value
     })
     // console.log(this.data.times[this.data.time].split('-')[1].replace(" ",""))
+    this.getListTime();
   },
   //点击切换结束时间
   timeChange2:function(e){
@@ -248,31 +261,70 @@ memberInfo:function(options){
     console.log("============")
     var that = this
     var url_tmp = util.getListConfig().url_test;
-    var mem_id=that.data.mem_id
+    var mem_id = that.data.mem_id 
     wx.request({
       url: url_tmp + '/schedule/listTimes',
       method: 'post',
       data: {
         mem_id: mem_id,
-        date: that.data.newdate,
-        times: that.data.times_s
+        coach_id: app.globalData.user_id,
+        start_time: that.data.newdate + ' ' + that.data.time1,
+        // end_time: that.data.newdate + ' ' + that.data.time1
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded'
       }, success: function (res) {
-        console.log(res)
-        if (res.statusCode == 200) {
-          that.setData({
-            times:res.data
-          })
-        } 
+        console.log(res.data)
+        if (res.data.res_code != 0) {
+          wx.showModal({
+            content: res.data.res_info,
+            showCancel: false,
+            success: function (res) {
+              if (res.confirm) {
+                console.log('用户点击确定')
+              }
+            }
+          });
+        }
       }, fail: function () {
-        console.log("查询课程信息失败！")
+        console.log("查询时间有效性失败！")
       }
     })
   },
-
 submit:function(){
+  var that = this
+  var url_tmp = util.getListConfig().url_test;
+  var mem_id = that.data.mem_id
+  wx.request({
+    url: url_tmp + '/schedule/listTimes',
+    method: 'post',
+    data: {
+      mem_id: mem_id,
+      coach_id: app.globalData.user_id,
+      start_time: that.data.newdate + ' ' + that.data.time1,
+      // end_time: that.data.newdate + ' ' + that.data.time1
+    },
+    header: {
+      'content-type': 'application/x-www-form-urlencoded'
+    }, success: function (res) {
+      console.log(res.data)
+      if (res.data.res_code != 0) {
+        wx.showModal({
+          content: res.data.res_info,
+          showCancel: false,
+          success: function (res) {
+            if (res.confirm) {
+              console.log('用户点击确定')
+            }
+          }
+        });
+      }else{
+        that.sub();
+      }
+    }
+  })
+},
+sub:function(){
   var that = this
   var url_tmp = util.getListConfig().url_test;
   var mem_id = that.data.mem_id;
@@ -304,8 +356,8 @@ submit:function(){
         kc_id: kc_id,
         seq_no: '', //课程节数由后台获取
         bz1: that.data.areatests,
-        start_time_1: that.data.newdate + ' ' + that.data.times[that.data.time].split('-')[0].replace(" ", ""),
-        end_time_1: that.data.newdate + ' ' + that.data.times[that.data.time].split('-')[1].replace(" ", ""),
+        start_time_1: that.data.newdate + ' ' + that.data.time1,
+        // end_time_1: that.data.newdate + ' ' + that.data.times[that.data.time].split('-')[1].replace(" ", ""),
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded'
