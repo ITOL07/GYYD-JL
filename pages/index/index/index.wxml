@@ -15,15 +15,17 @@
 			</block>
 		</swiper>
 	</view>
-	<view class="middle displaycolumn">
+	<!-- <view class="middle displaycolumn"> -->
+  <view class="middle displayrow">
 	<!--中部排课日历-->
-		<view class="displayrow plantime">
-			<view class="dateview">
+		<!-- <view class="displayrow plantime">
+			<view class="dateview"> -->
+      <view class="dateview displayrow">
 				<text>周日历排课表</text>
 				<text>{{dateCurrenttext}}</text>
 			</view>
 			<button class="button" bindtap="doplan">排课</button>
-		</view>
+		<!-- </view> -->
   </view>
    <view class="date-choose shrink">
       <view class="data-month">{{dateMonth}}</view>
@@ -69,8 +71,8 @@
 					<button class="button button2" bindtap='cancleClass' hidden="{{item.cancel}}" data-seq_no="{{item.seq_no}}" data-kc_id='{{item.kc_id}}'>取消</button>
 					<button class="button" hidden="{{item.confirm}}" bindtap='attendClass' data-seq_no="{{item.seq_no}}" data-status='{{item.status}}' data-kc_id='{{item.kc_id}}'>{{item.status == 0 ? '签到':(item.status == 1 ? '已签到' :'已完成')}}</button>
 				</view>
-				<view wx:else class="buttonview displayrow">
-					<text class="button button1" hidden="{{item.confirm}}">{{item.status == null ? '待重新排课':(item.status == 1 ? '已签到' :'已完成')}}</text>
+				<view wx:else class="buttonview1">
+					<text>{{item.status == null ? '待重新排课':(item.status == 1 ? '已签到' :'已完成')}}</text>
 				</view>
 			</view>
 		</view>
@@ -95,8 +97,8 @@
 					<text class="name" style="height: 70rpx;">{{item.mem_name}}</text>
 				</view>
 
-				<view class="buttonview displayrow">
-					<text class="button button1" hidden="{{item.confirm}}">{{item.cancel_state==2?"已旷课":"已取消"}}</text>
+				<view class="buttonview1">
+					<text>{{item.cancel_state==2?"已旷课":"已取消"}}</text>
 				</view>
 			</view>
 		</view>
