@@ -21,12 +21,15 @@
 	background-color: #FFFFFF;
 	margin-bottom: 13rpx;
   padding: 0 5%;
+  align-items: center;
+	justify-content: space-between;
 }
 .dateview{
 	width: 45%;
 	height: 100rpx;
-	margin-bottom: 13rpx;
-  padding: 0 5%;
+	line-height: 100rpx;
+  align-items: center;
+	justify-content: space-between;
 } 
 .plantime{
 	width: 93%; 
