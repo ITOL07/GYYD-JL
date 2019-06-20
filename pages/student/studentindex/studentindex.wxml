@@ -1,5 +1,5 @@
 <view class="container">
-	<view class="content font28">
+	<view class="content">
 		<view class="displayrow viewcontent">
 		<!--学员个人信息-->
 			<!--头像-->
@@ -10,19 +10,19 @@
 						<!--姓名-->
 						<text class="textname2">{{student.name}}</text>
 						<!--性别-->
-							<image wx:if="{{item.sex=='1'}}" src="../../images/student/man.png" class="sex"></image>
-            <image wx:if="{{item.sex=='0'}}" src="../../images/student/woman.png" class="sex"></image>
+							<image wx:if="{{student.sex=='1'}}" src="../../images/student/man.png" class="sex"></image>
+            <image wx:if="{{student.sex=='0'}}" src="../../images/student/woman.png" class="sex"></image>
 				</view>
 				<!--手机-->
-				<text class="font28">{{student.tel}}</text>
+				<text class="tel">{{student.tel}}</text>
 			</view>
-			<view>
 			<!--是否置顶-->
+			<!-- <view>
 				<view class="demo">
 					<text class="flag">{{student.flag}}</text>
 				</view>
 				<view class="space"></view>
-			</view>
+			</view> -->
 		</view>
 		<view class="displayrow viewcourse">
 		<!--学员课程详情-->
@@ -61,7 +61,7 @@
 		<view class="displaycolumn over">
 		<!--基本信息-->
 			<view>
-				<text class="textmsg textmsg2">基本信息</text>
+				<text class="textmsg">基本信息</text>
 				<image src="../../images/student/edit.png" class="edit" bindtap="navigate"></image>
 			</view>
 			<text class="textbirth">出生年月：{{student.birthday}}</text>
@@ -69,8 +69,8 @@
 		</view>
 		<view class="bottom displaycolumn">
 		<!--身体档案-->
-			<view>
-				<text class="textmsg textmsg3">身体档案</text>
+			<view class="titledetail">
+				<text class="textmsg">身体档案</text>
 				<text class="detail" bindtap="navigaterecord">查看详情></text>
 			</view>
 			<view class="displayrow squareview">
@@ -86,21 +86,23 @@
 		<!--排课-->
 			<view class="displayrow schedule">
 				<view class="textmsg">排课</view>
-				<view class="order" bindtap='doplan'>+</view>
+				<view bindtap='doplan'>+</view>
 			</view>
 			<view class="displaycolumn courseschedule" wx:for="{{course_s}}" wx:key="this">
 			<!-- 排课详情-->
-				<view>
-					<text class="sign">私</text>
-					<text class="textmsg">{{item.course_name}}</text>
-						<text class="textorder2">预约中</text>
+				<view class="first">
+					<view class="sign">
+						<view>私</view>
+						<view class="textmsg">{{item.course_name}}</view>
 					</view>
-					<view> 
+					<view class="textorder2">预约中</view>
+				</view>
+				<view class="textorder"> 
 						<text class="textbirth">{{item.datex}} {{item.timex}}</text>
-						<text class="textbirth coursetime">第{{item.seq_no}}/{{item.buy_count}}课</text>
-					</view>
-					<text class="textbirth">门店：{{item.club_name}}</text>
-					<text class="textbirth">课程内容：{{item.bz1}}</text>
+						<text class="textbirth">第{{item.seq_no}}/{{item.buy_count}}课</text>
+				</view>
+				<text class="textbirth">门店：{{item.club_name}}</text>
+				<text class="textbirth">课程内容：{{item.bz1}}</text>
 				<!-- <view class="displayrow buttonview">
 					<button class="button cancel" bindtap='doplan'>排课</button>
 				</view> -->
@@ -108,47 +110,49 @@
 		</view>
 		<view>
 		<!--历史课程-->
-			<view>
-		<!--排课-->
-				<view class="textmsg">历史课程</view>
-				<view class="displaycolumn courseschedule" wx:for="{{course}}" wx:key="this">
+				<!--排课-->
+			<view class="textmsg">历史课程</view>
+			<view class="displaycolumn courseschedule" wx:for="{{course}}" wx:key="this">
 				<!--排课详情-->
 					<!-- <view class="displayrow title"> -->
-          <view>
-						<text class="sign">私</text>
-						<text class="textmsg">{{item.course_name}}</text>
-						<text class="textorder2">已完成</text>
+				<view class="first">
+					<view class="sign">
+						<view>私</view>
+						<view class="textmsg">{{item.course_name}}</view>
 					</view>
-					<view> 
-						<text class="textbirth">{{item.datex}} {{item.timex}}</text>
-						<text class="textbirth coursetime">第{{item.seq_no}}/{{item.buy_count}}课</text>
-					</view>
-					<text class="textbirth">门店：{{item.club_name}}</text>
-					<text class="textbirth">课程内容：{{item.bz1}}</text>
-					<!-- <view class="displayrow buttonview">
-						<button class="button cancel" hidden="{{item.cancel}}">取消</button>
-						<button class="button confirm" hidden="{{item.confirm}}">签到</button>
-					</view> -->
+					<view class="textorder2">已完成</view>
 				</view>
-        <view class="displaycolumn courseschedule" wx:for="{{course_cancel}}" wx:key="this">
-				<!--排课详情-->
-					<!-- <view class="displayrow title"> -->
-          <view>
-						<text class="sign">私</text>
-						<text class="textmsg">{{item.course_name}}</text>
-						<text class="textorder2">{{item.cancel_state==2?"已旷课":"已取消"}}</text>
-					</view>
-					<view> 
-						<text class="textbirth">{{item.datex}} {{item.timex}}</text>
-						<text class="textbirth coursetime">第{{item.seq_no}}/{{item.buy_count}}课</text>
-					</view>
-					<text class="textbirth">门店：{{item.club_name}}</text>
-					<text class="textbirth">课程内容：{{item.bz1}}</text>
-					<!-- <view class="displayrow buttonview">
-						<button class="button cancel" hidden="{{item.cancel}}">取消</button>
-						<button class="button confirm" hidden="{{item.confirm}}">签到</button>
-					</view> -->
+				<view> 
+					<text class="textbirth">{{item.datex}} {{item.timex}}</text>
+					<text class="textbirth coursetime">第{{item.seq_no}}/{{item.buy_count}}课</text>
 				</view>
+				<text class="textbirth">门店：{{item.club_name}}</text>
+				<text class="textbirth">课程内容：{{item.bz1}}</text>
+				<!-- <view class="displayrow buttonview">
+					<button class="button cancel" hidden="{{item.cancel}}">取消</button>
+					<button class="button confirm" hidden="{{item.confirm}}">签到</button>
+				</view> -->
+			</view>
+			<view class="displaycolumn courseschedule" wx:for="{{course_cancel}}" wx:key="this">
+			<!--排课详情-->
+				<!-- <view class="displayrow title"> -->
+				<view class="first">
+					<view class="sign">
+						<view>私</view>
+						<view class="textmsg">{{item.course_name}}</view>
+					</view>
+					<view class="textorder2">{{item.cancel_state==2?"已旷课":"已取消"}}</view>
+				</view>
+				<view> 
+					<text class="textbirth">{{item.datex}} {{item.timex}}</text>
+					<text class="textbirth coursetime">第{{item.seq_no}}/{{item.buy_count}}课</text>
+				</view>
+				<text class="textbirth">门店：{{item.club_name}}</text>
+				<text class="textbirth">课程内容：{{item.bz1}}</text>
+				<!-- <view class="displayrow buttonview">
+					<button class="button cancel" hidden="{{item.cancel}}">取消</button>
+					<button class="button confirm" hidden="{{item.confirm}}">签到</button>
+				</view> -->
 			</view>
 		</view>
 	</view>

@@ -1,6 +1,7 @@
 // pages/student/student.js
 const app = getApp()
 var util = require("../../../utils/util.js"); 
+var commonData = require("../../../utils/data.js");
 
 Page({
 
@@ -9,7 +10,8 @@ Page({
 	 */
 	data: {
 		inputtext: "搜索学员昵称或手机号",
-    input_tmp:null
+    input_tmp:null,
+		student1: commonData.getStudentData()
 	},
 
 	changeflag: function(e){

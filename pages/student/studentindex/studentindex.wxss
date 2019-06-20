@@ -5,37 +5,47 @@
 
 /* content */
 .content{
-	width: 100%;
+	width: 86%;
+	height: 350rpx;
+	padding: 20rpx 7%;
 	background-color: #FFFFFF;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 }
 .viewcontent{
-	padding-left: 50rpx;
+	width: 50%;
+	height: 140rpx;
+	align-items: center;
+	justify-content: space-between;
 }
 .photo{
-	width: 150rpx;
-	height: 150rpx;
-	border: 7rpx solid #F9CE0E;
-	border-radius: 100%;
-	margin-top: 25rpx;
+	width: 120rpx;
+	height: 120rpx;
+	border: 5rpx solid #F9CE0E;
+	border-radius: 50%;
 }
 .viewmsg{
-	padding-top: 50rpx;
-	margin-left: 40rpx;
-	margin-right: 27%;
+	height: 80rpx;
+	justify-content: space-around;
 }
 .textname{
+	height: 50rpx;
 	line-height: 70rpx;
-	text-align: left;
 	align-items: center;
 }
 .textname2{
-	font-size: 35rpx;
+	font-size: 30rpx;
 	color: #333752;
 	margin-right: 15rpx;
 }
 .sex{
-	width: 30rpx;
-	height: 30rpx;
+	width: 25rpx;
+	height: 25rpx;
+}
+.tel{
+	font-size: 24rpx;
+	color: #666666;
 }
 .space{
 	width: 0;
@@ -55,65 +65,83 @@
 	color: #FFFFFF;
 }
 .viewcourse{
-	width: 90%;
-	height: 150rpx;
-	text-align: center;
-	padding-bottom: 30rpx;
-	margin-top: 50rpx;
-	margin-left: 4%;
-	justify-content: space-around;
+	width: 100%;
+	height: 180rpx;
+	border-top: 1rpx solid #EEEEEE;
+	align-items: center;
+	justify-content: space-between;
 }
 .icon{
 	width: 70rpx;
 	height: 70rpx;
 }
 .course{
+	height: 120rpx;
 	align-items: center;
-	justify-content: space-around;
+	justify-content: space-between;
+}
+.course text{
+	font-size: 24rpx;
+	color: #666666;
 }
 
 /* message */
 .message{
+	width: 86%;
+	height: 600rpx;
 	background-color: #FFFFFF;
-	padding: 30rpx 50rpx;
-	margin-top: 20rpx;
+	padding: 5% 7%;
+	margin: 20rpx 0;
 }
 .over{
+	width: 100%;
 	height: 200rpx;
 	margin-bottom: 30rpx; 
 	justify-content: space-around;
 }
-.textmsg{
-	font-size: 35rpx;
-	color: #333333;
-	font-family:PingFangSC-Regular;
-	font-weight:400;
+.over view:nth-child(1){
+	width: 100%;
+	height: 30rpx;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
 }
-.textmsg2{
-	margin-right: 70%;
+.textmsg{
+	font-size: 30rpx;
+	color: #333333;
 }
 .edit{
-	width: 25rpx;
-	height: 25rpx;
+	width: 21rpx;
+	height: 22rpx;
 }
 .textbirth{
-	font-size: 28rpx;
+	font-size: 26rpx;
 	color: #666666;
 }
 .bottom{
 	width: 100%;
 	height: 330rpx;
+	border-top: 1rpx solid #EEEEEE;
 	justify-content: space-around;
 }
-.textmsg3{
-	margin-right: 60%;
+.titledetail{
+	width: 100%;
+	height: 50rpx;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
 }
 .detail{
-	font-size: 24rpx;
+	font-size: 22rpx;
 	color: #999999;
 }
 .squareview{
-	justify-content: space-around;
+	width: 100%;
+	height: 210rpx;
+	justify-content: space-between;
+	align-items: center;
 }
 .square{
 	width: 200rpx;
@@ -123,71 +151,89 @@
 
 /* course */
 .history{
-	width: 100%;
-	height: 1200rpx;
+	width: 86%;
 	background-color: #FFFFFF;
-	padding: 0 60rpx;
+	padding: 30rpx 7%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-content: center; 
 }
 .schedule{
-	margin-bottom: 25rpx;
+	width: 100%;
+	height: 50rpx;
+	line-height: 50rpx;
 	align-items: center;
+	justify-content: space-between;
 }
-.order{
+.schedule view:nth-child(2){
 	width: 30rpx;
 	height: 30rpx;
 	font-size: 40rpx;
-	line-height: 25rpx;
+	line-height: 30rpx;
+	text-align: center;
 	color: #FFFFFF;
 	background-color: #F9CE0E;
-	margin-left: 70%;
 }
 .courseschedule{
-	width: 77%;
-	height: 350rpx;
+	width: 90%;
+	height: 250rpx;
 	border: 1rpx solid #EEEEEE;
-	padding: 20rpx 20rpx;
-	position: relative;
+	box-shadow: 5rpx 5rpx 5rpx #EEEEEE;
+	padding: 3% 5% 14%;
+	margin: 30rpx 0;
 	justify-content: space-around;
 }
-.title{
+.first{
+	width: 100%;
+	height: 50rpx;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
 	align-items: center;
 }
 .sign{
-	width: 40rpx;
-	height: 40rpx;
-	font-size: 30rpx;
-	line-height: 15rpx;
+	width: 30%;
+	height: 50rpx;
+	line-height: 50rpx;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between
+}
+.sign view:nth-child(1){
+	width: 30rpx;
+	height: 30rpx;
+	font-size: 22rpx;
 	color: #FFFFFF;
+	line-height: 30rpx;
 	text-align: center;
 	background-color: #F9CE0E;
 	margin-right: 2%;
 }
-.textorder{
-	font-size: 35rpx;
-	color: #EC566B;
-	position: absolute;
-	right: 3%;
-}
 .textorder2{
-	font-size: 35rpx;
+	font-size: 30rpx;
 	color: #EC566B;
-	position: absolute;
-	right: 13%;
 }
-.coursetime{
-	margin-left: 13%;
+.textorder{
+	width: 100%;
+	height: 40rpx;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
 }
 .buttonview{
 	width: 100%;
 	height: 40rpx;
 }
 .button{
-	width: 100rpx;
+	width: 90rpx;
 	height: 40rpx;
 	font-size: 22rpx;
 	line-height: 40rpx;
 	background-color: #F9CE0E;
-	border-radius: 20px;
+	border-radius: 40rpx;
 }
 .cancel{
 	margin-left: 55%;

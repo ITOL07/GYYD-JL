@@ -25,72 +25,64 @@ function getSwiperImgData() {
 function getListData2(){
 	var arr = [
 		{
-			id: 1,
+			kc_id: 1,
 			star: "私",
 			club_name: "腾讯众创空间",
 			status_desc: "已预约",
 			timex: "11:00-11:45", 
 			seq_no: "1",
-			total: "10",
+			buy_count: "10",
 			course_name: "胸肌训练",
+			bz1: "胸肌训练",
 			bgcolor: "#FF9A2B",
-			mem_nick_name: "Ali",
-			user: {
-				imgurl: "../../images/index/user.png"
-			},
-			cancel: false,
-			confirm: false
+			mem_name: "Ali",
+			mem_icon: "../../images/index/user.png",
+			status: 0
 		},
 		{
-			id: 2,
+			kc_id: 2,
 			star: "私",
 			club_name: "腾讯众创空间",
-			status_desc: "已签到",
+			status_desc: "已预约",
 			timex: "11:00-11:45",
 			seq_no: "1",
-			total: "10",
+			buy_count: "10",
 			course_name: "胸肌训练",
+			bz1: "胸肌训练",
 			bgcolor: "#FF9A2B",
-			mem_nick_name: "Ali",
-			user: {
-				imgurl: "../../images/index/user.png"
-			},
-			cancel: true,
-			confirm: true
+			mem_name: "Ali",
+			mem_icon: "../../images/index/user.png",
+			status: 1
 		},
 		{
-			id: 3,
+			kc_id: 3,
 			star: "私",
 			club_name: "腾讯众创空间",
-			status_desc: "未签到",
+			status_desc: "已预约",
 			timex: "11:00-11:45",
 			seq_no: "1",
-			total: "10",
+			buy_count: "10",
 			course_name: "胸肌训练",
+			bz1: "胸肌训练",
 			bgcolor: "#FF9A2B",
-			mem_nick_name: "Ali",
-			user: {
-				imgurl: "../../images/index/user.png"
-			},
-			cancel: true,
-			confirm: false
+			mem_name: "Ali",
+			mem_icon: "../../images/index/user.png",
+			status: 2
 		},
 		{
-			id: 4,
+			kc_id: 4,
 			star: "私",
 			club_name: "腾讯众创空间",
-			status_desc: "旷课",
+			status_desc: "已预约",
 			timex: "11:00-11:45",
 			seq_no: "1",
-			total: "10",
+			buy_count: "10",
 			course_name: "胸肌训练",
+			bz1: "胸肌训练",
 			bgcolor: "#FF9A2B",
-			mem_nick_name: "Ali",
-			user: {
-				imgurl: "../../images/index/user.png"
-			},
-			cancel: true,
-			confirm: true
+			mem_name: "Ali",
+			mem_icon: "../../images/index/user.png",
+			status: 3
 		}
 	]
 	return arr
@@ -523,10 +515,134 @@ function getVipData() {
   return arr;
 }
 
+//获取学员数据
+function getStudentData(){
+	var data = [
+		{
+			MemInfo: {
+				memId: 1,
+				icon: '../../../static/images/user/private.png',
+				name: '月亮',
+				sex: 1,
+				tel: '13119121211'
+			},
+			LessInfo: {
+				total: 10,
+				used: 5,
+				ordered: 3,
+				ordering: 2
+			}
+		},
+		{
+			MemInfo: {
+				memId: 2,
+				icon: '../../../static/images/user/private.png',
+				name: '月亮',
+				sex: 0,
+				tel: '13119121211'
+			},
+			LessInfo: {
+				total: 20,
+				used: 15,
+				ordered: 3,
+				ordering: 2
+			}
+		},
+		{
+			MemInfo: {
+				memId: 3,
+				icon: '../../../static/images/user/private.png',
+				name: '月亮',
+				sex: 1,
+				tel: '13119121211'
+			},
+			LessInfo: {
+				total: 20,
+				used: 5,
+				ordered: 13,
+				ordering: 2
+			}
+		},
+		{
+			MemInfo: {
+				memId: 4,
+				icon: '../../../static/images/user/private.png',
+				name: '月亮',
+				sex: 1,
+				tel: '13119121211'
+			},
+			LessInfo: {
+				total: 10,
+				used: 5,
+				ordered: 3,
+				ordering: 12
+			}
+		}
+	]
+	return data
+}
+
+//获取学员详细数据
+function getStudentDetail(){
+	var data = {
+			student: {
+				id: 1,
+				photo: "../../images/student/photo.png",
+				name: "冯提莫",
+				sex: 1,
+				tel: "13294097319",
+				birthday: "1987年04月03日",
+				height: '163cm'
+			},
+			course1: {
+				total: 10,
+				used: 5,
+				ordered: 3,
+				ordering: 2
+			}
+	}
+	return data
+}
+//获取学员相关课程的详细数据
+function getStudentDetail2(){
+	var data = [
+			{
+				id: 1,
+				sign: "私",
+				signbgcolor: "#F9CE0E",
+				course_name: "增肌max",
+				state: "旷课",
+				datex: "2018年11月12日",
+				timex: "15:00-16:00",
+				seq_no: "3",
+				buy_count: "10",
+				club_name: "腾讯众创空间店",
+				bz1: "胸部训练"
+			},
+			{
+				id: 2,
+				sign: "私",
+				signbgcolor: "#F9CE0E",
+				course_name: "增肌max",
+				state: "旷课",
+				datex: "2018年11月12日",
+				timex: "15:00-16:00",
+				seq_no: "3",
+				buy_count: "10",
+				club_name: "腾讯众创空间店",
+				bz1: "胸部训练"
+			}
+	]
+	return data
+}
+
 module.exports = {
   getSwiperImgData: getSwiperImgData,
   getListData: getListData,
   getListData2: getListData2,
+	getStudentData: getStudentData,
+	getStudentDetail: getStudentDetail,
+	getStudentDetail2: getStudentDetail2,
   getStoreImgData: getStoreImgData,
   getIncomeData: getIncomeData,
   getCashData: getCashData,

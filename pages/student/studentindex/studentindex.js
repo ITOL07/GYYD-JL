@@ -9,37 +9,11 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
-		student: {
-			id: 1,
-			photo: "../../images/student/photo.png",
-			name: "冯提莫",
-			sex: "../../images/student/woman.png",
-			telephone: "13294097319",
-			flag: "取消置顶",
-			course: {
-				"cumulative": 6,
-				"completed": 6,
-				"ordering": 6,
-				"unorder": 6
-			},
-			birthday: "1987年04月03日",
-			height: '163cm'
-		},
-		course:[
-			{
-				id: 1,
-				sign: "私",
-				signbgcolor: "#F9CE0E",
-				name: "增肌max",
-				state: "旷课",
-				date: "2018年11月12日  15:00-16:00",
-				time: "3/10",
-				store: "腾讯众创空间店",
-				content: "胸部训练",
-				cancel: true,
-				confirm: true
-			}
-		]
+		student1: fileData.getStudentDetail().student,
+		course11: fileData.getStudentDetail().course1,
+		course_s1: fileData.getStudentDetail2(),
+		course1: fileData.getStudentDetail2(),
+		course_cancel1: fileData.getStudentDetail2()
 	},
 
 	navigate: function(){
