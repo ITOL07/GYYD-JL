@@ -210,6 +210,7 @@
 	text-align: center;
 	background-color: #F9CE0E;
 	margin-right: 2%;
+	border-radius: 4rpx;
 }
 .textorder2{
 	font-size: 30rpx;
