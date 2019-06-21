@@ -16,7 +16,8 @@
         </view>
       </picker>
 			</view>
-			<view class="income">¥{{filters.toFix(sold_amt+les_amt/1,2)}}</view>
+      <text wx:if="{{les_amt=='暂无'||sold_amt=='暂无'}}" class="num">暂无</text>
+			<view wx:else class="income">¥{{filters.toFix(sold_amt+les_amt/1,2)}}</view>
 			<view class="income2">总收入</view>
 			<view class="displayrow detailview">
 				<view class="displaycolumn incomeview">
