@@ -165,8 +165,8 @@ Page({
       success(res) {
         console.log(res.data)
         _this.setData({
-          // les_amt: res.data.les_total_amt,
-          // sold_amt: res.data.sold_total_amt
+          les_amt: res.data.les_total_amt,
+          sold_amt: res.data.sold_total_amt
         })
       }
     })
@@ -181,7 +181,7 @@ Page({
         console.log("教练信息："+JSON.stringify(res.data))
         _this.setData({
           user:res.data,
-          // icon:res.data.icon
+          icon:res.data.icon
         })
       }
     })
