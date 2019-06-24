@@ -64,53 +64,55 @@
 			</view>
 		</view>
 	</view>
-	<view class="bottom displayrow">
-	<!--信息管理-->
-		<view class="displaycolumn view" bindtap="certificate">
-		<!--证书照片-->
-			<image src="../../images/mine/certificate.png" class="image"></image>
-			<text>证书相片</text>
+	<view class="border">
+		<view class="bottom displayrow">
+		<!--信息管理-->
+			<view class="displaycolumn view" bindtap="certificate">
+			<!--证书照片-->
+				<image src="../../images/mine/certificate.png" class="image"></image>
+				<text>证书相片</text>
+			</view>
+			<!-- <view class="displaycolumn view" bindtap="case"> -->
+			<!--会员案例-->
+				<!-- <image src="../../images/mine/case.png" class="image"></image>
+				<text>会员案例</text>
+			</view> -->
+			<view class="displaycolumn view" bindtap="myalbum">
+			<!--个人相册-->
+				<image src="../../images/mine/myalbum.png" class="image"></image>
+				<text>个人相册</text>
+			</view>
+			<view class="displaycolumn view" bindtap="space">
+			<!--授课场地-->
+				<image src="../../images/mine/space.png" class="image"></image>
+				<text>授课场地</text>
+			</view>
+			<view class="displaycolumn view" bindtap="mycourse">
+			<!--我的课程-->
+				<image src="../../images/mine/mycourse.png" class="image"></image>
+				<text>我的课程</text>
+			</view>
+			<view class="displaycolumn view"> 
+			<!--我的信息-->
+				<image src="../../images/mine/email.png" class="image"></image>
+				<text>我的信息</text>
+			</view>
+			<view class="displaycolumn view" bindtap="agreement">
+						<image src="../../images/mine/case.png" class="image"></image>
+				<text>用户协议</text>
+			</view>
+			<!-- <view class="view1">
+			</view> -->
+			<view class="displaycolumn view" bindtap="setup">
+			<!--个人设置-->
+				<image src="../../images/mine/setup.png" class="image"></image>
+				<text>个人设置</text>
+			</view>
+			
+			<!-- <action-sheet hidden="{{actionSheetHidden}}" bindchange="actionSheetChange"> -->
+				<!-- <action-sheet-item bindtap="selectPhoto">从相册选择照片</action-sheet-item>
+				<action-sheet-cancel>取消</action-sheet-cancel> -->
+			<!-- </action-sheet> -->
 		</view>
-		<!-- <view class="displaycolumn view" bindtap="case"> -->
-		<!--会员案例-->
-			<!-- <image src="../../images/mine/case.png" class="image"></image>
-			<text>会员案例</text>
-		</view> -->
-		<view class="displaycolumn view" bindtap="myalbum">
-		<!--个人相册-->
-			<image src="../../images/mine/myalbum.png" class="image"></image>
-			<text>个人相册</text>
-		</view>
-		<view class="displaycolumn view" bindtap="space">
-		<!--授课场地-->
-			<image src="../../images/mine/space.png" class="image"></image>
-			<text>授课场地</text>
-		</view>
-		<view class="displaycolumn view" bindtap="mycourse">
-		<!--我的课程-->
-			<image src="../../images/mine/mycourse.png" class="image"></image>
-			<text>我的课程</text>
-		</view>
-		<view class="displaycolumn view"> 
-		<!--我的信息-->
-			<image src="../../images/mine/email.png" class="image"></image>
-			<text>我的信息</text>
-		</view>
-    <view class="displaycolumn view" bindtap="agreement">
-    			<image src="../../images/mine/case.png" class="image"></image>
-			<text>用户协议</text>
-		</view>
-		<!-- <view class="view1">
-		</view> -->
-    <view class="displaycolumn view" bindtap="setup">
-		<!--个人设置-->
-			<image src="../../images/mine/setup.png" class="image"></image>
-			<text>个人设置</text>
-		</view>
-    
-    <!-- <action-sheet hidden="{{actionSheetHidden}}" bindchange="actionSheetChange"> -->
-      <!-- <action-sheet-item bindtap="selectPhoto">从相册选择照片</action-sheet-item>
-      <action-sheet-cancel>取消</action-sheet-cancel> -->
-    <!-- </action-sheet> -->
 	</view>
 </view>
