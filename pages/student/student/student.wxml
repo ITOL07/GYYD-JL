@@ -5,9 +5,9 @@
 		<input class="inputtext" placeholder="{{inputtext}}" bindinput='search_in'></input>
 	</view> -->
 	<block wx:if="{{student!=''}}">
-		<view class="content" wx:for="{{student}}" wx:key="this">
+		<view class="content" wx:for="{{student}}" wx:key="this" bindtap="navigate">
 		<!--学员列表-->
-			<view id="{{item.MemInfo.memId}}" bindtap="navigate" class="displayrow viewcontent">
+			<view id="{{item.MemInfo.memId}}" class="displayrow viewcontent">
 			<!--学员信息详情-->
 				<!--头像-->
 				<image src="{{item.MemInfo.icon}}" class="photo"></image>
