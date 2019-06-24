@@ -36,9 +36,9 @@
 	</view>
 	<view class="middle">
 	<!--授课收入-->
-		<view>
+		<view class="income">
 		<!--标题-->
-			<text class="income">当月收入</text>
+			<text>当月收入</text>
 			<text class="incomedetail" bindtap="incomedetail">收入明细></text>
 		</view>
 		<view class="displayrow">
