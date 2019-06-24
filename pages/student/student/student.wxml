@@ -4,66 +4,68 @@
 		<image src="../../images/student/search.png"  bindtap="search" class="icontop"></image>
 		<input class="inputtext" placeholder="{{inputtext}}" bindinput='search_in'></input>
 	</view> -->
-	<block wx:if="{{student!=''}}">
-		<view class="content" wx:for="{{student}}" wx:key="this" bindtap="navigate">
+	<block wx:if="{{student1!=''}}">
+		<view class="content" wx:for="{{student1}}" wx:key="this">
 		<!--学员列表-->
-			<view id="{{item.MemInfo.memId}}" class="displayrow viewcontent">
-			<!--学员信息详情-->
-				<!--头像-->
-				<image src="{{item.MemInfo.icon}}" class="photo"></image>
-				<view class="displaycolumn viewmsg">
-				<!--姓名性别手机-->
-					<view class="displayrow textname">
-							<!--姓名-->
-							<text class="textname2">{{item.MemInfo.name}}</text>
-							<!--性别-->
-							<image wx:if="{{item.MemInfo.sex=='1'}}" src="../../images/student/man.png" class="sex"></image>
-							<image wx:if="{{item.MemInfo.sex=='0'}}" src="../../images/student/woman.png" class="sex"></image>
+			<view id="{{item.MemInfo.memId}}" bindtap="navigate">
+				<view class="displayrow viewcontent">
+				<!--学员信息详情-->
+					<!--头像-->
+					<image src="{{item.MemInfo.icon}}" class="photo"></image>
+					<view class="displaycolumn viewmsg">
+					<!--姓名性别手机-->
+						<view class="displayrow textname">
+								<!--姓名-->
+								<text class="textname2">{{item.MemInfo.name}}</text>
+								<!--性别-->
+								<image wx:if="{{item.MemInfo.sex=='1'}}" src="../../images/student/man.png" class="sex"></image>
+								<image wx:if="{{item.MemInfo.sex=='0'}}" src="../../images/student/woman.png" class="sex"></image>
+						</view>
+						<view>
+							<!--手机-->
+							<text class="tel">{{item.MemInfo.tel}}</text>
+						</view>
 					</view>
 					<view>
-						<!--手机-->
-						<text class="tel">{{item.MemInfo.tel}}</text>
+					<!--是否置顶-->
+						<!-- <view id="{{item.MemInfo.memId}}" class="demo" catchtap="changeflag">
+							<text class="flag">{{item.flag==true?"取消置顶":"置顶"}}</text>
+						</view>
+						<view class="space"></view> -->
 					</view>
 				</view>
-				<view>
-				<!--是否置顶-->
-					<!-- <view id="{{item.MemInfo.memId}}" class="demo" catchtap="changeflag">
-						<text class="flag">{{item.flag==true?"取消置顶":"置顶"}}</text>
+				<view class="displayrow viewcourse" id="{{item.MemInfo.memId}}" bindtap="navigate">
+				<!--学员课程详情-->
+					<view class="displaycolumn course">
+					<!--累计授课-->
+						<!--图标-->
+						<image src="../../images/student/cumulative.png" class="icon"></image>
+						<!--文字-->
+						<text>累计购课({{item.LessInfo.total}})</text>
 					</view>
-					<view class="space"></view> -->
-				</view>
-			</view>
-			<view class="displayrow viewcourse" id="{{item.MemInfo.memId}}" bindtap="navigate">
-			<!--学员课程详情-->
-				<view class="displaycolumn course">
-				<!--累计授课-->
-					<!--图标-->
-					<image src="../../images/student/cumulative.png" class="icon"></image>
-					<!--文字-->
-					<text>累计购课({{item.LessInfo.total}})</text>
-				</view>
-				<view class="displaycolumn course">
-				<!--已完成-->
-					<!--图标-->
-					<image src="../../images/student/completed.png" class="icon"></image>
-					<!--文字-->
-					<!-- <text>已结束({{item.LessInfo.used}})</text> -->
-					<text>已完成({{item.LessInfo.used}})</text>
-				</view>
-				<view class="displaycolumn course">
-				<!--预约中-->
-					<!--图标-->
-					<image src="../../images/student/ordering.png" class="icon"></image>
-					<!--文字-->
-					<!-- <text>待完成({{item.LessInfo.ordered}})</text> -->
-					<text>预约中({{item.LessInfo.ordered}})</text>
-				</view>
-				<view class="displaycolumn course">
-				<!--待预约-->
-					<!--图标-->
-					<image src="../../images/student/unorder.png" class="icon"></image>
-					<!--文字-->
-					<text>待预约({{item.LessInfo.ordering}})</text>
+					<view class="displaycolumn course">
+					<!--已完成-->
+						<!--图标-->
+						<image src="../../images/student/completed.png" class="icon"></image>
+						<!--文字-->
+						<!-- <text>已结束({{item.LessInfo.used}})</text> -->
+						<text>已完成({{item.LessInfo.used}})</text>
+					</view>
+					<view class="displaycolumn course">
+					<!--预约中-->
+						<!--图标-->
+						<image src="../../images/student/ordering.png" class="icon"></image>
+						<!--文字-->
+						<!-- <text>待完成({{item.LessInfo.ordered}})</text> -->
+						<text>预约中({{item.LessInfo.ordered}})</text>
+					</view>
+					<view class="displaycolumn course">
+					<!--待预约-->
+						<!--图标-->
+						<image src="../../images/student/unorder.png" class="icon"></image>
+						<!--文字-->
+						<text>待预约({{item.LessInfo.ordering}})</text>
+					</view>
 				</view>
 			</view>
 		</view>
