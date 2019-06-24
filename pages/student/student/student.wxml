@@ -4,8 +4,8 @@
 		<image src="../../images/student/search.png"  bindtap="search" class="icontop"></image>
 		<input class="inputtext" placeholder="{{inputtext}}" bindinput='search_in'></input>
 	</view> -->
-	<block wx:if="{{student1!=''}}">
-		<view class="content" wx:for="{{student1}}" wx:key="this">
+	<block wx:if="{{student!=''}}">
+		<view class="content" wx:for="{{student}}" wx:key="this">
 		<!--学员列表-->
 			<view id="{{item.MemInfo.memId}}" bindtap="navigate">
 				<view class="displayrow viewcontent">
