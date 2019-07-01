@@ -8,7 +8,7 @@
 			<!--姓名性别手机-->
 				<view class="displayrow textname">
 						<!--姓名-->
-						<text class="textname2">{{student.name}}</text>
+						<text class="textname2">{{student.nickName}}</text>
 						<!--性别-->
 							<image wx:if="{{student.sex=='1'}}" src="../../images/student/man.png" class="sex"></image>
             <image wx:if="{{student.sex=='0'}}" src="../../images/student/woman.png" class="sex"></image>

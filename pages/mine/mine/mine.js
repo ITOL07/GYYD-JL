@@ -153,7 +153,7 @@ Page({
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
-	onLoad: function (options) {
+	load: function (options) {
     var _this = this
     var url_tmp = util.getListConfig().url_test;
     wx.request({
@@ -165,8 +165,8 @@ Page({
       success(res) {
         console.log(res.data)
         _this.setData({
-          les_amt: res.data.les_total_amt,
-          sold_amt: res.data.sold_total_amt
+          les_amt: res.data.kt_sum,
+          sold_amt: res.data.xt_sum
         })
       }
     })
@@ -186,6 +186,9 @@ Page({
       }
     })
 	},
+  onLoad:function(){
+    this.load()
+  },
 	/**
 	 * 生命周期函数--监听页面初次渲染完成
 	 */
@@ -198,6 +201,7 @@ Page({
 		 */
 	onShow: function () {
 		this.show();
+    this.load();
 	},
 	show: function () {
 		if (app.globalData.userInfo) {
