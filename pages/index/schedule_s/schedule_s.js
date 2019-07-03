@@ -84,7 +84,8 @@ Page({
         if(res.statusCode == 200){
           that.setData({
             courses:res.data.course_name,
-            courses_bac:res.data.course_type,
+            // courses_bac:res.data.course_type,
+            courses_bac: res.data.kc_id
            
           })
         }else{
@@ -115,7 +116,7 @@ Page({
   },
   //场地查询方法
   //选定场地时，根据给定的mem_id、coach_id,club_id，course_id获取kc_id
-  changeClub:function(){
+  changeClub_bak:function(){
     var that = this
     var mem_id=that.data.mem_id
     wx.request({
@@ -141,6 +142,31 @@ Page({
       }
     })
   },
+  changeClub: function () {
+    var that = this
+    wx.request({
+      url: that.data.url_tmp + '/coach/getClubInfo',
+      method: 'post',
+      data: {
+        mem_id: mem_id,
+        coach_id: app.globalData.user_id,
+        course_id: that.data.courses_bac[that.data.course]
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        console.log("返回的场地信息：" + res)
+        that.setData({
+          clubs: res.data.club_name,
+          clubs_bac: res.data.club_id,
+          kc_ids: res.data.kc_id,
+        })
+      }, fail: function () {
+        console.log("查询场地信息失败！")
+      }
+    })
+  }, 
   //点击切换日期
   dateChange:function(e){
     console.log('日期选择值改变，携带值为', e.detail.value)
