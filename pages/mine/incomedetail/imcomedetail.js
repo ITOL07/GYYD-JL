@@ -76,8 +76,8 @@ Page({
         }
         else{
           _this.setData({
-            les_amt: res.data.les_total_amt,
-            sold_amt: res.data.sold_total_amt
+            les_amt: res.data.kt_sum,
+            sold_amt: res.data.xt_sum
           })
         }
       }
