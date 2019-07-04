@@ -144,6 +144,7 @@ Page({
   },
   changeClub: function () {
     var that = this
+    var mem_id = that.data.mem_id
     wx.request({
       url: that.data.url_tmp + '/coach/getClubInfo',
       method: 'post',
