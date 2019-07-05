@@ -61,7 +61,7 @@
 		<view wx:for="{{incomeData}}" wx:key="this" class="displaycolumn card">
 			<view class="first displayrow">
 				<view class="timetext space">{{item.start_time_1}}</view>
-        <view class="timetext space">{{item.end_time_1}}</view>
+        <!-- <view class="timetext space">{{item.end_time_1}}</view> -->
 				<view class="space money2">
 					<text class="money">￥</text>
 					<text class="number">{{item.price}}</text>
@@ -69,7 +69,7 @@
 			</view>
 			<view class="course displayrow">
 				<view class="space">课程：{{item.course_name}}/会员：{{item.student}}</view>
-				<view class="type space">{{item.type}}原价</view>
+				<view class="type space">{{item.type}}</view>
 			</view>
 			<view class="field">场地：{{item.club_name}}</view>
 		</view>

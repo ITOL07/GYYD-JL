@@ -2,6 +2,7 @@
 const app = getApp()
 const date=new Date()
 var util = require("../../../utils/util.js"); 
+var commonData = require("../../../utils/data.js"); 
 
 Page({
 
@@ -9,45 +10,9 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
-		incomeData: [
-			{
-				id: 1,
-				time: "2018/11/11 16:00",
-				income: "220",
-				course: "max 增肌",
-				student: "月亮",
-				type: "提成",
-				field: "腾讯众创空间"
-			},
-			{
-				id: 2,
-				time: "2018/11/11 16:00",
-				income: "220",
-				course: "max 增肌",
-				student: "月亮",
-				type: "提成",
-				field: "腾讯众创空间"
-			},
-			{
-				id: 3,
-				time: "2018/11/11 16:00",
-				income: "220",
-				course: "max 增肌",
-				student: "月亮",
-				type: "提成",
-				field: "腾讯众创空间"
-			},
-			{
-				id: 4,
-				time: "2018/11/11 16:00",
-				income: "220",
-				course: "max 增肌",
-				student: "月亮",
-				type: "提成",
-				field: "腾讯众创空间"
-			}
-		],
-    date: util.formatTime(date)
+		incomeData1: commonData.getIncome(),
+    date: util.formatTime(date),
+		incomeData: []
 	},
   bindDateChange: function (e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
@@ -93,8 +58,15 @@ Page({
       },
       success(res) {
         console.log(res.data)
+				var data = res.data
+				for (var index in data) {
+					let date = data[index].start_time_1
+					date = date.substr(0, 4) + '/' + date.substr(4, 2) + '/' + date.substr(6, 2)
+						+ date.substr(8, 6)
+					data[index].start_time_1 = date
+				}
         _this.setData({
-          incomeData: res.data
+          incomeData: data
         })
       }
     })
@@ -119,7 +91,7 @@ Page({
     this.setData({
       time: e.detail.value
     })
-  },  
+  }, 
 	/**
 	 * 生命周期函数--监听页面加载
 	 */

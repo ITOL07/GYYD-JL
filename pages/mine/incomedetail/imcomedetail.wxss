@@ -37,7 +37,7 @@
 .dateview{
 	align-items: center;
 	margin-top: 26rpx;
-	margin-bottom: 86rpx;
+	margin-bottom: 70rpx;
 }
 .dateview text{
 	font-size: 24rpx;
@@ -52,13 +52,13 @@
 	font-size: 48rpx;
 	font-weight: 500;
 	font-family:PingFangSC-Medium;
-	margin-bottom: 31rpx;
+	margin-bottom: 25rpx;
 }
 .income2{
 	font-size: 30rpx;
 	font-weight: 400;
 	font-family:PingFangSC-Regular;
-	margin-bottom: 20%;
+	margin-bottom: 19%;
 }
 .detailview{
 	width: 100%;
@@ -115,7 +115,6 @@
 /* bottom */
 .bottom{
 	width: 96%;
-	height: 600rpx;
 	margin: auto 2.5%;
 	background-color: #FAFAFA;
 }
@@ -149,17 +148,15 @@
 	height: 160rpx;
 	background-color: #FFFFFF;
 	margin: 20rpx auto;
-	padding: 25rpx 10rpx;
+	padding: 3%;
 }
 .first{
 	width: 100%;
-	margin-bottom: 30rpx;
+	margin-bottom: 18rpx;
 }
 .timetext{
 	font-size: 30rpx;
 	color: #333333;
-	font-family:PingFangSC-Regular;
-  font-weight:400;
 }
 .money2{
 	text-align: right;
@@ -178,7 +175,7 @@
 	width: 99%;
 	font-size: 22rpx;
 	color: #666666;
-	margin-bottom: 15rpx;
+	margin-bottom: 18rpx;
 }
 .type{
 	text-align: right;

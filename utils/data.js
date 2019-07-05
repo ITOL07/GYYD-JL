@@ -636,9 +636,52 @@ function getStudentDetail2(){
 	return data
 }
 
+function getIncome(){
+	var income = [
+		{
+			id: 1,
+			start_time_1: "20190607 10:25:00",
+			price: "220",
+			course_name: "max 增肌",
+			student: "月亮",
+			type: "原价",
+			club_name: "腾讯众创空间"
+		},
+		{
+			id: 2,
+			start_time_1: "20190607 10:25:00",
+			price: "220",
+			course_name: "max 增肌",
+			student: "月亮",
+			type: "原价",
+			club_name: "腾讯众创空间"
+		},
+		{
+			id: 3,
+			start_time_1: "20190607 10:25:00",
+			price: "220",
+			course_name: "max 增肌",
+			student: "月亮",
+			type: "原价",
+			club_name: "腾讯众创空间"
+		},
+		{
+			id: 4,
+			start_time_1: "20190607 10:25:00",
+			price: "220",
+			course_name: "max 增肌",
+			student: "月亮",
+			type: "原价",
+			club_name: "腾讯众创空间"
+		}
+	]
+	return income
+}
+
 module.exports = {
   getSwiperImgData: getSwiperImgData,
   getListData: getListData,
+	getIncome: getIncome,
   getListData2: getListData2,
 	getStudentData: getStudentData,
 	getStudentDetail: getStudentDetail,
