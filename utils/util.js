@@ -52,6 +52,7 @@ function getListConfig() {
 }
 
 function wxlogin() {
+  var that=this
   // 登录
   wx.login({
     success: res => {
@@ -79,17 +80,66 @@ function wxlogin() {
           app.globalData.openid = res.data.openid
           app.globalData.user_id = res.data.id
           console.log("发送code成功", res.data);
-          console.log("发送code成功", res.data.openid);
-          wx.switchTab({
-            url: '../../index/index/index',
-            success: function () {
-              wx.setNavigationBarTitle({
-                title: '首页'
-              })
+          console.log("发送code成功", res.data.openid);   
+          var url_tmp = _this.getListConfig().url_test;
+          wx.request({
+            url: url_tmp + '/user/qry',
+            data: {
+              mem_id: res.data.id
+            },
+            success(res) {
+              console.log("查询手机号：" + res.data.userName)
+              app.globalData.phoneNo = res.data.userName;
+            
+
+              console.log("phoneNo ====" + res.data.userName)
+              if (app.globalData.phoneNo == undefined) {
+                console.log("未绑定手机号")
+                wx.navigateTo({
+                  url: '../../mine/bindPhone/bindPhone?id=0',
+                  success: function () {
+                    wx.setNavigationBarTitle({
+                      title: '绑定手机号'
+                    })
+                  }
+                })
+              }
+              else {
+                console.log("已绑定手机号")
+                wx.switchTab({
+                  url: '../../index/index/index',
+                  success: function () {
+                    wx.setNavigationBarTitle({
+                      title: '首页'
+                    })
+                  }
+                })
+              }   
             }
+
+            
           })
-        }
-      })
+          
+    
+        }        
+      })    
+    }
+    
+  })
+  
+}
+function getPhoneNo(memId) {
+  var _this = this
+  var url_tmp = _this.getListConfig().url_test;
+  wx.request({
+    url: url_tmp + '/user/qry',
+    data: {
+      mem_id: memId
+    },
+    success(res) {
+      console.log("查询手机号：" + res.data.userName)
+      app.globalData.phoneNo = res.data.userName;
+      return res.data.userName
     }
   })
 }
@@ -247,4 +297,5 @@ module.exports = {
   distance: distance,
   previewImg: previewImg,
   routers,
+  getPhoneNo: getPhoneNo
 }

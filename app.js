@@ -77,6 +77,7 @@ App({
     openid: null,
     user_id: null,
     systemInfo:null,
-    version:'1.0.5'
+    version:'1.0.5',
+    phoneNo:null
   }
 })
