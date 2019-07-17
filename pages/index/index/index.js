@@ -190,7 +190,7 @@ Page({
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function (options) {
-    var _this = this
+    // var _this = this
     //this.sysinfo();//测试获取系统版本
     this.initDate(); // 日历组件程序
     this.getLess();
@@ -267,6 +267,7 @@ Page({
 	 * 生命周期函数--监听页面显示
 	 */
 	onShow: function () {
+  
     wx.getSystemInfo({
       success: (res) => {
         this.setData({
@@ -275,6 +276,8 @@ Page({
         });
       }
     });
+    // _this.initDate(); // 日历组件程序
+    this.getLess();
 	},
 
 	/**
