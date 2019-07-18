@@ -214,6 +214,20 @@ Page({
       }
     }) 
   },
+
+	compare: function (property) {
+		console.log("property:" + property)
+		return function (a, b) {
+			var value1 = a[property];
+			var value2 = b[property];
+			value1 = value1.split('-')[0].split(':')[0]
+			value2 = value2.split('-')[0].split(':')[0]
+			console.log("value1:" + value1)
+			console.log("value2:" + value2)
+			return value1 - value2;
+		}
+	},
+
   getLess:function(){
     var _this = this
     var url_tmp = util.getListConfig().url_test;
@@ -232,8 +246,10 @@ Page({
             tmp.push(res.data[i])
           }
         } 
+				var list = null
+				list = tmp.sort(_this.compare("timex"))
         _this.setData({
-          detail1: tmp
+          detail1: list
         })
       }
     })
