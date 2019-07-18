@@ -24,7 +24,7 @@ Page({
     */
   return_home: function (e) {
     wx.navigateTo({
-      url: '/pages/user/login/login',
+      url: '/pages/mine/login/login',
     })
 
   },
@@ -67,6 +67,7 @@ Page({
       },
       success: function (res) {
         console.log("res.data.errocode:" + res.data.errocode)
+        console.log("res.data.errno:" + res.data.errono)
         that.setData({
           state: res.data.errono
         })
@@ -77,9 +78,12 @@ Page({
         } //手机号已被注册提示信息
         else if (that.data.state == 0) {  //判断是否被注册
           warn = "手机号已被注册,请登录或者找回密码!";
-          wx.navigateTo({
-            url: '/pages/index/index',
+          that.setData({
+            status: 1
           })
+          // wx.navigateTo({
+          //   url: '/pages/index/index',
+          // })
         }
         else {
           wx.request({

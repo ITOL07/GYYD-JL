@@ -11,7 +11,8 @@ Page({
   data: {
     inputVal1: '',
     inputVal2: '',
-    logflag: wx.getStorageSync("logFlag")
+    logflag: wx.getStorageSync("logFlag"),
+    tel:''
 
   },
   inputValue1: function (res) {
@@ -154,32 +155,49 @@ Page({
       }
     })
   },
-  getPhoneNumber: function (e) {
-    console.log(e.detail.iv);
-    console.log(e.detail.encryptedData);
-    wx.login({
-      success: res => {
-        console.log(res.code);
-        wx.request({
-          url: 'http://localhost:8099/user/getPhone',
-          data: {
-            'encryptedData': encodeURIComponent(e.detail.encryptedData),
-            'iv': e.detail.iv,
-            'code': res.code
-          },
-          method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-          header: {
-            'content-type': 'application/json'
-          }, // 设置请求的 header
-          success: function (res) {
-            if (res.status == 1) {//我后台设置的返回值为1是正确
-              //存入缓存即可
-              wx.setStorageSync('phone', res.phone);
-            }
-          },
-          fail: function (err) {
-            console.log(err);
-          }
+  // getPhoneNumber: function (e) {
+  //   console.log(e.detail.iv);
+  //   console.log(e.detail.encryptedData);
+  //   wx.login({
+  //     success: res => {
+  //       console.log(res.code);
+  //       wx.request({
+  //         url: 'http://localhost:8099/user/getPhone',
+  //         data: {
+  //           'encryptedData': encodeURIComponent(e.detail.encryptedData),
+  //           'iv': e.detail.iv,
+  //           'code': res.code
+  //         },
+  //         method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+  //         header: {
+  //           'content-type': 'application/json'
+  //         }, // 设置请求的 header
+  //         success: function (res) {
+  //           if (res.status == 1) {//我后台设置的返回值为1是正确
+  //             //存入缓存即可
+  //             wx.setStorageSync('phone', res.phone);
+  //           }
+  //         },
+  //         fail: function (err) {
+  //           console.log(err);
+  //         }
+  //       })
+  //     }
+  //   })
+  // },
+  getPhoneNo: function () {
+    var url_tmp = util.getListConfig().url_test;
+    var _this = this
+    wx.request({
+      url: url_tmp + '/user/qry',
+      data: {
+        mem_id: app.globalData.user_id
+      },
+      success(res) {
+        console.log("查询手机号：" + res.data)
+        app.globalData.phoneNo = res.data.userName
+        _this.setData({
+          tel: res.data.userName
         })
       }
     })

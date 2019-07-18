@@ -34,12 +34,12 @@
 			<text class="content" wx:else>暂无简介</text>
 		</view>
 	</view>
-	<view class="middle">
+	<view class="middle" bindtap="incomedetail">
 	<!--授课收入-->
 		<view class="income">
 		<!--标题-->
 			<text>当月收入</text>
-			<text class="incomedetail" bindtap="incomedetail">收入明细></text>
+			<text class="incomedetail" >收入明细></text>
 		</view>
 		<view class="displayrow">
 		<!--收入分配-->
