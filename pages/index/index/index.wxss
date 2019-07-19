@@ -104,7 +104,6 @@
 	justify-content: space-between;
 }
 .first view{
-	width: 50%;
 	align-items: center;
 }
 .first view view:nth-child(1){
@@ -117,11 +116,11 @@
 	text-align: center;
 	border-radius: 4rpx;
 	display: inline-block;
+	margin-right: 12rpx;
 }
 .club_name{
 	font-size: 28rpx;
 	color: #333333;
-	margin-left: 2%;
 }
 .status{
 	font-size: 24rpx;
