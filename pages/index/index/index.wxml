@@ -49,7 +49,7 @@
         </block>
       </swiper>
    </view>
-	<view class="bottom" wx:for="{{detail}}" wx:key="this">
+	<view class="bottom" wx:for="{{detail1}}" wx:key="this">
 	<!--低部学员课程详情-->
 		<view  class="displaycolumn vieworder">
 			<view class="displayrow first">

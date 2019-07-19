@@ -265,9 +265,20 @@ Page({
       },
       success(res) {
         console.log(res.data)
+        var tmp = [];
+        for (var i = 0; i < res.data.length; i++) {
+          if (res.data[i].status != null) {
+            tmp.push(res.data[i])
+          }
+        }
+        var list = null
+        list = tmp.sort(_this.compare("timex"))
         _this.setData({
-          detail2: res.data
+          detail2: list
         })
+        // _this.setData({
+        //   detail2: res.data
+        // })
       }
     })
   },
