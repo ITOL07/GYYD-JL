@@ -54,7 +54,7 @@ Page({
         coach_id: app.globalData.user_id,
         // reg_date: util.formatTime(new Date()),
         reg_date:_this.data.date,
-        status: ''
+        status: 2
       },
       success(res) {
         console.log(res.data)
