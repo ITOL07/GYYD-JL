@@ -37,7 +37,8 @@ Page({
     num2:'',
     detail1: [],
     detail1_bak:[],
-		detail: commenData.getListData2()
+		detail: commenData.getListData2(),
+    detailAll:[]
 	},
   //取消课程
   cancleClass: function (event){
@@ -230,7 +231,10 @@ Page({
 
   getLess:function(){
     var _this = this
+    var that = this
     var url_tmp = util.getListConfig().url_test;
+    var dataList = [];
+    var listAll = [];
     wx.request({
       url: url_tmp + '/coach/qryLesson',
       data: {
@@ -244,15 +248,19 @@ Page({
         for(var i=0;i<res.data.length;i++){
           if(res.data[i].status!=null){
             tmp.push(res.data[i])
+            //----
+            dataList.push(res.data[i])
           }
         } 
 				var list = null
 				list = tmp.sort(_this.compare("timex"))
+        console.info(list)
         _this.setData({
           detail1: list
         })
       }
     })
+    console.info(dataList)
     //已取消
     console.log('已取消' + _this.data.dateCurrentStr)
     wx.request({
@@ -267,20 +275,25 @@ Page({
         console.log(res.data)
         var tmp = [];
         for (var i = 0; i < res.data.length; i++) {
-          if (res.data[i].status != null) {
+          if (res.data[i].cancel_state != null) {
             tmp.push(res.data[i])
+            //---
+            dataList.push(res.data[i])
           }
         }
         var list = null
         list = tmp.sort(_this.compare("timex"))
+        console.info(list)
+        listAll = dataList.sort(_this.compare("timex"))
+        console.info(listAll)
         _this.setData({
-          detail2: list
+          detail2: list,
+          detailAll: listAll
         })
-        // _this.setData({
-        //   detail2: res.data
-        // })
       }
     })
+//---
+
   },
 
 	/**
