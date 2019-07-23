@@ -8,6 +8,7 @@ Page({
     /**
      * 日历内容粘贴start
      */
+		height: 0,
     loading: false, // 加载中
     list: {
       activity: { pageNo: 1, data: [] },
@@ -307,7 +308,20 @@ Page({
 	 * 生命周期函数--监听页面显示
 	 */
 	onShow: function () {
-  
+		/*
+			305+22:轮播图高度
+			100+13:日历标题高度
+			120:日历高度
+			(300+26)*n:卡片总高度
+			20:底部预留空白
+		*/
+		var height1 = this.data.height
+		height1 = 305 + 22 + 100 + 13 + 120 
+							+ (300 + 26) * this.data.detailAll.length+20
+		console.log("height1:"+height1)
+		this.setData({
+			height: height1
+		})
     wx.getSystemInfo({
       success: (res) => {
         this.setData({

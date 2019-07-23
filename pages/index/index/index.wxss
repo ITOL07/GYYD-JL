@@ -1,6 +1,6 @@
 /* container,common */
 .container{
-   overflow: hidden;
+  overflow: hidden;
 	background-color: #F3F1F1;
 }
 /* top */

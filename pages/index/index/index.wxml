@@ -1,4 +1,4 @@
-<view class="container displaycolumn">
+<view class="container displaycolumn" style="height: {{height}}rpx">
 	<view class="top view">
 	<!--顶部轮播图-->
 		<swiper indicator-dots="{{swiper.indicatordots}}" 
@@ -49,6 +49,7 @@
         </block>
       </swiper>
    </view>
+	<!-- <view class="bottom" wx:for="{{detail}}" wx:key="this"> -->
 	<view class="bottom" wx:for="{{detailAll}}" wx:key="this">
 	<!--低部学员课程详情-->
 		<view  class="displaycolumn vieworder">
